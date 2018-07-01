@@ -3,6 +3,7 @@ import Router from 'vue-router'
 import HelloWorld from '@/components/HelloWorld'
 import demo from '@/view/demo'
 import home from '@/view/home'
+import report from '@/view/report'
 
 Vue.use(Router)
 
@@ -12,6 +13,11 @@ export default new Router({
       path: '/',
       name: 'home',
       component: home
+    },
+    {
+      path: '/report',
+      name: 'report',
+      component: report
     },
     {
       path: '/hello',

@@ -21,6 +21,10 @@ Vue.use(ElementUI);
 Vue.use(VueAwesomeSwiper);
 
 /* eslint-disable no-new */
+
+
+
+
 new Vue({
   el: '#app',
   router,

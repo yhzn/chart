@@ -44,9 +44,61 @@ html,body,.con{
 
 .main{
   height:calc( 100vh - 66px );
+  padding-bottom:10px;
   overflow: auto;
 }
-
+.main-head{
+  margin:0 10px 10px;
+}
 .margin-bottom-10{
   margin-bottom:10px;
+}
+
+.color_1{
+  background-color: #f7ad0c;
+}
+.color_2{
+  background-color: #edde05;
+}
+.color_3{
+  background-color: #8be87e;
+}
+.color_4{
+  background-color: #1286ed;
+}
+.color_5{
+  background-color: #eb615f;
+}
+.color_6{
+  background-color: #43a8f0;
+}
+.color_7{
+  background-color: #2a71ff;
+}
+.color_8{
+  background-color: #9368dc;
+}
+.color_9{
+  background-color: #14c6ca;
+}
+.text_color_1{
+  color: #ffffff;
+}
+.text_color_2{
+  color: #853cff;
+}
+.text_color_3{
+  color: #01ff00;
+}
+.text_color_4{
+  color: #fffa01;
+}
+.text_color_5{
+  color: #ff8569;
+}
+.text_color_6{
+  color: #2f7ac0;
+}
+.text_color_7{
+  color: #25ccff;
 }
