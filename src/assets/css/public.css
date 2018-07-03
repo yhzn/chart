@@ -66,6 +66,27 @@ html,body,.con{
 .color_9{
   background-color: #14c6ca;
 }
+.color_10{
+  background-color: #77e79f;
+}
+.color_11{
+  background-color: #067bdb;
+}
+.color_12{
+  background-color: #3169fe;
+}
+.color_13{
+  background-color: #6017fc;
+}
+.color_14{
+  background-color: #ff4694;
+}
+.color_15{
+  background-color: #ffe844;
+}
+.color_16{
+  background-color: #ff8569;
+}
 .text_color_1{
   color: #ffffff;
 }
@@ -86,4 +107,36 @@ html,body,.con{
 }
 .text_color_7{
   color: #25ccff;
+}
+.text_color_8{
+  color: #75e7a1;
+}
+.text_color_9{
+  color: #68bbff;
+}
+.text_color_10{
+  color: #0ac3fb;
+}
+.text_color_11{
+  color: #9c65fe;
+}
+.text_color_12{
+  color: #fd18a6;
+}
+
+.font-size-12{
+  font-size: 12px;
+}
+.font-size-15{
+  font-size: 15px;
+}
+.font-size-18{
+  font-size: 18px;
+}
+.font_style_1{
+  color: #ffffff;
+  font-size: 18px;
+  text-shadow: 0 0 5px #ffffff;
+  line-height: 25px;
+  vertical-align: middle;
 }

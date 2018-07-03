@@ -246,8 +246,6 @@
               </div>
               <p>2018年入径率月度趋势</p>
               <div class="chart-main clearfix">
-
-
               </div>
               <div class="ind-con">
                 <indicator-light :selectLight="selectLight"></indicator-light>
@@ -286,10 +284,15 @@
         headTip:'临床路径概览',
         selectLight:{
           selectOne:true,
+          one:'同期',
           selectTwo:true,
+          two:'当期',
           selectThree:true,
+          three:'指标',
           selectFour:true,
-          selectFive:true
+          four:'医保',
+          selectFive:true,
+          five:'指导'
         },
         rj,
         pj,
