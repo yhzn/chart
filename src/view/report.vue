@@ -1,72 +1,5 @@
 <style lang="less">
     .report{
-        .head{
-          position: absolute;
-          height: 40px;
-          top: 50px;
-          left: 10px;
-          right: 10px;
-        }
-        .head_content_1{
-          float: left;
-          width: 150px;
-          height: 36px;
-          background-image: url("../assets/image/title.png");
-          background-size: 100% 100%;
-          padding-top: 4px;
-          padding-left: 8px;
-          font-size: 23px;
-          color: #ffffff;
-        }
-        .head_content_2{
-          float: left;
-          margin-left:10px;
-          height: 40px;
-          width: 100px;
-          line-height: 45px;
-          vertical-align: middle;
-          font-size: 14px;
-          font-weight: bold;
-          color:#fff;
-        }
-        .head_content_3{
-          float: left;
-          width: 14px;
-          height: 24px;
-          padding-top: 16px;
-        }
-        .head_content_3_2{
-          float: left;
-          margin-top: 3px;
-          width: 14px;
-          height: 17px;
-        }
-        .head_content_4{
-          float: left;
-          margin-left: 3px;
-          margin-right: 30px;
-          width: 30px;
-          height: 40px;
-          line-height: 45px;
-          vertical-align: middle;
-          font-size: 14px;
-          color: #ffffff;
-        }
-        .head_content_4_2{
-          float: left;
-          margin-left: 3px;
-          margin-right: 10px;
-          width: 30px;
-          height: 20px;
-          font-size: 14px;
-          color: #ffffff;
-        }
-        .head_content_5{
-          float: right;
-          padding-top: 10px;
-          width: 425px;
-          height: 30px;
-        }
         .contents{
           margin:0 10px 10px;
         }
@@ -257,7 +190,7 @@
           line-height: 16px;
           vertical-align: middle;
           font-size: xx-small;
-          text-align:right
+          text-align:left
         }
         .row_1_3{
           float: left;
@@ -305,121 +238,17 @@
           position: relative;
           float: left;
         }
-
-
-        .radio_behind_1{
-          height: 14px;
-          width: 14px;
-          background-color: #ffffff;
-          border-radius: 50%;
-        }
-        .radio_front_1{
-          position: absolute;
-          margin-top: 2px;
-          margin-left: 2px;
-          height: 10px;
-          width: 10px;
-          background-color: #2488e8;
-          border-radius: 50%;
-        }
-        .radio_front_2{
-          position: absolute;
-          margin-top: 2px;
-          margin-left: 2px;
-          height: 10px;
-          width: 10px;
-          background-color: #0049a7;
-          border-radius: 50%;
-        }
-        .select_1 {
-          height: 27px;
-          width: 80px;
-          border: none;
-          outline: none;
-          /*很关键：将默认的select选择框样式清除*/
-          appearance:none;
-          -moz-appearance:none;
-          -webkit-appearance:none;
-          /*在选择框的最右侧中间显示小箭头图片*/
-          background: url("../assets/image/select.png") no-repeat scroll right center transparent;
-          background-size: 100% 100%;
-          /*为下拉小箭头留出一点位置，避免被文字覆盖*/
-          padding-right: 13px;
-          padding-left: 5px;
-          color: white;
-          font-size: 15px;
-        }
-        /*清除ie的默认选择框样式清除，隐藏下拉箭头*/
-        select::-ms-expand { display: none; }
-        button{
-          background: url("../assets/image/button.png") no-repeat;
-          background-size: 100% 100%;
-          border:none;
-          height: 27px;
-          width: 65px;
-        }
     }
 
 </style>
 <template>
   <div class="con">
-    <div class="head">
-      <div class="title_first">
-        <p>决策支持系统</p>
-      </div>
-      <div class="title_second">
-        <p>院长月报</p>
-      </div>
-    </div>
+    <head-title :headTip="headTip">
+      <head-select slot="headSelect"></head-select>
+    </head-title>
     <div class="report main">
-       <div class="main-head clearfix">
-         <div class="head_content_2 clearfix">
-           金额单位:万元
-         </div>
-         <div class="head_content_3 clearfix">
-           <div class="radio_behind_1">
-             <div class="radio_front_1"></div>
-           </div>
-         </div>
-         <div class="head_content_4 clearfix">
-           全院
-         </div>
-         <div class="head_content_3 clearfix">
-           <div class="radio_behind_1">
-             <div class="radio_front_2"></div>
-           </div>
-         </div>
-         <div class="head_content_4 clearfix">
-           本院
-         </div>
-         <div class="head_content_3 clearfix">
-           <div class="radio_behind_1">
-             <div class="radio_front_2"></div>
-           </div>
-         </div>
-         <div class="head_content_4">
-           南院
-         </div>
-         <!-- 右边 -->
-         <div class="head_content_5 clearfix">
-           <select class="select_1">
-             <option value ="year">2017</option>
-           </select>
-           <select class="select_1">
-             <option value ="month">6</option>
-           </select>
-           至
-           <select class="select_1">
-             <option value ="year">2017</option>
-           </select>
-           <select class="select_1">
-             <option value ="month">6</option>
-           </select>
-           <button>获取数据</button>
-         </div>
 
-       </div>
-        <div class="contents">
+      <div class="contents">
           <div class="content">
             <div class="content_right">
               <div class="elements_2">
@@ -431,7 +260,7 @@
                         当期
                       </div>
                       <div class="row_1_2 text_color_2">
-                        12,902
+                        {{current_1}}
                       </div>
                     </div>
                     <div class="row_1">
@@ -439,7 +268,7 @@
                         指标
                       </div>
                       <div class="row_1_2 text_color_3">
-                        0
+                        {{target_1}}
                       </div>
                     </div>
                     <div class="row_1">
@@ -447,7 +276,7 @@
                         同期
                       </div>
                       <div class="row_1_2 text_color_4">
-                        22,048
+                        {{period_1}}
                       </div>
                     </div>
                   </div>
@@ -464,7 +293,7 @@
                         完成
                       </div>
                       <div class="row_1_2 text_color_5">
-                        12,902
+                        {{complete_1}}
                       </div>
                     </div>
                     <div class="row_1">
@@ -472,7 +301,7 @@
                         计划
                       </div>
                       <div class="row_1_2 text_color_6">
-                        0
+                        {{plan_1}}
                       </div>
                     </div>
                     <div class="row_1">
@@ -480,15 +309,15 @@
                         差额
                       </div>
                       <div class="row_1_2 text_color_7">
-                        22,048
+                        {{plan_1 - complete_1}}
                       </div>
                     </div>
                     <div class="row_1_3 text_color_1">完成比</div>
                     <div class="progress_bar_border">
                       <div class="progress_bar">
-                        <div class="cover"></div>
+                        <div class="cover" :style="{'width':(100 - ratio_1)+'%'}"></div>
                         <div class="pgs text_color_1">
-                          <p class="progress_num">100</p><p>%</p>
+                          <p class="progress_num">{{ratio_1}}</p><p>%</p>
                         </div>
                       </div>
                     </div>
@@ -502,13 +331,7 @@
               </div>
               <div class="line_1">
               </div>
-              <div class="charts">
-                <div class="chart_1">
-                  FGH
-                </div>
-                <div class="chart_2">
-                  1234
-                </div>
+              <div class="charts" ref="chart_1">
               </div>
               <div class="elements_1">
                 <div class="element_1_1 color_1"></div>
@@ -535,7 +358,7 @@
                         当期
                       </div>
                       <div class="row_1_2 text_color_2">
-                        146,961
+                        {{current_2}}
                       </div>
                     </div>
                     <div class="row_1">
@@ -543,7 +366,7 @@
                         指标
                       </div>
                       <div class="row_1_2 text_color_3">
-                        250,540
+                        {{target_2}}
                       </div>
                     </div>
                     <div class="row_1">
@@ -551,7 +374,7 @@
                         同期
                       </div>
                       <div class="row_1_2 text_color_4">
-                        223,048
+                        {{period_2}}
                       </div>
                     </div>
                   </div>
@@ -568,7 +391,7 @@
                         完成
                       </div>
                       <div class="row_1_2 text_color_5">
-                        1,296,695
+                        {{complete_2}}
                       </div>
                     </div>
                     <div class="row_1">
@@ -576,7 +399,7 @@
                         计划
                       </div>
                       <div class="row_1_2 text_color_6">
-                        3,008,387
+                        {{plan_2}}
                       </div>
                     </div>
                     <div class="row_1">
@@ -584,15 +407,15 @@
                         差额
                       </div>
                       <div class="row_1_2 text_color_7">
-                        1,711,692
+                        {{plan_2 - complete_2}}
                       </div>
                     </div>
                     <div class="row_1_3 text_color_1">完成比</div>
                     <div class="progress_bar_border">
                       <div class="progress_bar">
-                        <div class="cover"></div>
+                        <div class="cover" :style="{'width':(100 - ratio_2) + '%'}"></div>
                         <div class="pgs text_color_1">
-                          <p class="progress_num">43</p><p>%</p>
+                          <p class="progress_num">{{ratio_2}}</p><p>%</p>
                         </div>
                       </div>
                     </div>
@@ -605,12 +428,8 @@
                 门诊人次
               </div>
               <div class="line_1">
-
               </div>
-              <div class="charts">
-                <div class="chart_1"></div>
-                <div class="chart_2">
-                </div>
+              <div class="charts"  ref="chart_2">
               </div>
               <div class="elements_1">
                 <div class="element_1_1 color_1"></div>
@@ -637,7 +456,7 @@
                         当期
                       </div>
                       <div class="row_1_2 text_color_2">
-                        7.1
+                        {{current_3}}
                       </div>
                     </div>
                     <div class="row_1">
@@ -645,7 +464,7 @@
                         指标
                       </div>
                       <div class="row_1_2 text_color_3">
-                        8.0
+                        {{target_3}}
                       </div>
                     </div>
                     <div class="row_1">
@@ -653,7 +472,7 @@
                         同期
                       </div>
                       <div class="row_1_2 text_color_4">
-                        7.5
+                        {{period_3}}
                       </div>
                     </div>
                   </div>
@@ -670,7 +489,7 @@
                         完成
                       </div>
                       <div class="row_1_2 text_color_5">
-                        7.4
+                        {{complete_3}}
                       </div>
                     </div>
                     <div class="row_1">
@@ -678,7 +497,7 @@
                         计划
                       </div>
                       <div class="row_1_2 text_color_6">
-                        8.0
+                        {{plan_3}}
                       </div>
                     </div>
                     <div class="row_1">
@@ -686,7 +505,7 @@
                         日均费用
                       </div>
                       <div class="row_1_2 text_color_7">
-                        2,067
+                        {{cost_3}}
                       </div>
                     </div>
                   </div>
@@ -700,10 +519,7 @@
               <div class="line_1">
 
               </div>
-              <div class="charts">
-                <div class="chart_1"></div>
-                <div class="chart_2">
-                </div>
+              <div class="charts"  ref="chart_3">
               </div>
               <div class="elements_1">
                 <div class="element_1_1 color_1"></div>
@@ -730,7 +546,7 @@
                         当期
                       </div>
                       <div class="row_1_2 text_color_2">
-                        5,545
+                        {{current_4}}
                       </div>
                     </div>
                     <div class="row_1">
@@ -738,7 +554,7 @@
                         指标
                       </div>
                       <div class="row_1_2 text_color_3">
-                        0
+                        {{target_4}}
                       </div>
                     </div>
                     <div class="row_1">
@@ -746,7 +562,7 @@
                         同期
                       </div>
                       <div class="row_1_2 text_color_4">
-                        8,741
+                        {{period_4}}
                       </div>
                     </div>
                   </div>
@@ -763,7 +579,7 @@
                         完成
                       </div>
                       <div class="row_1_2 text_color_5">
-                        47,944
+                       {{complete_4}}
                       </div>
                     </div>
                     <div class="row_1">
@@ -771,7 +587,7 @@
                         计划
                       </div>
                       <div class="row_1_2 text_color_6">
-                        0
+                        {{plan_4}}
                       </div>
                     </div>
                     <div class="row_1">
@@ -779,15 +595,15 @@
                         差额
                       </div>
                       <div class="row_1_2 text_color_7">
-                        47,944
+                        {{plan_4 - complete_4}}
                       </div>
                     </div>
                     <div class="row_1_3 text_color_1">完成比</div>
                     <div class="progress_bar_border">
                       <div class="progress_bar">
-                        <div class="cover"></div>
+                        <div class="cover" :style="{'width':(100 - ratio_4)+'%'}"></div>
                         <div class="pgs text_color_1">
-                          <p class="progress_num">100</p><p>%</p>
+                          <p class="progress_num">{{ratio_4}}</p><p>%</p>
                         </div>
                       </div>
                     </div>
@@ -800,12 +616,8 @@
                 门诊收入
               </div>
               <div class="line_1">
-
               </div>
-              <div class="charts">
-                <div class="chart_1"></div>
-                <div class="chart_2">
-                </div>
+              <div class="charts" ref="chart_4">
               </div>
               <div class="elements_1">
                 <div class="element_1_1 color_1"></div>
@@ -832,7 +644,7 @@
                         当期
                       </div>
                       <div class="row_1_2 text_color_2">
-                        4,042
+                        {{current_5}}
                       </div>
                     </div>
                     <div class="row_1">
@@ -840,7 +652,7 @@
                         指标
                       </div>
                       <div class="row_1_2 text_color_3">
-                        6,801
+                        {{target_5}}
                       </div>
                     </div>
                     <div class="row_1">
@@ -848,7 +660,7 @@
                         同期
                       </div>
                       <div class="row_1_2 text_color_4">
-                        6,319
+                        {{period_5}}
                       </div>
                     </div>
                   </div>
@@ -865,7 +677,7 @@
                         完成
                       </div>
                       <div class="row_1_2 text_color_5">
-                        34,661
+                        {{complete_5}}
                       </div>
                     </div>
                     <div class="row_1">
@@ -873,7 +685,7 @@
                         计划
                       </div>
                       <div class="row_1_2 text_color_6">
-                        77,086
+                        {{plan_5}}
                       </div>
                     </div>
                     <div class="row_1">
@@ -881,15 +693,16 @@
                         差额
                       </div>
                       <div class="row_1_2 text_color_7">
-                        42,425
+                        {{plan_5 - complete_5}}
+
                       </div>
                     </div>
                     <div class="row_1_3 text_color_1">完成比</div>
                     <div class="progress_bar_border">
                       <div class="progress_bar">
-                        <div class="cover"></div>
+                        <div class="cover" :style="{'width':(100 - ratio_5)+'%'}"></div>
                         <div class="pgs text_color_1">
-                          <p class="progress_num">45</p><p>%</p>
+                          <p class="progress_num">{{ratio_5}}</p><p>%</p>
                         </div>
                       </div>
                     </div>
@@ -904,10 +717,7 @@
               <div class="line_1">
 
               </div>
-              <div class="charts">
-                <div class="chart_1"></div>
-                <div class="chart_2">
-                </div>
+              <div class="charts"  ref="chart_5">
               </div>
               <div class="elements_1">
                 <div class="element_1_1 color_1"></div>
@@ -934,7 +744,7 @@
                         当期
                       </div>
                       <div class="row_1_2 text_color_2">
-                        30%
+                        {{current_6}}%
                       </div>
                     </div>
                     <div class="row_1">
@@ -942,7 +752,7 @@
                         同期
                       </div>
                       <div class="row_1_2 text_color_4">
-                        37%
+                        {{target_6}}%
                       </div>
                     </div>
                   </div>
@@ -959,7 +769,7 @@
                         完成
                       </div>
                       <div class="row_1_2 text_color_5">
-                        31%
+                        {{complete_6}}%
                       </div>
                     </div>
                     <div class="row_1">
@@ -967,7 +777,7 @@
                         计划
                       </div>
                       <div class="row_1_2 text_color_6">
-                        44%
+                        {{plan_6}}%
                       </div>
                     </div>
                     <div class="row_1">
@@ -975,7 +785,7 @@
                         差额
                       </div>
                       <div class="row_1_2 text_color_7">
-                        21%
+                        {{plan_6 - complete_6}}%
                       </div>
                     </div>
                   </div>
@@ -989,10 +799,7 @@
               <div class="line_1">
 
               </div>
-              <div class="charts">
-                <div class="chart_1"></div>
-                <div class="chart_2">
-                </div>
+              <div class="charts" ref="chart_6">
               </div>
               <div class="elements_1">
                 <div class="element_1_1 color_1"></div>
@@ -1015,7 +822,7 @@
                         当期
                       </div>
                       <div class="row_1_2 text_color_2">
-                        7,357
+                        {{current_7}}
                       </div>
                     </div>
                     <div class="row_1">
@@ -1023,7 +830,7 @@
                         指标
                       </div>
                       <div class="row_1_2 text_color_3">
-                        0
+                        {{target_7}}
                       </div>
                     </div>
                     <div class="row_1">
@@ -1031,7 +838,7 @@
                         同期
                       </div>
                       <div class="row_1_2 text_color_4">
-                        13,307
+                        {{period_7}}
                       </div>
                     </div>
                   </div>
@@ -1048,7 +855,7 @@
                         完成
                       </div>
                       <div class="row_1_2 text_color_5">
-                        62,523
+                        {{complete_7}}
                       </div>
                     </div>
                     <div class="row_1">
@@ -1056,7 +863,7 @@
                         计划
                       </div>
                       <div class="row_1_2 text_color_6">
-                        0
+                        {{plan_7}}
                       </div>
                     </div>
                     <div class="row_1">
@@ -1064,15 +871,15 @@
                         差额
                       </div>
                       <div class="row_1_2 text_color_7">
-                        62,523
+                        {{plan_7 - complete_7}}
                       </div>
                     </div>
                     <div class="row_1_3 text_color_1">完成比</div>
                     <div class="progress_bar_border">
                       <div class="progress_bar">
-                        <div class="cover"></div>
+                        <div class="cover" :style="{'width':( 100 - ratio_7 )+'%'}"></div>
                         <div class="pgs text_color_1">
-                          <p class="progress_num">100</p><p>%</p>
+                          <p class="progress_num">{{ratio_7}}</p><p>%</p>
                         </div>
                       </div>
                     </div>
@@ -1087,11 +894,7 @@
               <div class="line_1">
 
               </div>
-              <div class="charts">
-                <div class="chart_1"></div>
-                <div class="chart_2">
-                </div>
-              </div>
+              <div class="charts" ref="chart_7"></div>
               <div class="elements_1">
                 <div class="element_1_1 color_1"></div>
                 <div class="element_1_2">同期</div>
@@ -1135,7 +938,7 @@
                         当期
                       </div>
                       <div class="row_1_2 text_color_2">
-                        14,90
+                        {{current_8}}
                       </div>
                     </div>
                     <div class="row_1">
@@ -1143,7 +946,7 @@
                         指标
                       </div>
                       <div class="row_1_2 text_color_3">
-                        2,384
+                        {{target_8}}
                       </div>
                     </div>
                     <div class="row_1">
@@ -1151,7 +954,7 @@
                         同期
                       </div>
                       <div class="row_1_2 text_color_4">
-                        2,314
+                        {{period_8}}
                       </div>
                     </div>
                   </div>
@@ -1168,7 +971,7 @@
                         完成
                       </div>
                       <div class="row_1_2 text_color_5">
-                        11,659
+                        {{complete_8}}
                       </div>
                     </div>
                     <div class="row_1">
@@ -1176,7 +979,7 @@
                         计划
                       </div>
                       <div class="row_1_2 text_color_6">
-                        25,005
+                        {{plan_8}}
                       </div>
                     </div>
                     <div class="row_1">
@@ -1184,15 +987,15 @@
                         差额
                       </div>
                       <div class="row_1_2 text_color_7">
-                        13,346
+                        {{plan_8 - complete_8}}
                       </div>
                     </div>
                     <div class="row_1_3 text_color_1">完成比</div>
                     <div class="progress_bar_border">
                       <div class="progress_bar">
-                        <div class="cover"></div>
+                        <div class="cover" :style="{'width':(100 -ratio_8) + '%'}"></div>
                         <div class="pgs text_color_1">
-                          <p class="progress_num">47</p><p>%</p>
+                          <p class="progress_num">{{ratio_8}}</p><p>%</p>
                         </div>
                       </div>
                     </div>
@@ -1204,9 +1007,7 @@
               <div class="main_title_second">
                 手术例数
               </div>
-              <div class="line_1">
-
-              </div>
+              <div class="line_1"></div>
               <div class="charts">
                 <div class="chart_1">
                   <div class="element_4"></div>
@@ -1219,7 +1020,7 @@
                   <div class="element_1_1_2 color_9"></div>
                   <div class="element_1_2_2">4级</div>
                 </div>
-                <div class="chart_2">
+                <div class="chart_2" ref="chart_8">
 
                 </div>
               </div>
@@ -1246,7 +1047,7 @@
                         当期
                       </div>
                       <div class="row_1_2 text_color_2">
-                        21%
+                        {{current_9}}%
                       </div>
                     </div>
                     <div class="row_1">
@@ -1254,7 +1055,7 @@
                         同期
                       </div>
                       <div class="row_1_2 text_color_4">
-                        21%
+                        {{period_9}}%
                       </div>
                     </div>
                   </div>
@@ -1271,7 +1072,7 @@
                         完成
                       </div>
                       <div class="row_1_2 text_color_5">
-                        20%
+                        {{complete_9}}%
                       </div>
                     </div>
                     <div class="row_1">
@@ -1279,7 +1080,7 @@
                         门诊
                       </div>
                       <div class="row_1_2 text_color_6">
-                        2%
+                        {{clinic_9}}%
                       </div>
                     </div>
                     <div class="row_1">
@@ -1287,7 +1088,7 @@
                         住院
                       </div>
                       <div class="row_1_2 text_color_7">
-                        34%
+                        {{hospital_9}}%
                       </div>
                     </div>
                   </div>
@@ -1302,10 +1103,7 @@
               <div class="line_1">
 
               </div>
-              <div class="charts">
-                <div class="chart_1"></div>
-                <div class="chart_2">
-                </div>
+              <div class="charts" ref="chart_9">
               </div>
               <div class="elements_1">
                 <div class="element_1_1 color_1"></div>
@@ -1321,23 +1119,556 @@
 
         </div>
     </div>
-
-      </div>
+    </div>
 </template>
 <script>
+  import eCharts from 'echarts'
+  import {random, clone} from '@/tool/tool'
+
+  import headTitle from '@/components/head'
+  import headSelect from '@/components/head-select'
+
   export default {
       data () {
           return {
+            headTip:'院长月报',
+            current_1:random(10000,13000),
+            target_1:random(10000,13000),
+            period_1:random(10000,13000),
+            complete_1:random(10000,13000),
+            plan_1:13000,
+            ratio_1:0,
+            current_2:random(13000,300000),
+            target_2:random(13000,300000),
+            period_2:random(13000,300000),
+            complete_2:random(20000,300000),
+            plan_2:300000,
+            ratio_2:0,
+            current_3:random(6,10),
+            target_3:random(6,10),
+            period_3:random(6,10),
+            complete_3:random(6,10),
+            plan_3:8,
+            cost_3:2000,
+            current_4:random(13000,30000),
+            target_4:random(13000,30000),
+            period_4:random(13000,30000),
+            complete_4:random(13000,30000),
+            plan_4:50000,
+            ratio_4:0,
+            current_5:random(13000,30000),
+            target_5:random(13000,30000),
+            period_5:random(13000,30000),
+            complete_5:random(13000,30000),
+            plan_5:50000,
+            ratio_5:0,
+            current_6:random(20,50),
+            target_6:random(20,50),
+            complete_6:random(30,45),
+            plan_6:46,
+            current_7:random(7000,8000),
+            target_7:random(7000,8000),
+            period_7:random(13000,15000),
+            complete_7:random(60000,80000),
+            plan_7:80000,
+            ratio_7:0,
+            current_8:random(1300,3000),
+            target_8:random(1300,3000),
+            period_8:random(1300,3000),
+            complete_8:random(13000,25000),
+            plan_8:25000,
+            ratio_8:0,
+            current_9:random(30,60),
+            period_9:random(30,60),
+            complete_9:random(30,60),
+            clinic_9:random(10,20),
+            hospital_9:0,
 
           }
       },
+      components:{
+          headTitle,
+          headSelect,
+      },
       mounted () {
-        window.onload=function(){
-          $(".progress_num").each(function(){
-            var num = $(this).html();
-            var process = (100 - num) + "%";
-            var cover = $(this).parent().siblings(".cover").css("width",process);
-          });
+        let chart_1=eCharts.init(this.$refs.chart_1);
+        let chart_2=eCharts.init(this.$refs.chart_2);
+        let chart_3=eCharts.init(this.$refs.chart_3);
+        let chart_4=eCharts.init(this.$refs.chart_4);
+        let chart_5=eCharts.init(this.$refs.chart_5);
+        let chart_6=eCharts.init(this.$refs.chart_6);
+        let chart_7=eCharts.init(this.$refs.chart_7);
+        let chart_8=eCharts.init(this.$refs.chart_8);
+        let chart_9=eCharts.init(this.$refs.chart_9);
+        let option={
+          tooltip: {
+            trigger: 'axis'
+          },
+//          legend: {
+//            data:['邮件营销','联盟广告','视频广告','直接访问','搜索引擎']
+//          },
+          grid: {
+            top:'20%',
+            left: '5%',
+            right: '3%',
+            bottom: '0',
+            containLabel: true
+          },
+          // 工具箱
+//          toolbox: {
+//            feature: {
+//              saveAsImage: {}
+//            }
+//          },
+          xAxis: {
+            type: 'category',
+            axisLine:{
+              lineStyle:{
+                color:'#fff',
+                width:1,//  坐标轴宽度 这里是为了突出显示加上的
+              }
+            },
+
+            boundaryGap: true,
+            data: [1,2,3,4,5,6,7,8,9,10,11,12]
+          },
+          yAxis: [{
+            type: 'value',
+//            max:25000,
+            axisLine:{
+              lineStyle:{
+                color:'#fff',
+                width:1,//  坐标轴宽度 这里是为了突出显示加上的
+              }
+            }
+
+
+          }],
+          series: [
+            {
+              name:'同期',
+              type:'line',
+              itemStyle : {
+                normal : {
+                  lineStyle:{
+                    color:'#f9ae0e'
+                  }
+                }
+              },
+              data:[120, 132, 101, 134, 90, 230, 210]
+            },
+            {
+              name:'当期',
+              type:'line',
+              itemStyle : {
+                normal : {
+                  lineStyle:{
+                    color:'#ebdf07'
+                  }
+                }
+              },
+              data:[220, 182, 191, 234, 290, 330, 310]
+            },
+            {
+              name:'指标',
+              type:'line',
+              itemStyle : {
+                normal : {
+                  lineStyle:{
+                    color:'#8bea7f'
+                  }
+                }
+              },
+              data:[150, 232, 201, 154, 190, 330, 410]
+            },
+            {
+              name:'指导',
+              type:'line',
+              itemStyle : {
+                normal : {
+                  lineStyle:{
+                    color:'#e9615c'
+                  }
+                }
+              },
+              data:[320, 332, 301, 334, 390, 330, 320]
+            },
+            {
+              name:'医保',
+              type:'bar',
+              barWidth: '60%',
+              color:new eCharts.graphic.LinearGradient(0, 0, 0, 1, [{  // 渐变色
+
+
+                // 0% 处的颜色
+                offset: 0, color: '#82ebfb'  },
+                {
+
+                  // 100% 处的颜色
+                  offset: 1, color: '#046cc2'
+                }], false),
+              data:[10, 52, 200, 334, 390, 330, 220]
+            }
+          ]
+        };
+        let chart_1_option=clone(option);
+        let chart_2_option=clone(option);
+        let chart_3_option=clone(option);
+        let chart_4_option=clone(option);
+        let chart_5_option=clone(option);
+        let chart_6_option=clone(option);
+        let chart_7_option=clone(option);
+        let chart_8_option=clone(option);
+        let chart_9_option=clone(option);
+
+        chart_1_option.yAxis[0].max=25000;
+        chart_1_option.yAxis[0].name='金额（万元）';
+
+        chart_2_option.yAxis[0].max=300000;
+        chart_2_option.yAxis[0].name='人次（人）';
+        chart_2_option.yAxis[1]={
+          type: 'value',
+          name: '均次（元）',
+          min: 0,
+          max: 1152,
+          position: 'right',
+          axisLabel: {
+            formatter: '{value}'
+          },
+          splitLine:{  // 去掉与坐标轴平行的直线
+            show:false
+          },
+          axisTick: {
+            show: false
+          },
+          axisLine:{
+            lineStyle:{
+              color:'#fff',
+              width:1,//  坐标轴宽度 这里是为了突出显示加上的
+            }
+          }
+        };
+
+        chart_3_option.yAxis[0].max=25000;
+        chart_3_option.yAxis[0].name='金额（万元）';
+        chart_3_option.yAxis[1]={
+          type: 'value',
+          name: '日均费用（元）',
+          min: 0,
+          max: 7389,
+          position: 'right',
+          axisLabel: {
+            formatter: '{value}'
+          },
+          splitLine:{  // 去掉与坐标轴平行的直线
+            show:false
+          },
+          axisTick: {
+            show: false
+          },
+          axisLine:{
+            lineStyle:{
+              color:'#fff',
+              width:1,//  坐标轴宽度 这里是为了突出显示加上的
+            }
+          }
+        };
+
+        chart_4_option.yAxis[0].max=12000;
+        chart_4_option.yAxis[0].name='金额（万元）';
+
+        chart_5_option.yAxis[0].max=8000;
+        chart_5_option.yAxis[0].name='人次（人）';
+        chart_5_option.yAxis[1]={
+          type: 'value',
+          name: '均次（元）',
+          min: 0,
+          max: 55000,
+          position: 'right',
+          axisLabel: {
+            formatter: '{value}'
+          },
+          splitLine:{  // 去掉与坐标轴平行的直线
+            show:false
+          },
+          axisTick: {
+            show: false
+          },
+          axisLine:{
+            lineStyle:{
+              color:'#fff',
+              width:1,//  坐标轴宽度 这里是为了突出显示加上的
+            }
+          }
+        };
+
+
+        chart_6_option.yAxis[0].max=50;
+        chart_6_option.yAxis[0].name='医疗（%）';
+        chart_6_option.yAxis[0].axisLabel={
+          show: true,
+          interval: 'auto',
+          formatter: '{value} %'
+        }
+        chart_6_option.series.itemStyle={
+          normal: {
+            label: {
+              show: true,
+              position: 'top',
+              formatter: '{b}\n{c}%'
+            }
+          }
+        }
+
+        chart_7_option.yAxis[0].max=15000;
+        chart_7_option.yAxis[0].name='金额（万元）';
+        chart_7_option.yAxis[1]={
+          type: 'value',
+          name: '医保（%）',
+          min: 0,
+          max: 128,
+          position: 'right',
+          axisLabel: {
+            formatter: '{value}%'
+          },
+          splitLine:{  // 去掉与坐标轴平行的直线
+            show:false
+          },
+          axisTick: {
+            show: false
+          },
+          axisLine:{
+            lineStyle:{
+              color:'#fff',
+              width:1,//  坐标轴宽度 这里是为了突出显示加上的
+            }
+          }
+        };
+
+
+        chart_8_option.yAxis[0].max=2500;
+        chart_8_option.yAxis[0].name='台数（例）';
+
+        chart_9_option.yAxis[0].max=25;
+        chart_9_option.yAxis[0].name='医疗';
+        chart_9_option.yAxis[1]={
+          type: 'value',
+          name: '医保（%）',
+          min: 0,
+          max: 59,
+          position: 'right',
+          axisLabel: {
+            formatter: '{value}%'
+          },
+          splitLine:{  // 去掉与坐标轴平行的直线
+            show:false
+          },
+          axisTick: {
+            show: false
+          },
+          axisLine:{
+            lineStyle:{
+              color:'#fff',
+              width:1,//  坐标轴宽度 这里是为了突出显示加上的
+            }
+          }
+        };
+
+        chart_9_option.yAxis[0].axisLabel={
+          show: true,
+          interval: 'auto',
+          formatter: '{value} %'
+        }
+        chart_9_option.series.itemStyle={
+          normal: {
+            label: {
+              show: true,
+              position: 'top',
+              formatter: '{b}\n{c}%'
+            }
+          }
+        }
+
+        setInterval(()=>{
+            this.current_1=random(10000,13000);
+            this.target_1=random(10000,13000);
+            this.period_1=random(10000,13000);
+            this.complete_1=random(10000,13000);
+            this.ratio_1=Math.floor((this.complete_1 / this.plan_1)*100);
+
+            this.current_2=random(13000,300000);
+            this.target_2=random(13000,300000);
+            this.period_2=random(13000,300000);
+            this.complete_2=random(13000,300000);
+            this.ratio_2=Math.floor((this.complete_2 / this.plan_2)*100);
+
+
+            this.current_3=random(6,10);
+            this.target_3=random(6,10);
+            this.period_3=random(6,10);
+            this.complete_3=random(6,10);
+            this.cost_3=random(2000,3000);
+
+            this.current_4=random(13000,30000);
+            this.target_4=random(13000,30000);
+            this.period_4=random(13000,30000);
+            this.complete_4=random(13000,30000);
+            this.ratio_4=Math.floor((this.complete_4 / this.plan_4)*100);
+
+            this.current_5=random(13000,30000);
+            this.target_5=random(13000,30000);
+            this.period_5=random(13000,30000);
+            this.complete_5=random(13000,30000);
+            this.ratio_5=Math.floor((this.complete_5 / this.plan_5)*100);
+
+            this.current_6=random(20,50);
+            this.target_6=random(20,50);
+            this.complete_6=random(30,45);
+            this.plan_6=46;
+
+            this.current_7=random(7000,8000);
+            this.target_7=random(7000,8000);
+            this.period_7=random(13000,15000);
+            this.complete_7=random(60000,80000);
+            this.plan_7=80000;
+            this.ratio_7=Math.floor((this.complete_7 / this.plan_7)*100);
+
+            this.current_8=random(1300,3000);
+            this.target_8=random(1300,3000);
+            this.period_8=random(1300,3000);
+            this.complete_8=random(13000,25000);
+            this.plan_8=25000;
+            this.ratio_8=Math.floor((this.complete_8 / this.plan_8)*100);
+
+            this.current_9=random(30,60);
+            this.period_9=random(30,60);
+            this.complete_9=random(30,60);
+            this.clinic_9=random(10,20);
+            this.hospital_9=random(30,60);
+
+
+
+            // 全院收入
+          chart_1_option.series[0].data=[random(15000,24900),random(15000,24900),random(15000,24900),random(15000,24900),random(15000,24900),random(15000,24900),random(15000,24900),random(15000,24900),random(15000,24900),random(15000,24900),random(15000,24900),random(15000,24900)];
+          chart_1_option.series[1].data=[random(15000,22000),random(15000,22000),random(15000,22000),random(15000,22000),random(15000,22000),random(15000,22000)];
+          chart_1_option.series[2].data=[0,0,0,0,0,0];
+          chart_1_option.series[3].data=[null,null,null,null,null,null,0,0,0,0,0,0];
+          chart_1_option.series[4].data=[random(10000,20000),random(10000,20000),random(10000,20000),random(10000,20000),random(10000,20000),random(10000,20000)];
+
+
+          // 门诊人次
+          chart_2_option.series[0].data=[random(180000,240000),random(180000,240000),random(180000,240000),random(180000,240000),random(180000,240000),random(180000,240000),random(180000,240000),random(180000,240000),random(180000,240000),random(180000,240000),random(180000,240000),random(180000,240000),random(180000,240000)];
+          chart_2_option.series[1].data=[random(120000,250000),random(120000,250000),random(120000,250000),random(120000,250000),random(120000,250000),random(120000,250000)];
+          chart_2_option.series[2].data=[random(240000,300000),random(240000,300000),random(240000,300000),random(240000,300000),random(240000,300000),random(240000,300000),random(240000,300000),random(240000,300000),random(240000,300000),random(240000,300000),random(240000,300000),random(240000,300000)];
+          chart_2_option.series[3].data=[null,null,null,null,null,null,random(250000,270000),random(250000,270000),random(250000,270000),random(250000,270000),random(250000,270000),random(250000,270000),];
+          chart_2_option.series[4].data=[random(60000,120000),random(60000,120000),random(60000,120000),random(60000,120000),random(60000,120000),random(60000,120000),random(60000,120000)];
+
+
+          // 平均住院日
+          chart_3_option.series[0].data=[random(10000,20000),random(10000,20000),random(10000,20000),random(10000,20000),random(10000,20000),random(10000,20000),random(10000,20000),random(10000,20000),random(10000,20000),random(10000,20000),random(10000,20000),random(10000,20000)];
+          chart_3_option.series[1].data=[random(7500,17500),random(7500,17500),random(7500,17500),random(7500,17500),random(7500,17500),random(7500,17500)];
+          chart_3_option.series[2].data=[random(18000,20000),random(18000,20000),random(18000,20000),random(18000,20000),random(18000,20000),random(18000,20000),random(18000,20000),random(18000,20000),random(18000,20000),random(18000,20000),random(18000,20000),random(18000,20000)];
+          chart_3_option.series[3].data=[null,null,null,null,null,null,random(22000,25000),random(22000,25000),random(22000,25000),random(22000,25000),random(22000,25000),random(22000,25000)];
+          chart_3_option.series[4].data=[random(5000,10000),random(5000,10000),random(5000,10000),random(5000,10000),random(5000,10000),random(5000,10000)];
+
+
+          // 门诊收入
+          chart_4_option.series[0].data=[random(7000,10000),random(7000,10000),random(7000,10000),random(7000,10000),random(7000,10000),random(7000,10000),random(7000,10000),random(7000,10000),random(7000,10000),random(7000,10000),random(7000,10000),random(7000,10000)];
+          chart_4_option.series[1].data=[random(7000,10000),random(7000,10000),random(7000,10000),random(7000,10000),random(7000,10000),random(7000,10000)];
+          chart_4_option.series[2].data=[0,0,0,0,0,0];
+          chart_4_option.series[3].data=[null,null,null,null,null,null,0,0,0,0,0,0];
+          chart_4_option.series[4].data=[random(3000,5000),random(3000,5000),random(3000,5000),random(3000,5000),random(3000,5000),random(3000,5000),];
+
+
+          // 出院人次
+          chart_5_option.series[0].data=[random(4500,6800),random(4500,6800),random(4500,6800),random(4500,6800),random(4500,6800),random(4500,6800),random(4500,6800),random(4500,6800),random(4500,6800),random(4500,6800),random(4500,6800),random(4500,6800)];
+          chart_5_option.series[1].data=[random(4000,7000),random(4000,7000),random(4000,7000),random(4000,7000),random(4000,7000),random(4000,7000)];
+          chart_5_option.series[2].data=[random(5000,7500),random(5000,7500),random(5000,7500),random(5000,7500),random(5000,7500),random(5000,7500),random(5000,7500),random(5000,7500),random(5000,7500),random(5000,7500),random(5000,7500),random(5000,7500)];
+          chart_5_option.series[3].data=[null,null,null,null,null,null,random(6300,6700),random(6300,6700),random(6300,6700),random(6300,6700),random(6300,6700),random(6300,6700)];
+          chart_5_option.series[4].data=[random(3000,4000),random(3000,4000),random(3000,4000),random(3000,4000),random(3000,4000),random(3000,4000)];
+
+
+          // 药占比
+          chart_6_option.series[0].data=[random(30,50),random(30,50),random(30,50),random(30,50),random(30,50),random(30,50),random(30,50),random(30,50),random(30,50),random(30,50),random(30,50),random(30,50)];
+          chart_6_option.series[1].data=[random(20,30),random(20,30),random(20,30),random(20,30),random(20,30),random(20,30)];
+          chart_6_option.series[2].data=[];
+          chart_6_option.series[3].data=[];
+          chart_6_option.series[4].data=[random(13,20),random(13,20),random(13,20),random(13,20),random(13,20),random(13,20)];
+
+
+          // 住院收入
+          chart_7_option.series[0].data=[random(8000,15000),random(8000,15000),random(8000,15000),random(8000,15000),random(8000,15000),random(8000,15000),random(8000,15000),random(8000,15000),random(8000,15000),random(8000,15000),random(8000,15000),random(8000,15000)];
+          chart_7_option.series[1].data=[random(7000,13000),random(7000,13000),random(7000,13000),random(7000,13000),random(7000,13000),random(7000,13000)];
+          chart_7_option.series[2].data=[0,0,0,0,0,0];
+          chart_7_option.series[3].data=[null,null,null,null,null,null,0,0,0,0,0,0];
+          chart_7_option.series[4].data=[random(3000,6000),random(3000,6000),random(3000,6000),random(3000,6000),random(3000,6000),random(3000,6000)];
+
+
+          // 手术例数
+          chart_8_option.series[0].data=[random(1500,2300),random(1500,2300),random(1500,2300),random(1500,2300),random(1500,2300),random(1500,2300),random(1500,2300),random(1500,2300),random(1500,2300),random(1500,2300),random(1500,2300),random(1500,2300)];
+          chart_8_option.series[1].data=[random(1200,2200),random(1200,2200),random(1200,2200),random(1200,2200),random(1200,2200),random(1200,2200)];
+          chart_8_option.series[2].data=[random(1500,2500),random(1500,2500),random(1500,2500),random(1500,2500),random(1500,2500),random(1500,2500),random(1500,2500),random(1500,2500),random(1500,2500),random(1500,2500),random(1500,2500),random(1500,2500)];
+          chart_8_option.series[3].data=[null,null,null,null,null,null,random(2200,2300),random(2200,2300),random(2200,2300),random(2200,2300),random(2200,2300),random(2200,2300)];
+          chart_8_option.series[4]={
+              type:'bar',
+              stack: '级别',
+            color:'#43a8ef',
+            data:[random(600,700), random(600,700), random(600,700), random(600,700)]
+
+          };
+          chart_8_option.series[5]={
+            type:'bar',
+            stack: '级别',
+            color:'#2d72ff',
+            data:[random(0,300), random(0,300), random(0,300), random(0,300)]
+
+          };
+          chart_8_option.series[6]={
+            type:'bar',
+            stack: '级别',
+            color:'#916ada',
+            data:[random(0,500), random(0,500), random(0,500), random(0,500)]
+          };
+            chart_8_option.series[7]={
+              type:'bar',
+              stack: '级别',
+              color:'#14c6c9',
+
+              data:[random(0,500), random(0,500), random(0,500), random(0,500)]
+            };
+
+
+          // 材料占比
+          chart_9_option.series[0].data=[random(15,20),random(15,20),random(15,20),random(15,20),random(15,20),random(15,20),random(15,20),random(15,20),random(15,20),random(15,20),random(15,20),random(15,20)];
+          chart_9_option.series[1].data=[random(15,23),random(15,23),random(15,23),random(15,23),random(15,23),random(15,23)];
+          chart_9_option.series[2].data=[];
+          chart_9_option.series[3].data=[];
+          chart_9_option.series[4].data=[random(12,18),random(12,18),random(12,18),random(12,18),random(12,18),random(12,18)];
+
+
+
+          chart_1.setOption(chart_1_option,true);
+          chart_2.setOption(chart_2_option,true);
+          chart_3.setOption(chart_3_option,true);
+          chart_4.setOption(chart_4_option,true);
+          chart_5.setOption(chart_5_option,true);
+          chart_6.setOption(chart_6_option,true);
+          chart_7.setOption(chart_7_option,true);
+          chart_8.setOption(chart_8_option,true);
+          chart_9.setOption(chart_9_option,true);
+
+        },2000)
+        window.onresize=function(){
+          chart_1.resize();
+          chart_2.resize();
+          chart_3.resize();
+          chart_4.resize();
+          chart_5.resize();
+          chart_6.resize();
+          chart_7.resize();
+          chart_8.resize();
+          chart_9.resize();
+
         }
       }
   }

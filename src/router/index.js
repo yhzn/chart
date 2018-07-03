@@ -4,6 +4,7 @@ import HelloWorld from '@/components/HelloWorld'
 import demo from '@/view/demo'
 import home from '@/view/home'
 import report from '@/view/report'
+import overview from '@/view/overview'
 
 Vue.use(Router)
 
@@ -13,6 +14,11 @@ export default new Router({
       path: '/',
       name: 'home',
       component: home
+    },
+    {
+      path: '/overview',
+      name: 'overview',
+      component: overview
     },
     {
       path: '/report',

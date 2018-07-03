@@ -4,54 +4,39 @@ html,body,.con{
   overflow: hidden;
 }
 .con{
-  min-width: 1202px;
+  min-width: 1360px;
   background: url("../image/bg.jpg") no-repeat;
   background-size: 100% 100%;
 
 }
-.head{
-  position: relative;
-  margin-bottom:10px;
-  height:66px;
-  background:url("../image/head-bg.png") no-repeat;
-  background-size: 100% 100%;
-
-}
-.title_first{
-  padding-top:18px;
-}
-.title_first p{
-  margin:0;
-  text-align: center;
-  font-size: 32px;
-  color: #ffffff;
-}
-.title_second{
-  position: absolute;
-  bottom:0;
-  width: 211px;
-  height: 30px;
-  margin-left:10px;
-  padding-top: 3px;
-  padding-left: 8px;
-  font-size: 18px;
-  color: #ffffff;
-
-  background-image: url("../../assets/image/3_03.png");
-  background-size: 100% 100%;
-}
-
 
 .main{
   height:calc( 100vh - 66px );
-  padding-bottom:10px;
+  padding-bottom:20px;
   overflow: auto;
-}
-.main-head{
-  margin:0 10px 10px;
 }
 .margin-bottom-10{
   margin-bottom:10px;
+}
+.margin-left-10{
+  margin-left:10px;
+}
+.margin-right-10{
+  margin-right:10px;
+}
+.margin-left-5{
+  margin-left:5px;
+}
+.margin-right-5{
+  margin-right:5px;
+}
+.margin-lr-10{
+  margin-left:10px;
+  margin-right:10px;
+}
+.border-bg{
+  background: url('../image/table-border.png') no-repeat;
+  background-size:100% 100%;
 }
 
 .color_1{

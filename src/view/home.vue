@@ -221,16 +221,8 @@
 </style>
 <template>
   <div class="con">
-    <div class="head">
-      <div class="title_first">
-        <p>决策支持系统</p>
-      </div>
-      <div class="title_second">
-        <p>临床路径费用分析</p>
-      </div>
-    </div>
+    <head-title :headTip="headTip"></head-title>
     <div class="home main">
-
       <div class="nav_first clearfix">
         <div class="title_third_1">
           <p class="font_style_1">科室病种概况</p>
@@ -399,15 +391,21 @@
 <script>
   import eCharts from 'echarts'
   import {random, clone} from '@/tool/tool'
+
+  import headTitle from '@/components/head'
   export default {
     data () {
       return {
+        headTip:'临床路径费用分析',
         meterOneNum:'',
         meterTwoNum:'',
         meterThreeNum:'',
         meterFourNum:'',
         meterFiveNum:'',
       }
+    },
+    components:{
+        headTitle,
     },
     methods:{
 
