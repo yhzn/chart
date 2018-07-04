@@ -40,6 +40,10 @@
       <span class="color_5"></span>
       <span>{{selectLight.five}}</span>
     </li>
+    <li v-if="selectLight.selectSix">
+      <span class="color_13"></span>
+      <span>{{selectLight.six}}</span>
+    </li>
   </ul>
 </template>
 <script>

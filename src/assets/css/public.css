@@ -87,6 +87,12 @@ html,body,.con{
 .color_16{
   background-color: #ff8569;
 }
+.color_17{
+  background-color: #333591;
+}
+.color_18{
+  background-color: #2b52a4;
+}
 .text_color_1{
   color: #ffffff;
 }
@@ -126,6 +132,9 @@ html,body,.con{
 
 .font-size-12{
   font-size: 12px;
+}
+.font-size-13{
+  font-size: 13px;
 }
 .font-size-15{
   font-size: 15px;

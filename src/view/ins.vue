@@ -311,7 +311,9 @@
             <div class="left1"></div>
           </div>
 
-          <div class="content-2"></div>
+          <div class="content-2">
+            <table-list :tableData="tableData"></table-list>
+          </div>
 
           <div class="content-2">
             <div class="left3-1">
@@ -558,11 +560,23 @@
   import headTitle from '@/components/head'
   import headSelect from '@/components/head-select'
   import indicatorLight from '@/components/indicator'
-
+  import tableList from '@/components/table-list'
+  let tableData=[
+    ['排名','科室名称','入径率','完成率','入径数','收治数','平均住院日','药占比','均费差额'],
+    ['合计','心房颤动介入治疗','88%','88%','236','236','6.7','19%','24,199'],
+    ['1','心力衰竭','100%','100%','17','17','7.6','19%','20,849'],
+    ['2','急性ST段抬高心肌梗塞','100%','100%','14','14','1.9','13%','17,903'],
+    ['3','慢性心绞痛介入治疗','100%','100%','10','10','5.2','11%','24,199'],
+    ['4','病态心房结综合征','99%','99%','6','6','10.3','26%','82,972'],
+    ['5','高血压','99%','99%','1','1','4.3','9%','15,135'],
+    ['6','心房颤动介入治疗','99%','99%','1','1','3.9','18%','24,199'],
+    ['7','慢性心绞痛介入治疗','99%','99%','0','0','10.9','21%','24,199']
+  ];
   export default{
       data () {
           return {
             headTip:'全院医保概览',
+            tableData,
             selectLight:{
               selectOne:true,
               one:'同期总控医保人次',
@@ -581,6 +595,7 @@
       components:{
         headTitle,
         headSelect,
+        tableList,
         indicatorLight
       },
       mounted () {
