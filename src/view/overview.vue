@@ -10,6 +10,7 @@
        .title p{
          float:left;
          width:40%;
+         text-align: left;
          &:nth-child(2){
            width: 60%;
          }
@@ -40,13 +41,16 @@
                width:60px;
              }
              &:first-child{
+               margin-bottom:5px;
                span{
                  display: inline-block;
                  padding:0 5px;
                  border-radius: 5px;
                  color: #000;
                  width:auto;
-                 background:#cdcdcd;font-size:12px;
+                 margin-left:0;
+                 background:#cdcdcd;
+                 font-size:12px;
                }
              }
            }
@@ -65,6 +69,9 @@
     .con-2{
       float: left;
       width:calc(50% - 15px);
+      .title p{
+        text-align: left;
+      }
       .table-con{
         height:320px;
         overflow: hidden;
@@ -110,7 +117,8 @@
         p{
           border-radius: 5px;
           width:96px;
-          margin:60px auto;
+          margin-top: 60px;
+          margin-left: 27px;
           background:#61a8d9;
           &:nth-child(2){
             background:#fff;
@@ -120,7 +128,7 @@
 
       }
       .right{
-        margin-left:102px;
+        margin-left:120px;
         height:100%;
       }
     }
@@ -144,64 +152,64 @@
                <ul class="clearfix">
                  <li>
                    <p><span>入境率</span></p>
-                   <div class="chart-container"></div>
-                   <p>当期<span>88%</span></p>
+                   <div class="chart-container" ref="chart_meter_1"></div>
+                   <p>当期<span>{{chart_num_1}}%</span></p>
                    <p>同期<span>70%</span></p>
                  </li>
                  <li>
                    <p><span>完成数占出院人数比</span></p>
-                   <div class="chart-container"></div>
-                   <p>当期<span>88%</span></p>
+                   <div class="chart-container" ref="chart_meter_2"></div>
+                   <p>当期<span>{{chart_num_2}}%</span></p>
                    <p>同期<span>27%</span></p>
                  </li>
                  <li>
                    <p><span>均次费用</span></p>
-                   <div class="chart-container"></div>
-                   <p>当期<span>17,148</span></p>
+                   <div class="chart-container" ref="chart_meter_3"></div>
+                   <p>当期<span>{{chart_num_3}}</span></p>
                    <p>同期<span>18,602</span></p>
                  </li>
                  <li>
                    <p><span>平均住院日</span></p>
-                   <div class="chart-container"></div>
-                   <p>当期<span>6.7</span></p>
+                   <div class="chart-container" ref="chart_meter_4"></div>
+                   <p>当期<span>{{chart_num_4}}</span></p>
                    <p>同期<span>7.1</span></p>
                  </li>
                  <li>
                    <p><span>术前平均住院日</span></p>
-                   <div class="chart-container"></div>
-                   <p>当期<span>1.2</span></p>
+                   <div class="chart-container" ref="chart_meter_5"></div>
+                   <p>当期<span>{{chart_num_5}}</span></p>
                    <p>同期<span>1.7</span></p>
                  </li>
                </ul>
                <ul class="clearfix">
                 <li>
                   <p><span>变异率</span></p>
-                  <div class="chart-container"></div>
-                  <p>当期<span>2%</span></p>
+                  <div class="chart-container" ref="chart_meter_6"></div>
+                  <p>当期<span>{{chart_num_6}}%</span></p>
                   <p>同期<span>3%</span></p>
                 </li>
                 <li>
                   <p><span>完成率</span></p>
-                  <div class="chart-container"></div>
-                  <p>当期<span>98%</span></p>
+                  <div class="chart-container" ref="chart_meter_7"></div>
+                  <p>当期<span>{{chart_num_7}}%</span></p>
                   <p>同期<span>97%</span></p>
                 </li>
                 <li>
                   <p><span>均次费用</span></p>
-                  <div class="chart-container"></div>
-                  <p>当期<span>19%</span></p>
+                  <div class="chart-container" ref="chart_meter_8"></div>
+                  <p>当期<span>{{chart_num_8}}%</span></p>
                   <p>同期<span>25%</span></p>
                 </li>
                 <li>
                   <p><span>均次费用</span></p>
-                  <div class="chart-container"></div>
-                  <p>当期<span>34%</span></p>
+                  <div class="chart-container" ref="chart_meter_9"></div>
+                  <p>当期<span>{{chart_num_9}}%</span></p>
                   <p>同期<span>32%</span></p>
                 </li>
                 <li>
                   <p><span>均次费用</span></p>
-                  <div class="chart-container"></div>
-                  <p>当期<span>8%</span></p>
+                  <div class="chart-container" ref="chart_meter_10"></div>
+                  <p>当期<span>{{chart_num_10}}%</span></p>
                   <p>同期<span>7%</span></p>
                 </li>
 
@@ -231,12 +239,12 @@
                 <p>月份对比</p>
                 <p>年标准值对比</p>
               </div>
-              <div class="right"></div>
+              <div class="right" ref="chart_bar_1">
+              </div>
             </div>
             <div class="ind-con">
               <indicator-light :selectLight="selectLight"></indicator-light>
             </div>
-
           </div>
           <div class="con-2 border-bg margin-left-5 margin-right-10">
               <div class="chart-head clearfix">
@@ -245,10 +253,10 @@
                 </div>
               </div>
               <p>2018年入径率月度趋势</p>
-              <div class="chart-main clearfix">
+              <div class="chart-main clearfix" ref="chart_bar_2">
               </div>
               <div class="ind-con">
-                <indicator-light :selectLight="selectLight"></indicator-light>
+                <indicator-light :selectLight="selectLight_1"></indicator-light>
               </div>
           </div>
         </div>
@@ -277,6 +285,250 @@
     ['6','心房颤动介入治疗','99%','99%','1','1','3.9','18%','24,199'],
     ['7','慢性心绞痛介入治疗','99%','99%','0','0','10.9','21%','24,199']
   ];
+  let meterOption={
+    tooltip : {
+      formatter: "{a} <br/>{b} : {c}%"
+    },
+//        grid : {
+//          top : 0,    //距离容器上边界40像素
+//          bottom: 0,   //距离容器下边界30像素
+//          left:0,
+//          right:0,
+//          containLabel: true
+//        },
+    series: [
+      {
+        type: 'gauge',
+        min:0,
+        radius:40, // 半径
+        axisLine: {
+          show:true,
+          // 属性lineStyle控制线条样式
+          lineStyle: {
+            // 控制表盘宽度
+            width: 15,
+            color:[[0.2,'#76e79e'],[0.5,'#ece35d'],[0.7,'#f9a701'],[1, '#f67336']],
+//                shadowColor: '#fff', //默认透明
+//                shadowBlur: 10
+
+          }
+        },
+        splitLine: { // 分隔线
+          length: 15, // 属性length控制线长
+          lineStyle: { // 属性lineStyle（详见lineStyle）控制线条样式
+            width: 1,
+            color: '#000',
+//                shadowColor: '#fff', //默认透明
+//                shadowBlur: 10
+          }
+        },
+        axisTick: { // 刻度样式。
+          show: true,
+          lineStyle: {       // 属性lineStyle（详见lineStyle）控制线条样式
+            width:1,
+            color: '#000'
+          }
+        },
+        itemStyle: {
+          normal: {  // 指针颜色渐变
+            color: '#2c98de',
+          }
+        },
+        pointer: {           // 分隔线
+          width:5,   // 指针宽度设置
+          length:23,
+        },
+        detail: { // 表盘详情
+          show: true,
+          offsetCenter: [0, '80%'], // 数值显示位置
+          formatter: '{value}%',
+          textStyle: {
+            fontSize: 16,
+            color:'#fff'
+          }
+        },
+        axisLabel: { //刻度标签。
+          show:false, // false 去除刻度
+        },
+        data: [{value: 50, name: ''}]
+      }
+    ]
+  }
+  let option_1=clone(meterOption);
+  let option_2=clone(meterOption);
+  let option_3=clone(meterOption);
+  let option_4=clone(meterOption);
+  let option_5=clone(meterOption);
+  let option_6=clone(meterOption);
+  let option_7=clone(meterOption);
+  let option_8=clone(meterOption);
+  let option_9=clone(meterOption);
+  let option_10=clone(meterOption);
+
+  let barOption={
+    tooltip: {
+      trigger: 'axis'
+    },
+//          legend: {
+//            data:['邮件营销','联盟广告','视频广告','直接访问','搜索引擎']
+//          },
+    grid: {
+      top:'5%',
+      left: '5%',
+      right: '3%',
+      bottom: '5%',
+      containLabel: true
+    },
+    // 工具箱
+//          toolbox: {
+//            feature: {
+//              saveAsImage: {}
+//            }
+//          },
+    xAxis: {
+      type: 'category',
+      axisTick: {show: false},
+      axisLine:{
+        lineStyle:{
+          color:'#fff',
+          width:1,//  坐标轴宽度 这里是为了突出显示加上的
+        }
+      },
+
+      boundaryGap: true,
+      data: [1,2,3,4,5,6,7,8,9,10,11,12]
+    },
+    yAxis: [{
+      type: 'value',
+//            max:25000,
+      axisLine:{
+        lineStyle:{
+          color:'#fff',
+          width:1,//  坐标轴宽度 这里是为了突出显示加上的
+        }
+      }
+
+
+    }],
+    series: [
+      {
+        name:'同期',
+        type:'line',
+        itemStyle : {
+          normal : {
+            lineStyle:{
+              color:'#f9ae0e'
+            }
+          }
+        },
+        data:[120, 132, 101, 134, 90, 230, 210]
+      },
+      {
+        name:'当期',
+        type:'line',
+        itemStyle : {
+          normal : {
+            lineStyle:{
+              color:'#ebdf07'
+            }
+          }
+        },
+        data:[220, 182, 191, 234, 290, 330, 310]
+      },
+      {
+        name:'指标',
+        type:'line',
+        itemStyle : {
+          normal : {
+            lineStyle:{
+              color:'#8bea7f'
+            }
+          }
+        },
+        data:[150, 232, 201, 154, 190, 330, 410]
+      },
+      {
+        name:'医保',
+        type:'bar',
+        barWidth: '30%',
+        barGap: 0,
+        color:'#1286ed',
+        data:[10, 52, 200, 334, 390, 330, 220]
+      },
+      {
+        name:'指导',
+        type:'bar',
+        barWidth:'30%',
+        color:'#e9615c',
+        itemStyle : {
+          normal : {
+            lineStyle:{
+
+            }
+          }
+        },
+        data:[320, 332, 301, 334, 390, 330, 320]
+      }
+    ]
+  };
+  let option_11=clone(barOption);
+  let option_12=clone(barOption);
+  option_11.yAxis[0].max=100;
+  option_11.yAxis[0].axisLabel={
+    show: true,
+    interval: 'auto',
+    formatter: '{value} %'
+  }
+  option_11.yAxis[1]={
+    type: 'value',
+    name: '',
+    min: 0,
+    max: 4000,
+    position: 'right',
+    axisLabel: {
+      formatter: '{value}'
+    },
+    splitLine:{  // 去掉与坐标轴平行的直线
+      show:false
+    },
+    axisTick: {
+      show: false
+    },
+    axisLine:{
+      lineStyle:{
+        color:'#fff',
+        width:1,//  坐标轴宽度 这里是为了突出显示加上的
+      }
+    }
+  };
+
+
+  option_12.yAxis[0].max=10;
+  option_12.yAxis[1]={
+    type: 'value',
+    name: '',
+    min: 0,
+    max: 25000,
+    position: 'right',
+    axisLabel: {
+      formatter: '{value}'
+    },
+    splitLine:{  // 去掉与坐标轴平行的直线
+      show:false
+    },
+    axisTick: {
+      show: false
+    },
+    axisLine:{
+      lineStyle:{
+        color:'#fff',
+        width:1,//  坐标轴宽度 这里是为了突出显示加上的
+      }
+    }
+  };
+
+
+
   export default {
     data () {
       return {
@@ -284,18 +536,40 @@
         headTip:'临床路径概览',
         selectLight:{
           selectOne:true,
-          one:'同期',
+          one:'入径率',
           selectTwo:true,
-          two:'当期',
+          two:'入径率同期',
           selectThree:true,
-          three:'指标',
+          three:'标准值',
           selectFour:true,
-          four:'医保',
+          four:'入径数',
           selectFive:true,
-          five:'指导'
+          five:'收治数'
+        },
+        selectLight_1:{
+          selectOne:true,
+          one:'平均住院日',
+          selectTwo:true,
+          two:'平均住院日同期',
+          selectThree:true,
+          three:'标准值',
+          selectFour:true,
+          four:'住院天数',
+          selectFive:true,
+          five:'入径数'
         },
         rj,
         pj,
+        chart_num_1:0,
+        chart_num_2:0,
+        chart_num_3:0,
+        chart_num_4:0,
+        chart_num_5:0,
+        chart_num_6:0,
+        chart_num_7:0,
+        chart_num_8:0,
+        chart_num_9:0,
+        chart_num_10:0,
       }
     },
     components:{
@@ -303,6 +577,87 @@
       headSelect,
       tableList,
       indicatorLight
+    },
+    mounted () {
+      let chart_1=eCharts.init(this.$refs.chart_meter_1);
+      let chart_2=eCharts.init(this.$refs.chart_meter_2);
+      let chart_3=eCharts.init(this.$refs.chart_meter_3);
+      let chart_4=eCharts.init(this.$refs.chart_meter_4);
+      let chart_5=eCharts.init(this.$refs.chart_meter_5);
+      let chart_6=eCharts.init(this.$refs.chart_meter_6);
+      let chart_7=eCharts.init(this.$refs.chart_meter_7);
+      let chart_8=eCharts.init(this.$refs.chart_meter_8);
+      let chart_9=eCharts.init(this.$refs.chart_meter_9);
+      let chart_10=eCharts.init(this.$refs.chart_meter_10);
+      let chart_11=eCharts.init(this.$refs.chart_bar_1);
+      let chart_12=eCharts.init(this.$refs.chart_bar_2);
+
+      setInterval(()=>{
+        this.chart_num_1=random(85,90);
+        this.chart_num_2=random(85,90);
+        this.chart_num_3=random(17000,18000);
+        this.chart_num_4=random(7,9);
+        this.chart_num_5=random(1,5);
+        this.chart_num_6=random(1,5);
+        this.chart_num_7=random(90,100);
+        this.chart_num_8=random(10,20);
+        this.chart_num_9=random(30,50);
+        this.chart_num_10=random(7,10);
+
+        option_1.series[0].data[0].value = this.chart_num_1;
+        option_1.series[0].max = 90;
+        option_2.series[0].data[0].value = this.chart_num_2;
+        option_2.series[0].max = 90;
+        option_3.series[0].data[0].value = this.chart_num_3;
+        option_3.series[0].detail.formatter='{value}'
+        option_3.series[0].max = 18000;
+        option_4.series[0].data[0].value = this.chart_num_4;
+        option_4.series[0].detail.formatter='{value}'
+        option_4.series[0].max = 10;
+
+        option_5.series[0].data[0].value = this.chart_num_5;
+        option_5.series[0].detail.formatter='{value}'
+
+        option_5.series[0].max = 10;
+        option_6.series[0].data[0].value = this.chart_num_6;
+        option_6.series[0].max = 10;
+        option_7.series[0].data[0].value = this.chart_num_7;
+        option_7.series[0].max = 100;
+        option_8.series[0].data[0].value = this.chart_num_8;
+        option_8.series[0].max = 100;
+        option_9.series[0].data[0].value = this.chart_num_9;
+        option_9.series[0].max = 100;
+        option_10.series[0].data[0].value = this.chart_num_10;
+
+        option_10.series[0].max = 10
+
+        option_11.series[0].data=[random(70,96),random(70,96),random(70,96),random(70,96),random(70,96)];
+        option_11.series[1].data=[random(70,96),random(70,96),random(70,96),random(70,96),random(70,96),random(70,96),random(70,96),random(70,96),random(70,96),random(70,96),random(70,96),random(70,96)];
+        option_11.series[2].data=[70,70,70,70,70,70,70,70,70,70,70,70];
+        option_11.series[3].data=[random(65,95),random(65,95),random(65,95),random(65,95),random(65,95)];
+        option_11.series[4].data=[random(65,95),random(65,95),random(65,95),random(65,95),random(65,95)];
+
+        option_12.series[0].data=[random(4,9),random(4,9),random(4,9),random(4,9),random(4,9)];
+        option_12.series[1].data=[random(4,9),random(4,9),random(4,9),random(4,9),random(4,9),random(4,9),random(4,9),random(4,9),random(4,9)];
+        option_12.series[2].data=[7,7,7,7,7,7,7,7,7,7,7,7];
+        option_12.series[3].data=[random(3,7),random(3,7),random(3,7),random(3,7),random(3,7)];
+        option_12.series[4].data=[random(3,7),random(3,7),random(3,7),random(3,7),random(3,7)];
+
+        chart_1.setOption(option_1, true);
+        chart_2.setOption(option_2, true);
+        chart_3.setOption(option_3, true);
+        chart_4.setOption(option_4, true);
+        chart_5.setOption(option_5, true);
+        chart_6.setOption(option_6, true);
+        chart_7.setOption(option_7, true);
+        chart_8.setOption(option_8, true);
+        chart_9.setOption(option_9, true);
+        chart_10.setOption(option_10, true);
+        chart_11.setOption(option_11, true);
+        chart_12.setOption(option_12, true);
+
+      },2000)
+
     }
   }
 
