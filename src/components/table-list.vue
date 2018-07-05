@@ -7,7 +7,7 @@
     table{
       width:100%;
       color: #4bf9fb;
-      min-width: 500px;
+      /*min-width: 500px;*/
       text-align: center;
       tr{
         margin:0 3px;
@@ -27,9 +27,7 @@
           background:#12308d;
         }
       }
-
     }
-
   }
 </style>
 <template>

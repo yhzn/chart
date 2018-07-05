@@ -291,7 +291,7 @@
             <p class="font_style_1">医保金额</p>
           </div>
           <div class="title-third-2">
-            <p class="title-third-2-p font_style_1">住院科室综合得分排名(城保)</p>
+            <p class="title-third-2-p font_style_1">住院手术科室例数排名</p>
             <div class="title-button1">
               <p>手术例数排名</p>
             </div>
@@ -475,6 +475,14 @@
                   <span class="span1">择期</span>
                   <span class="span2">1,268</span>
                 </div>
+                <div class="left1-content2-line color_17">
+                  <span class="span1">1级</span>
+                  <span class="span2">76</span>
+                </div>
+                <div class="left1-content2-line color_18">
+                  <span class="span1">择期</span>
+                  <span class="span2">1,268</span>
+                </div>
               </div>
             </div>
             <div class="left1-contents2">
@@ -483,123 +491,131 @@
               <div class="left1-contents2-title">术后镇痛</div>
               <div class="left1-contents2-title">麻醉复苏</div>
               <div class="left1-content2-content1">
-                <div class="left1-content2-head">手术分类</div>
-                <div class="left1-content2-head border-left">完成</div>
+                <div class="left1-content2-head">麻醉方式</div>
+                <div class="left1-content2-head border-left">总例数</div>
                 <div class="left1-content2-line color_17">
-                  <span class="span1">择期</span>
+                  <span class="span1">合计</span>
                   <span class="span2">1,268</span>
                 </div>
                 <div class="left1-content2-line color_18">
-                  <span class="span1">择期</span>
+                  <span class="span1">全麻</span>
+                  <span class="span2">176</span>
+                </div>
+                <div class="left1-content2-line color_17">
+                  <span class="span1">硬麻</span>
+                  <span class="span2">6</span>
+                </div>
+                <div class="left1-content2-line color_18">
+                  <span class="span1">腰麻</span>
                   <span class="span2">1,268</span>
                 </div>
                 <div class="left1-content2-line color_17">
-                  <span class="span1">择期</span>
-                  <span class="span2">1,268</span>
+                  <span class="span1">局麻</span>
+                  <span class="span2">40</span>
                 </div>
                 <div class="left1-content2-line color_18">
-                  <span class="span1">择期</span>
+                  <span class="span1">腰麻</span>
                   <span class="span2">1,268</span>
                 </div>
                 <div class="left1-content2-line color_17">
-                  <span class="span1">择期</span>
-                  <span class="span2">1,268</span>
-                </div>
-                <div class="left1-content2-line color_18">
-                  <span class="span1">择期</span>
-                  <span class="span2">1,268</span>
+                  <span class="span1">局麻</span>
+                  <span class="span2">40</span>
                 </div>
               </div>
               <div class="left1-content2-content1">
-                <div class="left1-content2-head">手术分类</div>
-                <div class="left1-content2-head border-left">完成</div>
+                <div class="left1-content2-head">手术感染</div>
+                <div class="left1-content2-head border-left">总例数</div>
                 <div class="left1-content2-line color_17">
                   <span class="span1">择期</span>
                   <span class="span2">1,268</span>
                 </div>
                 <div class="left1-content2-line color_18">
-                  <span class="span1">择期</span>
-                  <span class="span2">1,268</span>
+                  <span class="span1">急诊</span>
+                  <span class="span2">176</span>
                 </div>
                 <div class="left1-content2-line color_17">
-                  <span class="span1">择期</span>
-                  <span class="span2">1,268</span>
+                  <span class="span1">二进宫</span>
+                  <span class="span2">6</span>
                 </div>
                 <div class="left1-content2-line color_18">
-                  <span class="span1">择期</span>
-                  <span class="span2">1,268</span>
+                  <span class="span1">门诊</span>
+                  <span class="span2">40</span>
                 </div>
                 <div class="left1-content2-line color_17">
-                  <span class="span1">择期</span>
-                  <span class="span2">1,268</span>
+                  <span class="span1">门诊</span>
+                  <span class="span2">40</span>
                 </div>
                 <div class="left1-content2-line color_18">
-                  <span class="span1">择期</span>
-                  <span class="span2">1,268</span>
+                  <span class="span1">门诊</span>
+                  <span class="span2">40</span>
                 </div>
                 <div class="left1-content2-line color_17">
-                  <span class="span1">择期</span>
-                  <span class="span2">1,268</span>
-                </div>
-                <div class="left1-content2-line color_18">
-                  <span class="span1">择期</span>
-                  <span class="span2">1,268</span>
+                  <span class="span1">门诊</span>
+                  <span class="span2">40</span>
                 </div>
               </div>
               <div class="left1-content2-content1">
-                <div class="left1-content2-head">手术分类</div>
-                <div class="left1-content2-head border-left">完成</div>
+                <div class="left1-content2-head">术后镇痛</div>
+                <div class="left1-content2-head border-left">总例数</div>
                 <div class="left1-content2-line color_17">
                   <span class="span1">择期</span>
                   <span class="span2">1,268</span>
                 </div>
                 <div class="left1-content2-line color_18">
-                  <span class="span1">择期</span>
-                  <span class="span2">1,268</span>
+                  <span class="span1">急诊</span>
+                  <span class="span2">176</span>
                 </div>
                 <div class="left1-content2-line color_17">
-                  <span class="span1">择期</span>
-                  <span class="span2">1,268</span>
+                  <span class="span1">二进宫</span>
+                  <span class="span2">6</span>
                 </div>
                 <div class="left1-content2-line color_18">
-                  <span class="span1">择期</span>
-                  <span class="span2">1,268</span>
+                  <span class="span1">门诊</span>
+                  <span class="span2">40</span>
                 </div>
                 <div class="left1-content2-line color_17">
-                  <span class="span1">择期</span>
-                  <span class="span2">1,268</span>
+                  <span class="span1">门诊</span>
+                  <span class="span2">40</span>
                 </div>
                 <div class="left1-content2-line color_18">
-                  <span class="span1">择期</span>
-                  <span class="span2">1,268</span>
+                  <span class="span1">门诊</span>
+                  <span class="span2">40</span>
+                </div>
+                <div class="left1-content2-line color_17">
+                  <span class="span1">门诊</span>
+                  <span class="span2">40</span>
                 </div>
               </div>
               <div class="left1-content2-content1">
-                <div class="left1-content2-head">手术分类</div>
-                <div class="left1-content2-head border-left">完成</div>
+                <div class="left1-content2-head">指标</div>
+                <div class="left1-content2-head border-left">总例数</div>
                 <div class="left1-content2-line color_17">
                   <span class="span1">择期</span>
                   <span class="span2">1,268</span>
                 </div>
                 <div class="left1-content2-line color_18">
-                  <span class="span1">择期</span>
-                  <span class="span2">1,268</span>
+                  <span class="span1">急诊</span>
+                  <span class="span2">176</span>
                 </div>
                 <div class="left1-content2-line color_17">
-                  <span class="span1">择期</span>
-                  <span class="span2">1,268</span>
+                  <span class="span1">二进宫</span>
+                  <span class="span2">6</span>
                 </div>
                 <div class="left1-content2-line color_18">
-                  <span class="span1">择期</span>
-                  <span class="span2">1,268</span>
+                  <span class="span1">门诊</span>
+                  <span class="span2">40</span>
                 </div>
                 <div class="left1-content2-line color_17">
-                  <span class="span1">择期</span>
-                  <span class="span2">1,268</span>
+                  <span class="span1">门诊</span>
+                  <span class="span2">40</span>
                 </div>
                 <div class="left1-content2-line color_18">
-                  <span class="span1">择期</span>
-                  <span class="span2">1,268</span>
+                  <span class="span1">门诊</span>
+                  <span class="span2">40</span>
+                </div>
+                <div class="left1-content2-line color_17">
+                  <span class="span1">门诊</span>
+                  <span class="span2">40</span>
                 </div>
               </div>
             </div>
@@ -640,15 +656,15 @@
   import indicatorLight from '@/components/indicator'
   import tableList from '@/components/table-list'
   let tableData=[
-    ['排名','科室名称','入径率','完成率','入径数','收治数','平均住院日','药占比','均费差额'],
-    ['合计','心房颤动介入治疗','88%','88%','236','236','6.7','19%','24,199'],
-    ['1','心力衰竭','100%','100%','17','17','7.6','19%','20,849'],
-    ['2','急性ST段抬高心肌梗塞','100%','100%','14','14','1.9','13%','17,903'],
-    ['3','慢性心绞痛介入治疗','100%','100%','10','10','5.2','11%','24,199'],
-    ['4','病态心房结综合征','99%','99%','6','6','10.3','26%','82,972'],
-    ['5','高血压','99%','99%','1','1','4.3','9%','15,135'],
-    ['6','心房颤动介入治疗','99%','99%','1','1','3.9','18%','24,199'],
-    ['7','慢性心绞痛介入治疗','99%','99%','0','0','10.9','21%','24,199']
+    ['排名','手术科室','当期例数','同期例数','当期收入','同期收入','当期手术费','同期手术费'],
+    ['1','44胆石病专科','265','265','3,236,017','3,236,017','3,236,017','24,199'],
+    ['2','04泌尿外科','233','233','1,916,445','1,916,445','1,916,445','20,849'],
+    ['3','43胃肠外科本部','126','126','2,814,390','2,814,390','2,814,390','17,903'],
+    ['4','45疝与腹壁疾病科','122','122','1,058,786','1,058,786','1,058,786','24,199'],
+    ['5','07妇科','121','121','1,584,396','1,584,396','1,584,396','82,972'],
+    ['6','08眼科医院','104','104','580,728','580,728','580,728','15,135'],
+    ['7','49肝胆胰外科南院','101','101','1,170,994','1,170,994','1,170,994','24,199'],
+    ['8','05骨关节与运动专科','91','91','2,201,385','2,201,385','2,201,385','21%']
   ];
   export default{
     data () {

@@ -8,6 +8,8 @@ import overview from '@/view/overview'
 import query from '@/view/query'
 import ins from '@/view/ins'
 import operation from '@/view/operation'
+import imaging from '@/view/imaging'
+import hospitalization from '@/view/hospitalization'
 
 Vue.use(Router)
 
@@ -29,6 +31,11 @@ export default new Router({
       component: query
     },
     {
+      path: '/hospitalization',
+      name: 'hospitalization',
+      component: hospitalization
+    },
+    {
       path: '/overview',
       name: 'overview',
       component: overview
@@ -42,6 +49,11 @@ export default new Router({
       path: '/operation',
       name: 'operation',
       component: operation
+    },
+    {
+      path: '/imaging',
+      name: 'imaging',
+      component: imaging
     },
     {
       path: '/hello',
