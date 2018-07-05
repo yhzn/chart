@@ -281,7 +281,6 @@
 </style>
 <template>
   <div class="con">
-    <div class="con">
       <head-title :headTip="headTip">
         <head-select slot="headSelect"></head-select>
       </head-title>
@@ -318,7 +317,7 @@
                 <div class="left1-content1-head ">
                   <div class="left1-content1-title">手术收入</div>
                 </div>
-                <div class="left1-content1-chart"></div>
+                <div class="left1-content1-chart" ref="chart_1"></div>
                 <div class="left1-content1-footer">
                   <ul>
                     <li>指标<span class="text_color_4">42,941,723</span></li>
@@ -330,7 +329,7 @@
                 <div class="left1-content1-head ">
                   <div class="left1-content1-title">手术收入分布</div>
                 </div>
-                <div class="left1-content1-chart"></div>
+                <div class="left1-content1-chart" ref="chart_2"></div>
                 <div class="left1-content1-footer">
                   <ul>
                     <li>门诊<span class="text_color_4">32,160</span></li>
@@ -342,7 +341,7 @@
                 <div class="left1-content1-head ">
                   <div class="left1-content1-title">手术例数</div>
                 </div>
-                <div class="left1-content1-chart"></div>
+                <div class="left1-content1-chart" ref="chart_4"></div>
                 <div class="left1-content1-footer">
                   <ul>
                     <li>指标<span class="text_color_4">2,384</span></li>
@@ -354,7 +353,7 @@
                 <div class="left1-content1-head ">
                   <div class="left1-content1-title">手术例数分布</div>
                 </div>
-                <div class="left1-content1-chart"></div>
+                <div class="left1-content1-chart" ref="chart_5"></div>
                 <div class="left1-content1-footer">
                   <ul>
                     <li>门诊<span class="text_color_4">50</span></li>
@@ -368,7 +367,7 @@
                 <div class="left1-content1-head">
                   <div class="left1-content1-title">手术分类</div>
                 </div>
-                <div class="left1-content1-chart"></div>
+                <div class="left1-content1-chart" ref="chart_3"></div>
                 <div class="left1-content1-footer">
                   <div class="elements">
                     <div class="element1 color_11"></div>
@@ -424,7 +423,7 @@
                 <div class="left1-content1-head">
                   <div class="left1-content1-title">手术分级</div>
                 </div>
-                <div class="left1-content1-chart"></div>
+                <div class="left1-content1-chart" ref="chart_6"></div>
                 <div class="left1-content1-footer">
                   <div class="elements">
                     <div class="element1 color_3"></div>
@@ -639,7 +638,7 @@
                 <p>门诊</p>
               </div>
             </div>
-            <div class="content-content4"></div>
+            <div class="content-content4" ref="chart_7"></div>
             <div class="content-footer4">
               <indicator-light :selectLight="selectLight"></indicator-light>
             </div>
@@ -647,10 +646,11 @@
           </div>
         </div>
       </div>
-    </div>
-  </div>
 </template>
 <script>
+  import eCharts from 'echarts'
+  import {random, clone} from '@/tool/tool'
+
   import headTitle from '@/components/head'
   import headSelect from '@/components/head-select'
   import indicatorLight from '@/components/indicator'
@@ -666,6 +666,51 @@
     ['7','49肝胆胰外科南院','101','101','1,170,994','1,170,994','1,170,994','24,199'],
     ['8','05骨关节与运动专科','91','91','2,201,385','2,201,385','2,201,385','21%']
   ];
+  let pieOption = {
+    tooltip: {
+      trigger: 'item',
+      formatter: "{a} <br/>{b}: {c} ({d}%)"
+    },
+    legend: {
+      orient: 'vertical',
+      x: 'left',
+      data:['直接访问']
+    },
+    series: [
+      {
+        name:'访问',
+        type:'pie',
+        radius: ['50%', '70%'],
+        avoidLabelOverlap: false,
+        label: {
+          normal: {
+            show: false,
+            position: 'center'
+          },
+          emphasis: {
+            show: true,
+            textStyle: {
+              fontSize: '30',
+              fontWeight: 'bold'
+            }
+          }
+        },
+        labelLine: {
+          normal: {
+            show: false
+          }
+        },
+        data:[
+          {value:335, name:'直'},
+          {value:310, name:'邮'},
+          {value:234, name:'联'},
+          {value:135, name:'视'},
+          {value:1548, name:'搜'}
+        ]
+      }
+    ]
+  };
+  let option_3=clone(pieOption);
   export default{
     data () {
       return {
@@ -694,7 +739,8 @@
       indicatorLight
     },
     mounted () {
-
+      let chart_3=eCharts.init(this.$refs.chart_3);
+      chart_3.setOption(option_3,true)
     }
   }
 </script>
