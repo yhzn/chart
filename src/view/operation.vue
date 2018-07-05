@@ -720,7 +720,7 @@
       indicatorLight
     },
     mounted () {
-      let chart_3=eCharts.init(this.$refs.chart_3)
+//      let chart_3=eCharts.init(this.$refs.chart_3)
     }
   }
 </script>
