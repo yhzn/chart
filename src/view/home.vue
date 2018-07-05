@@ -602,7 +602,7 @@
         eChartMeterThree.setOption(meterThree, true);
         eChartMeterFour.setOption(meterFour, true);
         eChartMeterFive.setOption(meterFive, true);
-      },300)
+      },2000)
       window.onresize=function(){
         eChartFooter.resize();
         eChartMeterOne.resize();

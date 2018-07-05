@@ -490,7 +490,7 @@
                   </div>
                 </div>
               </div>
-              <div class="left-1-left-content"></div>
+              <div class="left-1-left-content" ref="chart_1"></div>
               <div class="left-1-left-footer">
                 <div class="l1l-icon-1 color_10"></div>
                 <div class="l1l-text-3 text_color_1">病种数</div>
@@ -502,7 +502,7 @@
             <div class="left-1-right">
               <div class="left-1-right-1">
                 <div class="l1r-head-2 font_style_1">科室等级评分</div>
-                <div class="l1r-content-2"></div>
+                <div class="l1r-content-2" ref="chart_10"></div>
                 <div class="l1r-footer-2">
                   <div class="l1r-icon-1 color_12"></div>
                   <div class="l1r-text-1 text_color_1">A(优)</div>
@@ -672,7 +672,7 @@
                   <div class="l2l-content-head">
                     <div class="l2l-content-headText">变异率</div>
                   </div>
-                  <div class="l2l-content-content1"></div>
+                  <div class="l2l-content-content1" ref="chart_11"></div>
                   <div class="l2l-content-footer">
                     <div class="l2l-text">
                       <p class="text_color_1">当期</p>
@@ -688,7 +688,7 @@
                   <div class="l2l-content-head">
                     <div class="l2l-content-headText">变异来源</div>
                   </div>
-                  <div class="l2l-content-content2"></div>
+                  <div class="l2l-content-content2" ref="chart_12"></div>
                 </div>
               </div>
             </div>
@@ -705,7 +705,7 @@
                 <div class="l2r-left-value text_color_12">42%</div>
               </div>
               <div class="l2r-right">
-                <div class="l2r-right-content"></div>
+                <div class="l2r-right-content" ref="chart_13"></div>
                 <div class="l2r-right-footer">
                   <div class="l2l-content-headText">
                     入径数分布
@@ -720,6 +720,9 @@
   </div>
 </template>
 <script>
+  import eCharts from 'echarts'
+  import {random, clone} from '@/tool/tool'
+
   import headTitle from '@/components/head'
   import headSelect from '@/components/head-select'
   import indicatorLight from '@/components/indicator'
@@ -735,6 +738,151 @@
     ['6','心房颤动介入治疗','99%','99%','1','1','3.9','18%','24,199'],
     ['7','慢性心绞痛介入治疗','99%','99%','0','0','10.9','21%','24,199']
   ];
+
+  let option = {
+//    title : {
+//      text: '某站点用户访问来源',
+//      subtext: '纯属虚构',
+//      x:'center'
+//    },
+//    tooltip : {
+//      trigger: 'item',
+//      formatter: "{a} <br/>{b} : {c} ({d}%)"
+//    },
+    legend: {
+      show:false,
+      orient: 'vertical',
+      left: 'left',
+      data: ['A（优）','B（良）','C（中）','D（差）']
+    },
+    series : [
+      {
+        name: '',
+        type: 'pie',
+        radius : 70,
+        center: ['50%', '50%'],
+        itemStyle: {
+          emphasis: {
+            shadowBlur: 10,
+            shadowOffsetX: 0,
+            shadowColor: 'rgba(0, 0, 0, 0.5)'
+          }
+        },
+        label:{
+          show:false,
+          color:'red'
+        }
+      }
+    ]
+  };
+  let radarOption = {
+//    title: {
+//      text: '基础雷达图'
+//    },
+    tooltip: {},
+    legend: {
+      show:false,
+//      data: ['预算分配（Allocated Budget）', '实际开销（Actual Spending）']
+    },
+    radar: {
+      // shape: 'circle',
+      name: {
+        textStyle: {
+          color: '#fff',
+          backgroundColor: 'rgba(0,0,0,0)',
+          borderRadius: 3,
+          padding: [3, 5]
+        }
+      },
+      indicator: [
+        {max: 200},
+        {max: 200},
+        {max: 200}
+      ],
+      axisLine: {
+        lineStyle: {
+          color: '#3877d1'
+        }
+      },
+      splitLine: {
+        lineStyle: {
+          color: '#3877d1'
+        }
+      },
+      splitArea: {
+        areaStyle: {
+          color: ['rgba(0, 0, 0, 0)'],
+          shadowColor: 'rgba(0, 0, 0, 0.3)',
+          shadowBlur: 10
+        }
+      },
+    },
+    series: [{
+      type: 'radar',
+      // areaStyle: {normal: {}},
+      data : [
+        {
+          value : [200, 50, 0],
+          lineStyle: {
+            normal: {
+              type: 'solid',
+              color:'#d9ed3b'
+            }
+          }
+        }
+      ]
+    }]
+  };
+  let option_1=clone(option);
+  let option_10=clone(option);
+  let option_12=clone(radarOption);
+  let option_13=clone(radarOption);
+  option_12.radar.indicator=[
+    {text:'病人', max: 200},
+    {text:'其他', max: 200},
+    {text:'医生', max: 200}
+  ];
+  option_13.series[0].data=[
+    {
+      value : [900, 50,600, 50],
+      lineStyle: {
+        normal: {
+          type: 'solid',
+          color:'#dba73d'
+        }
+      }
+    },
+    {
+      value : [50, 50,400, 50],
+      lineStyle: {
+        normal: {
+          type: 'solid',
+          color:'#d9ed3b'
+        }
+      }
+    }
+
+  ]
+  option_13.radar.indicator=[
+    {max: 1000},
+    {max: 1000},
+    {max: 1000},
+    {max: 1000},
+    {max: 1000}
+  ];
+  option_1.color=['#77e79f','#067bdb'];
+  option_1.series[0].data=[
+    {value:335, name:'病种数'},
+    {value:310, name:'路径数'},
+  ];
+  option_10.color=['#3169fe','#6017fc','#ff4694','#ffe844'];
+  option_10.series[0].data=[
+    {value:335, name:'A（优）'},
+    {value:310, name:'B（良）'},
+    {value:234, name:'C（中）'},
+    {value:135, name:'D（差）'}
+
+  ];
   export default{
     data () {
       return {
@@ -746,7 +894,15 @@
       headSelect,
     },
     mounted () {
+       let chart_1=eCharts.init(this.$refs.chart_1);
+       let chart_10=eCharts.init(this.$refs.chart_10);
+       let chart_12=eCharts.init(this.$refs.chart_12);
+       let chart_13=eCharts.init(this.$refs.chart_13);
 
+       chart_1.setOption(option_1,true);
+       chart_10.setOption(option_10,true);
+       chart_12.setOption(option_12,true);
+       chart_13.setOption(option_13,true);
     }
   }
 </script>
