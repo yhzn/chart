@@ -632,6 +632,9 @@
       </div>
 </template>
 <script>
+  import eCharts from 'echarts'
+  import {random, clone} from '@/tool/tool'
+
   import headTitle from '@/components/head'
   import headSelect from '@/components/head-select'
   import indicatorLight from '@/components/indicator'
@@ -691,7 +694,7 @@
       }
     ]
   };
-
+  let option_3=clone(pieOption);
   export default{
     data () {
       return {
@@ -720,7 +723,8 @@
       indicatorLight
     },
     mounted () {
-//      let chart_3=eCharts.init(this.$refs.chart_3)
+      let chart_3=eCharts.init(this.$refs.chart_3);
+      chart_3.setOption(option_3,true)
     }
   }
 </script>
