@@ -238,15 +238,16 @@
         height: 144px;
       }
       .l1r-content-head{
-        width: 100%;
+        position: relative;
+        margin-right: 36px;
         height: 30px;
       }
       .l1r-content-head-title{
         position: absolute;
         height: 18px;
+        width:100%;
         margin-top: 6px;
         margin-bottom: 6px;
-        margin-left: 5px;
         padding-left: 10px;
         padding-right: 10px;
         text-align: center;
@@ -258,12 +259,12 @@
       }
       .l1r-content-left{
         float: left;
-        width: 80px;
+        width: calc(100% - 36px);
         height: 114px;
       }
       .l1r-content-right{
         float: left;
-        width: calc(100% - 80px);
+        width: 32px;
         height: 114px;
         padding-top: 25px;
         overflow:hidden;
@@ -480,13 +481,13 @@
                     病种总数:
                   </div>
                   <div class="l1l-text-2 text_color_8">
-                    171
+                    {{chart_num_1_2}}
                   </div>
                   <div class="l1l-text-1 text_color_1">
                     路径总数:
                   </div>
                   <div class="l1l-text-2 text_color_9">
-                    377
+                    {{chart_num_1_1}}
                   </div>
                 </div>
               </div>
@@ -532,11 +533,11 @@
                     <div class="l1r-content-head">
                       <div class="l1r-content-head-title">入径率</div>
                     </div>
-                    <div class="l1r-content-left"></div>
+                    <div class="l1r-content-left" ref="chart_2"></div>
                     <div class="l1r-content-right">
                       <div class="llr-content-text1">
                         <p class="text_color_1">当期</p>
-                        <p class="text_color_10">88%</p>
+                        <p class="text_color_10">{{chart_num_2}}%</p>
                       </div>
                       <div class="llr-content-text1">
                         <p class="text_color_1">同期</p>
@@ -548,11 +549,11 @@
                     <div class="l1r-content-head">
                       <div class="l1r-content-head-title">完成数占出院人数比</div>
                     </div>
-                    <div class="l1r-content-left"></div>
+                    <div class="l1r-content-left" ref="chart_3"></div>
                     <div class="l1r-content-right">
                       <div class="llr-content-text1">
                         <p class="text_color_1">当期</p>
-                        <p class="text_color_10">45%</p>
+                        <p class="text_color_10">{{chart_num_3}}%</p>
                       </div>
                       <div class="llr-content-text1">
                         <p class="text_color_1">同期</p>
@@ -564,11 +565,11 @@
                     <div class="l1r-content-head">
                       <div class="l1r-content-head-title">药占比</div>
                     </div>
-                    <div class="l1r-content-left"></div>
+                    <div class="l1r-content-left" ref="chart_4"></div>
                     <div class="l1r-content-right">
                       <div class="llr-content-text1">
                         <p class="text_color_1">当期</p>
-                        <p class="text_color_10">17,148</p>
+                        <p class="text_color_10">{{chart_num_4}}</p>
                       </div>
                       <div class="llr-content-text1">
                         <p class="text_color_1">同期</p>
@@ -580,11 +581,11 @@
                     <div class="l1r-content-head">
                       <div class="l1r-content-head-title">平均住院日</div>
                     </div>
-                    <div class="l1r-content-left"></div>
+                    <div class="l1r-content-left" ref="chart_5"></div>
                     <div class="l1r-content-right">
                       <div class="llr-content-text1">
                         <p class="text_color_1">当期</p>
-                        <p class="text_color_10">6.7</p>
+                        <p class="text_color_10">{{chart_num_5}}</p>
                       </div>
                       <div class="llr-content-text1">
                         <p class="text_color_1">同期</p>
@@ -598,11 +599,11 @@
                     <div class="l1r-content-head">
                       <div class="l1r-content-head-title">完成率</div>
                     </div>
-                    <div class="l1r-content-left"></div>
+                    <div class="l1r-content-left" ref="chart_6"></div>
                     <div class="l1r-content-right">
                       <div class="llr-content-text1">
                         <p class="text_color_1">当期</p>
-                        <p class="text_color_10">2%</p>
+                        <p class="text_color_10">{{chart_num_6}}%</p>
                       </div>
                       <div class="llr-content-text1">
                         <p class="text_color_1">同期</p>
@@ -614,11 +615,11 @@
                     <div class="l1r-content-head">
                       <div class="l1r-content-head-title">变异率</div>
                     </div>
-                    <div class="l1r-content-left"></div>
+                    <div class="l1r-content-left" ref="chart_7"></div>
                     <div class="l1r-content-right">
                       <div class="llr-content-text1">
                         <p class="text_color_1">当期</p>
-                        <p class="text_color_10">98%</p>
+                        <p class="text_color_10">{{chart_num_7}}%</p>
                       </div>
                       <div class="llr-content-text1">
                         <p class="text_color_1">同期</p>
@@ -630,11 +631,11 @@
                     <div class="l1r-content-head">
                       <div class="l1r-content-head-title">术前平均住院日</div>
                     </div>
-                    <div class="l1r-content-left"></div>
+                    <div class="l1r-content-left" ref="chart_8"></div>
                     <div class="l1r-content-right">
                       <div class="llr-content-text1">
                         <p class="text_color_1">当期</p>
-                        <p class="text_color_10">19%</p>
+                        <p class="text_color_10">{{chart_num_8}}%</p>
                       </div>
                       <div class="llr-content-text1">
                         <p class="text_color_1">同期</p>
@@ -646,11 +647,11 @@
                     <div class="l1r-content-head">
                       <div class="l1r-content-head-title">均次费用</div>
                     </div>
-                    <div class="l1r-content-left"></div>
+                    <div class="l1r-content-left" ref="chart_9"></div>
                     <div class="l1r-content-right">
                       <div class="llr-content-text1">
                         <p class="text_color_1">当期</p>
-                        <p class="text_color_10">34%</p>
+                        <p class="text_color_10">{{chart_num_9}}%</p>
                       </div>
                       <div class="llr-content-text1">
                         <p class="text_color_1">同期</p>
@@ -676,7 +677,7 @@
                   <div class="l2l-content-footer">
                     <div class="l2l-text">
                       <p class="text_color_1">当期</p>
-                      <p class="text_color_10">2%</p>
+                      <p class="text_color_10">{{chart_num_11}}%</p>
                     </div>
                     <div class="l2l-text">
                       <p class="text_color_1">同期</p>
@@ -698,11 +699,11 @@
               </div>
               <div class="l2r-left">
                 <div class="l2r-left-title text_color_1">入径数:</div>
-                <div class="l2r-left-value text_color_11">717</div>
+                <div class="l2r-left-value text_color_11">{{chart_num_13_1}}</div>
                 <div class="l2r-left-title text_color_1">收治数:</div>
-                <div class="l2r-left-value text_color_4">932</div>
+                <div class="l2r-left-value text_color_4">{{chart_num_13_2}}</div>
                 <div class="l2r-left-title text_color_1">完成数占出院人数比:</div>
-                <div class="l2r-left-value text_color_12">42%</div>
+                <div class="l2r-left-value text_color_12">{{chart_num_13_3}}%</div>
               </div>
               <div class="l2r-right">
                 <div class="l2r-right-content" ref="chart_13"></div>
@@ -779,7 +780,8 @@
 //    title: {
 //      text: '基础雷达图'
 //    },
-    tooltip: {},
+//    tooltip: {},
+    center:['50%','50%'],
     legend: {
       show:false,
 //      data: ['预算分配（Allocated Budget）', '实际开销（Actual Spending）']
@@ -822,7 +824,6 @@
       // areaStyle: {normal: {}},
       data : [
         {
-          value : [200, 50, 0],
           lineStyle: {
             normal: {
               type: 'solid',
@@ -833,8 +834,87 @@
       ]
     }]
   };
+  let meterOption={
+    tooltip : {
+      formatter: "{a} <br/>{b} : {c}%"
+    },
+//        grid : {
+//          top : 0,    //距离容器上边界40像素
+//          bottom: 0,   //距离容器下边界30像素
+//          left:0,
+//          right:0,
+//          containLabel: true
+//        },
+    series: [
+      {
+        type: 'gauge',
+        min:0,
+        radius:50, // 半径
+        axisLine: {
+          show:true,
+          // 属性lineStyle控制线条样式
+          lineStyle: {
+            // 控制表盘宽度
+            width: 20,
+            color:[[0.2,'#76e79e'],[0.5,'#ece35d'],[0.7,'#f9a701'],[1, '#f67336']],
+//                shadowColor: '#fff', //默认透明
+//                shadowBlur: 10
+
+          }
+        },
+        splitLine: { // 分隔线
+          length: 20, // 属性length控制线长
+          lineStyle: { // 属性lineStyle（详见lineStyle）控制线条样式
+            width: 1,
+            color: '#000',
+//                shadowColor: '#fff', //默认透明
+//                shadowBlur: 10
+          }
+        },
+        axisTick: { // 刻度样式。
+          show: true,
+          lineStyle: {       // 属性lineStyle（详见lineStyle）控制线条样式
+            width:1,
+            color: '#000'
+          }
+        },
+        itemStyle: {
+          normal: {  // 指针颜色渐变
+            color: '#2c98de'
+          }
+        },
+        pointer: {           // 分隔线
+          width:6,   // 指针宽度设置
+          length:36,
+        },
+        detail: { // 表盘详情
+          show: true,
+//              offsetCenter: [0, '80%'], // 数值显示位置
+          formatter: ' ',
+          textStyle: {
+            fontSize: 18,
+            color:'#fff'
+          }
+        },
+        axisLabel: { //刻度标签。
+          show:false, // false 去除刻度
+        },
+        data: [{value: 50, name: ''}]
+      }
+    ]
+  };
+
   let option_1=clone(option);
+  let option_2=clone(meterOption);
+  let option_3=clone(meterOption);
+  let option_4=clone(meterOption);
+  let option_5=clone(meterOption);
+  let option_6=clone(meterOption);
+  let option_7=clone(meterOption);
+  let option_8=clone(meterOption);
+  let option_9=clone(meterOption);
   let option_10=clone(option);
+  let option_11=clone(meterOption);
   let option_12=clone(radarOption);
   let option_13=clone(radarOption);
   option_12.radar.indicator=[
@@ -842,9 +922,8 @@
     {text:'其他', max: 200},
     {text:'医生', max: 200}
   ];
-  option_13.series[0].data=[
+    option_13.series[0].data=[
     {
-      value : [900, 50,600, 50],
       lineStyle: {
         normal: {
           type: 'solid',
@@ -853,7 +932,6 @@
       }
     },
     {
-      value : [50, 50,400, 50],
       lineStyle: {
         normal: {
           type: 'solid',
@@ -883,10 +961,26 @@
     {value:135, name:'D（差）'}
 
   ];
+  option_11.series[0].radius=60;
   export default{
     data () {
       return {
         headTip:'全院医保概览',
+        chart_num_1_1:0,
+        chart_num_1_2:0,
+        chart_num_2:0,
+        chart_num_3:0,
+        chart_num_4:0,
+        chart_num_5:0,
+        chart_num_6:0,
+        chart_num_7:0,
+        chart_num_8:0,
+        chart_num_9:0,
+        chart_num_11:0,
+        chart_num_13_1:0,
+        chart_num_13_2:0,
+        chart_num_13_3:0
+
       }
     },
     components:{
@@ -895,14 +989,72 @@
     },
     mounted () {
        let chart_1=eCharts.init(this.$refs.chart_1);
+       let chart_2=eCharts.init(this.$refs.chart_2);
+       let chart_3=eCharts.init(this.$refs.chart_3);
+       let chart_4=eCharts.init(this.$refs.chart_4);
+       let chart_5=eCharts.init(this.$refs.chart_5);
+       let chart_6=eCharts.init(this.$refs.chart_6);
+       let chart_7=eCharts.init(this.$refs.chart_7);
+       let chart_8=eCharts.init(this.$refs.chart_8);
+       let chart_9=eCharts.init(this.$refs.chart_9);
        let chart_10=eCharts.init(this.$refs.chart_10);
+       let chart_11=eCharts.init(this.$refs.chart_11);
        let chart_12=eCharts.init(this.$refs.chart_12);
        let chart_13=eCharts.init(this.$refs.chart_13);
+       setInterval(()=>{
+         this.chart_num_1_1=random(100,280);
+         this.chart_num_1_2=random(300,500);
+         this.chart_num_2=random(60,80);
+         this.chart_num_3=random(40,70);
+         this.chart_num_4=random(13000,20000);
+         this.chart_num_5=random(5,10);
+         this.chart_num_6=random(2,6);
+         this.chart_num_7=random(60,99);
+         this.chart_num_8=random(13,38);
+         this.chart_num_9=random(30,60);
+         this.chart_num_11=random(3,6);
+         this.chart_num_13_1=random(600,800);
+         this.chart_num_13_2=random(700,900)
+         this.chart_num_13_3=Math.floor(this.chart_num_13_1/(this.chart_num_13_1+this.chart_num_13_2)*100)
 
-       chart_1.setOption(option_1,true);
-       chart_10.setOption(option_10,true);
-       chart_12.setOption(option_12,true);
-       chart_13.setOption(option_13,true);
+         option_1.series[0].data[0].value=this.chart_num_1_1;
+         option_1.series[0].data[1].value=this.chart_num_1_2;
+         option_2.series[0].data[0].value=this.chart_num_2;
+         option_3.series[0].data[0].value=this.chart_num_3;
+         option_4.series[0].data[0].value=this.chart_num_4;
+         option_5.series[0].data[0].value=this.chart_num_5;
+         option_6.series[0].data[0].value=this.chart_num_6;
+         option_7.series[0].data[0].value=this.chart_num_7;
+         option_8.series[0].data[0].value=this.chart_num_8;
+         option_9.series[0].data[0].value=this.chart_num_9;
+         option_10.series[0].data[0].value=random(30,50);
+         option_10.series[0].data[1].value=random(15,20);
+         option_10.series[0].data[2].value=random(15,20);
+         option_10.series[0].data[3].value=random(10,15);
+         option_11.series[0].data[0].value=this.chart_num_11;
+         option_12.series[0].data[0].value=[random(120,200), random(50,100), random(20,80)];
+
+         option_13.series[0].data[0].value=[random(500,800),random(50,200),random(600,900),random(50,200)];
+         option_13.series[0].data[1].value=[random(50,100),random(30,100),random(200,600),random(50,100)];
+
+
+
+         chart_1.setOption(option_1,true);
+         chart_2.setOption(option_2,true);
+         chart_3.setOption(option_3,true);
+         chart_4.setOption(option_4,true);
+         chart_5.setOption(option_5,true);
+         chart_6.setOption(option_6,true);
+         chart_7.setOption(option_7,true);
+         chart_8.setOption(option_8,true);
+         chart_9.setOption(option_9,true);
+         chart_10.setOption(option_10,true);
+         chart_11.setOption(option_11,true);
+         chart_12.setOption(option_12,true);
+         chart_13.setOption(option_13,true);
+
+       },2000)
+
     }
   }
 </script>

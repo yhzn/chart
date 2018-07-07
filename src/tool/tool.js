@@ -15,3 +15,10 @@ export let clone = function (it) {
   }
   return result;
 }
+
+export let router = (url,_this,timers) => {
+  let timer=setTimeout(() => {
+    clearTimeout(timer);
+    _this.$router.push(url)
+  },10000)
+}

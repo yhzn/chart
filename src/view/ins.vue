@@ -581,7 +581,7 @@
 </template>
 <script>
   import eCharts from 'echarts'
-  import {random, clone} from '@/tool/tool'
+  import {random, clone, router} from '@/tool/tool'
 
   import headTitle from '@/components/head'
   import headSelect from '@/components/head-select'
@@ -892,6 +892,11 @@
         indicatorLight,
         tableList
       },
+    activated () {
+      router('/overview',this,this.timer);
+
+    },
+      methods:{},
       mounted () {
         let chart_1=eCharts.init(this.$refs.chart_1,true);
         let chart_2=eCharts.init(this.$refs.chart_2,true);
