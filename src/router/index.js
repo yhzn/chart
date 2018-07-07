@@ -10,6 +10,12 @@ import ins from '@/view/ins'
 import operation from '@/view/operation'
 import imaging from '@/view/imaging'
 import hospitalization from '@/view/hospitalization'
+import achievements from '@/view/achievements'
+import imgAnalysis from '@/view/imgAnalysis'
+import pharmacy from '@/view/pharmacy'
+import roomDynamic from '@/view/roomDynamic'
+import hr from '@/view/hr'
+import tat from '@/view/tat'
 
 Vue.use(Router)
 
@@ -31,9 +37,19 @@ export default new Router({
       component: query
     },
     {
+      path: '/hr',
+      name: 'hr',
+      component: hr
+    },
+    {
       path: '/hospitalization',
       name: 'hospitalization',
       component: hospitalization
+    },
+    {
+      path: '/roomDynamic',
+      name: 'roomDynamic',
+      component: roomDynamic
     },
     {
       path: '/overview',
@@ -54,6 +70,26 @@ export default new Router({
       path: '/imaging',
       name: 'imaging',
       component: imaging
+    },
+    {
+      path: '/achievements',
+      name: 'achievements',
+      component: achievements
+    },
+    {
+      path: '/imgAnalysis',
+      name: 'imgAnalysis',
+      component: imgAnalysis
+    },
+    {
+      path: '/pharmacy',
+      name: 'pharmacy',
+      component: pharmacy
+    },
+    {
+      path: '/tat',
+      name: 'tat',
+      component: tat
     },
     {
       path: '/hello',
