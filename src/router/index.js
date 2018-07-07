@@ -11,9 +11,14 @@ import operation from '@/view/operation'
 import imaging from '@/view/imaging'
 import hospitalization from '@/view/hospitalization'
 import surver from '@/view/surver'
+import achievements from '@/view/achievements'
+import imgAnalysis from '@/view/imgAnalysis'
+import pharmacy from '@/view/pharmacy'
+import roomDynamic from '@/view/roomDynamic'
+import hr from '@/view/hr'
+import tat from '@/view/tat'
 
 Vue.use(Router)
-
 export default new Router({
   routes: [
     {
@@ -45,11 +50,21 @@ export default new Router({
 
     },
     {
+      path: '/hr',
+      name: 'hr',
+      component: hr
+    },
+    {
       path: '/hospitalization',
       name: 'hospitalization',
       component: hospitalization,
       meta: { keepAlive: true }
 
+    },
+    {
+      path: '/roomDynamic',
+      name: 'roomDynamic',
+      component: roomDynamic
     },
     {
       path: '/overview',
@@ -78,6 +93,26 @@ export default new Router({
       component: imaging,
       meta: { keepAlive: true }
 
+    },
+    {
+      path: '/achievements',
+      name: 'achievements',
+      component: achievements
+    },
+    {
+      path: '/imgAnalysis',
+      name: 'imgAnalysis',
+      component: imgAnalysis
+    },
+    {
+      path: '/pharmacy',
+      name: 'pharmacy',
+      component: pharmacy
+    },
+    {
+      path: '/tat',
+      name: 'tat',
+      component: tat
     },
     {
       path: '/hello',
