@@ -1123,7 +1123,7 @@
 </template>
 <script>
   import eCharts from 'echarts'
-  import {random, clone} from '@/tool/tool'
+  import {random, clone, router} from '@/tool/tool'
 
   import headTitle from '@/components/head'
   import headSelect from '@/components/head-select'
@@ -1183,6 +1183,7 @@
             complete_9:random(30,60),
             clinic_9:random(10,20),
             hospital_9:0,
+            timer:null
 
           }
       },
@@ -1190,6 +1191,10 @@
           headTitle,
           headSelect,
       },
+    activated () {
+      router('/',this,this.timer);
+
+    },
       mounted () {
         let chart_1=eCharts.init(this.$refs.chart_1);
         let chart_2=eCharts.init(this.$refs.chart_2);

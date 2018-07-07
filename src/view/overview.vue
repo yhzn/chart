@@ -265,7 +265,7 @@
 </template>
 <script>
   import eCharts from 'echarts'
-  import {random, clone} from '@/tool/tool'
+  import {random, clone, router} from '@/tool/tool'
   import rj from '@/assets/image/rj.jpg'
   import pj from '@/assets/image/pj.jpg'
 
@@ -570,7 +570,12 @@
         chart_num_8:0,
         chart_num_9:0,
         chart_num_10:0,
+        timer:null
       }
+    },
+    activated () {
+      router('/report',this,this.timer);
+
     },
     components:{
       headTitle,
@@ -592,7 +597,7 @@
       let chart_11=eCharts.init(this.$refs.chart_bar_1);
       let chart_12=eCharts.init(this.$refs.chart_bar_2);
 
-      setInterval(()=>{
+      this.timer=setInterval(()=>{
         this.chart_num_1=random(85,90);
         this.chart_num_2=random(85,90);
         this.chart_num_3=random(17000,18000);

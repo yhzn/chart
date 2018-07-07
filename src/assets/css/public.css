@@ -149,3 +149,7 @@ html,body,.con{
   line-height: 25px;
   vertical-align: middle;
 }
+.border-img{
+  background:url('../image/border_1.png') no-repeat;
+  background-size: 100% 100%;
+}

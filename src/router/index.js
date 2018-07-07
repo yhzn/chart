@@ -10,6 +10,7 @@ import ins from '@/view/ins'
 import operation from '@/view/operation'
 import imaging from '@/view/imaging'
 import hospitalization from '@/view/hospitalization'
+import surver from '@/view/surver'
 
 Vue.use(Router)
 
@@ -18,52 +19,79 @@ export default new Router({
     {
       path: '/',
       name: 'home',
-      component: home
+      component: home,
+      meta: { keepAlive: true }
+
+    },
+    {
+      path: '/surver',
+      name: 'surver',
+      component: surver,
+      meta: { keepAlive: true }
+
     },
     {
       path: '/ins',
       name: 'ins',
-      component: ins
+      component: ins,
+      meta: { keepAlive: true }
+
     },
     {
       path: '/query',
       name: 'query',
-      component: query
+      component: query,
+      meta: { keepAlive: true }
+
     },
     {
       path: '/hospitalization',
       name: 'hospitalization',
-      component: hospitalization
+      component: hospitalization,
+      meta: { keepAlive: true }
+
     },
     {
       path: '/overview',
       name: 'overview',
-      component: overview
+      component: overview,
+      meta: { keepAlive: true }
+
     },
     {
       path: '/report',
       name: 'report',
-      component: report
+      component: report,
+      meta: { keepAlive: true }
+
     },
     {
       path: '/operation',
       name: 'operation',
-      component: operation
+      component: operation,
+      meta: { keepAlive: true }
+
     },
     {
       path: '/imaging',
       name: 'imaging',
-      component: imaging
+      component: imaging,
+      meta: { keepAlive: true }
+
     },
     {
       path: '/hello',
       name: 'HelloWorld',
-      component: HelloWorld
+      component: HelloWorld,
+      meta: { keepAlive: true }
+
     },
     {
       path: '/demo',
       name: 'demo',
-      component: demo
+      component: demo,
+      meta: { keepAlive: true }
+
     }
   ]
 })

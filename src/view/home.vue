@@ -390,7 +390,7 @@
 </template>
 <script>
   import eCharts from 'echarts'
-  import {random, clone} from '@/tool/tool'
+  import {random, clone, router} from '@/tool/tool'
 
   import headTitle from '@/components/head'
   export default {
@@ -402,12 +402,17 @@
         meterThreeNum:'',
         meterFourNum:'',
         meterFiveNum:'',
+        timer:null
       }
     },
     components:{
         headTitle,
     },
     methods:{
+
+    },
+    activated () {
+      router('/ins',this,this.timer);
 
     },
     mounted () {
@@ -571,7 +576,7 @@
       let meterThree=clone(meterOption);
       let meterFour=clone(meterOption);
       let meterFive=clone(meterOption);
-      setInterval(() => {
+      this.timer=setInterval(() => {
         this.meterOneNum=random(0,30000);
         this.meterTwoNum=random(0,100);
         this.meterThreeNum=random(0,100);

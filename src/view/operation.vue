@@ -320,7 +320,7 @@
                 <div class="left1-content1-chart" ref="chart_1"></div>
                 <div class="left1-content1-footer">
                   <ul>
-                    <li>指标<span class="text_color_4">42,941,723</span></li>
+                    <li>指标<span class="text_color_4">{{chart_num_1}}</span></li>
                     <li>完成<span class="text_color_7">38,662,810</span></li>
                   </ul>
                 </div>
@@ -332,8 +332,8 @@
                 <div class="left1-content1-chart" ref="chart_2"></div>
                 <div class="left1-content1-footer">
                   <ul>
-                    <li>门诊<span class="text_color_4">32,160</span></li>
-                    <li>住院<span class="text_color_7">38,662,810</span></li>
+                    <li>门诊<span class="text_color_4">{{chart_num_2_1}}</span></li>
+                    <li>住院<span class="text_color_7">{{chart_num_2_2}}</span></li>
                   </ul>
                 </div>
               </div>
@@ -344,7 +344,7 @@
                 <div class="left1-content1-chart" ref="chart_4"></div>
                 <div class="left1-content1-footer">
                   <ul>
-                    <li>指标<span class="text_color_4">2,384</span></li>
+                    <li>指标<span class="text_color_4">{{chart_num_4}}</span></li>
                     <li>完成<span class="text_color_7">2,147</span></li>
                   </ul>
                 </div>
@@ -356,8 +356,8 @@
                 <div class="left1-content1-chart" ref="chart_5"></div>
                 <div class="left1-content1-footer">
                   <ul>
-                    <li>门诊<span class="text_color_4">50</span></li>
-                    <li>住院<span class="text_color_7">2,097</span></li>
+                    <li>门诊<span class="text_color_4">{{chart_num_5_1}}</span></li>
+                    <li>住院<span class="text_color_7">{{chart_num_5_2}}</span></li>
                   </ul>
                 </div>
               </div>
@@ -392,19 +392,19 @@
                   <div class="left1-content2-head border-left">完成</div>
                   <div class="left1-content2-line color_17">
                     <span class="span1">择期</span>
-                    <span class="span2">1,268</span>
+                    <span class="span2">{{chart_num_3_1}}</span>
                   </div>
                   <div class="left1-content2-line color_18">
                     <span class="span1">急诊</span>
-                    <span class="span2">176</span>
+                    <span class="span2">{{chart_num_3_2}}</span>
                   </div>
                   <div class="left1-content2-line color_17">
                     <span class="span1">二进宫</span>
-                    <span class="span2">6</span>
+                    <span class="span2">{{chart_num_3_3}}</span>
                   </div>
                   <div class="left1-content2-line color_18">
                     <span class="span1">门诊</span>
-                    <span class="span2">40</span>
+                    <span class="span2">{{chart_num_3_4}}</span>
                   </div>
                   <div class="left1-content2-line color_17">
                     <span class="span1">门诊</span>
@@ -427,23 +427,23 @@
                 <div class="left1-content1-footer">
                   <div class="elements">
                     <div class="element1 color_3"></div>
-                    <span class="text_color_1 font-size-12">1级:102</span>
+                    <span class="text_color_1 font-size-12">1级:{{chart_num_6_1}}</span>
                   </div>
                   <div class="elements">
                     <div class="element1 color_5"></div>
-                    <span class="text_color_1 font-size-12">2级:524</span>
+                    <span class="text_color_1 font-size-12">2级:{{chart_num_6_2}}</span>
                   </div>
                   <div class="elements">
                     <div class="element1 color_6"></div>
-                    <span class="text_color_1 font-size-12">3级:1,143</span>
+                    <span class="text_color_1 font-size-12">3级:{{chart_num_6_3}}</span>
                   </div>
                   <div class="elements">
                     <div class="element1 color_8"></div>
-                    <span class="text_color_1 font-size-12">4级:377</span>
+                    <span class="text_color_1 font-size-12">4级:{{chart_num_6_4}}</span>
                   </div>
                   <div class="elements">
                     <div class="element1 color_2"></div>
-                    <span class="text_color_1 font-size-12">其他:1</span>
+                    <span class="text_color_1 font-size-12">其他:{{chart_num_6_5}}</span>
                   </div>
                 </div>
               </div>
@@ -649,7 +649,7 @@
 </template>
 <script>
   import eCharts from 'echarts'
-  import {random, clone} from '@/tool/tool'
+  import {random, clone, router} from '@/tool/tool'
 
   import headTitle from '@/components/head'
   import headSelect from '@/components/head-select'
@@ -667,14 +667,25 @@
     ['8','05骨关节与运动专科','91','91','2,201,385','2,201,385','2,201,385','21%']
   ];
   let pieOption = {
-    tooltip: {
-      trigger: 'item',
-      formatter: "{a} <br/>{b}: {c} ({d}%)"
+    title:{
+      text: '总数',
+      textStyle: {
+//      fontWeight: 'normal',              //标题颜色
+        fontSize:12,
+        color: '#fff'
+      },
+      x: 'center',
+      y: '36%'
     },
+//    tooltip: {
+//      trigger: 'item',
+//      formatter: "{a} <br/>{b}: {c} ({d}%)"
+//    },
     legend: {
-      orient: 'vertical',
-      x: 'left',
-      data:['直接访问']
+      show:false,
+//      orient: 'vertical',
+//      x: 'left',
+//      data:['直接访问']
     },
     series: [
       {
@@ -700,17 +711,268 @@
             show: false
           }
         },
-        data:[
-          {value:335, name:'直'},
-          {value:310, name:'邮'},
-          {value:234, name:'联'},
-          {value:135, name:'视'},
-          {value:1548, name:'搜'}
-        ]
       }
     ]
   };
+  let meterOption={
+//    tooltip : {
+//      formatter: "{a} <br/>{b} : {c}%"
+//    },
+//        grid : {
+//          top : 0,    //距离容器上边界40像素
+//          bottom: 0,   //距离容器下边界30像素
+//          left:0,
+//          right:0,
+//          containLabel: true
+//        },
+    series: [
+      {
+        type: 'gauge',
+        min:0,
+        radius:56, // 半径
+        center:['50%','60%'],
+        axisLine: {
+          show:true,
+          // 属性lineStyle控制线条样式
+          lineStyle: {
+            // 控制表盘宽度
+            width: 20,
+            color:[[0.2,'#76e79e'],[0.5,'#ece35d'],[0.7,'#f9a701'],[1, '#f67336']],
+//                shadowColor: '#fff', //默认透明
+//                shadowBlur: 10
+
+          }
+        },
+        splitLine: { // 分隔线
+          length: 20, // 属性length控制线长
+          lineStyle: { // 属性lineStyle（详见lineStyle）控制线条样式
+            width: 1,
+            color: '#000',
+//                shadowColor: '#fff', //默认透明
+//                shadowBlur: 10
+          }
+        },
+        axisTick: { // 刻度样式。
+          show: true,
+          lineStyle: {       // 属性lineStyle（详见lineStyle）控制线条样式
+            width:1,
+            color: '#000'
+          }
+        },
+        itemStyle: {
+          normal: {  // 指针颜色渐变
+            color: '#2c98de'
+          }
+        },
+        pointer: {           // 分隔线
+          width:6,   // 指针宽度设置
+          length:38,
+        },
+        detail: { // 表盘详情
+          show: true,
+//              offsetCenter: [0, '80%'], // 数值显示位置
+          formatter: ' ',
+          textStyle: {
+            fontSize: 18,
+            color:'#fff'
+          }
+        },
+        axisLabel: { //刻度标签。
+          show:false, // false 去除刻度
+        },
+        data: [{value: 50, name: ''}]
+      }
+    ]
+  };
+  let option = {
+//    title : {
+//      text: '某站点用户访问来源',
+//      subtext: '纯属虚构',
+//      x:'center'
+//    },
+//    tooltip : {
+//      trigger: 'item',
+//      formatter: "{a} <br/>{b} : {c} ({d}%)"
+//    },
+    color:['#d36a6e','#319be4'],
+
+  legend: {
+      show:false,
+      orient: 'vertical',
+      left: 'left',
+      data: ['A（优）','B（良）','C（中）','D（差）']
+    },
+    series : [
+      {
+        name: '',
+        type: 'pie',
+        radius : 50,
+        center: ['50%', '50%'],
+        itemStyle: {
+          emphasis: {
+            shadowBlur: 10,
+            shadowOffsetX: 0,
+            shadowColor: 'rgba(0, 0, 0, 0.5)'
+          }
+        },
+        label:{
+          show:false,
+          color:'red'
+        }
+      }
+    ]
+  };
+
+  let option_1=clone(meterOption);
+  let option_2=clone(option);
   let option_3=clone(pieOption);
+  let option_4=clone(meterOption);
+  let option_5=clone(option);
+  let option_6=clone(pieOption);
+  let option_7={
+    tooltip: {
+      trigger: 'axis'
+    },
+//          legend: {
+//            data:['邮件营销','联盟广告','视频广告','直接访问','搜索引擎']
+//          },
+    grid: {
+      top:'5%',
+      left: '5%',
+      right: '3%',
+      bottom: '5%',
+      containLabel: true
+    },
+    // 工具箱
+//          toolbox: {
+//            feature: {
+//              saveAsImage: {}
+//            }
+//          },
+    xAxis: {
+      type: 'category',
+      axisTick: {show: false},
+      axisLine:{
+        lineStyle:{
+          color:'#fff',
+          width:1,//  坐标轴宽度 这里是为了突出显示加上的
+        }
+      },
+
+      boundaryGap: true,
+      data: [1,2,3,4,5,6,7,8,9,10,11,12]
+    },
+    yAxis: [{
+      type: 'value',
+      name:'收入（万元）',
+      max:15000,
+      axisLine:{
+        lineStyle:{
+          color:'#fff',
+          width:1,//  坐标轴宽度 这里是为了突出显示加上的
+        }
+      }
+    },{
+      type: 'value',
+      name: ' ',
+      min: 0,
+      max: 3500,
+      position: 'right',
+      axisLabel: {
+        formatter: '{value}'
+      },
+      splitLine:{  // 去掉与坐标轴平行的直线
+        show:false
+      },
+      axisTick: {
+        show: false
+      },
+      axisLine:{
+        lineStyle:{
+          color:'#fff',
+          width:1,//  坐标轴宽度 这里是为了突出显示加上的
+        }
+      }
+    }],
+    series: [
+      {
+        name:'同期收入',
+        type:'line',
+        itemStyle : {
+          normal : {
+            lineStyle:{
+              color:'#f9ae0e'
+            }
+          }
+        },
+        data:[120, 132, 101, 134, 90, 230, 210]
+      },
+      {
+        name:'当期指标',
+        type:'line',
+        itemStyle : {
+          normal : {
+            lineStyle:{
+              color:'#ebdf07'
+            }
+          }
+        },
+        data:[220, 182, 191, 234, 290, 330, 310]
+      },
+      {
+        name:'当期收入',
+        type:'line',
+        itemStyle : {
+          normal : {
+            lineStyle:{
+              color:'#8bea7f'
+            }
+          }
+        },
+        data:[150, 232, 201, 154, 190, 330, 410]
+      },
+      {
+        name:'当期例数',
+        type:'bar',
+        barWidth: '30%',
+        barGap: '50%',
+        color:'#1286ed',
+        data:[10, 52, 200, 334, 390, 330, 220]
+      },
+      {
+        name:'同期例数',
+        type:'bar',
+        barWidth:'30%',
+        color:'#e9615c',
+        itemStyle : {
+          normal : {
+            lineStyle:{
+
+            }
+          }
+        },
+        data:[320, 332, 301, 334, 390, 330, 320]
+      },
+      {
+        name:'当期例数',
+        type:'line',
+        barWidth:'30%',
+        color:'#6017fc',
+        itemStyle : {
+          normal : {
+            lineStyle:{
+
+            }
+          }
+        },
+        data:[320, 332, 301, 334, 390, 330, 320]
+      }
+    ]
+  };
+
+  option_3.color=['#067bdb', '#eb615f','#77e79f','#9368dc'];
+  option_6.color=['#8be87e', '#eb615f','#43a8f0','#9368dc','#edde05'];
+
   export default{
     data () {
       return {
@@ -730,6 +992,22 @@
           selectSix:true,
           six:'当期例数'
         },
+        timer:null,
+        chart_num_1:0,
+        chart_num_2_1:0,
+        chart_num_2_2:0,
+        chart_num_3_1:0,
+        chart_num_3_2:0,
+        chart_num_3_3:0,
+        chart_num_3_4:0,
+        chart_num_4:0,
+        chart_num_5_1:0,
+        chart_num_5_2:0,
+        chart_num_6_1:0,
+        chart_num_6_2:0,
+        chart_num_6_3:0,
+        chart_num_6_4:0,
+        chart_num_6_5:0
       }
     },
     components:{
@@ -738,9 +1016,79 @@
       headSelect,
       indicatorLight
     },
+    activated () {
+
+    },
     mounted () {
+      let chart_1=eCharts.init(this.$refs.chart_1);
+      let chart_2=eCharts.init(this.$refs.chart_2);
       let chart_3=eCharts.init(this.$refs.chart_3);
-      chart_3.setOption(option_3,true)
+      let chart_4=eCharts.init(this.$refs.chart_4);
+      let chart_5=eCharts.init(this.$refs.chart_5);
+      let chart_6=eCharts.init(this.$refs.chart_6);
+      let chart_7=eCharts.init(this.$refs.chart_7);
+      setInterval(()=>{
+        this.chart_num_1=random(40000000,50000000);
+        this.chart_num_2_1=random(2000,3000);
+        this.chart_num_2_2=random(30000000,40000000);
+        this.chart_num_3_1=random(1600,2600);
+        this.chart_num_3_2=random(300,600);
+        this.chart_num_3_3=random(5,10);
+        this.chart_num_3_4=random(30,60);
+        this.chart_num_4=random(2000,3000);
+        this.chart_num_5_1=random(50,80);
+        this.chart_num_5_2=random(1800,2300);
+        this.chart_num_6_1=random(80,120);
+        this.chart_num_6_2=random(500,600);
+        this.chart_num_6_3=random(1000,1500);
+        this.chart_num_6_4=random(300,600);
+        this.chart_num_6_5=random(1,5);
+        option_1.series[0].data[0].value=this.chart_num_1;
+        option_1.series[0].max=50000000;
+        option_2.series[0].data=[
+          {value:this.chart_num_2_1},
+          {value:this.chart_num_2_2},
+        ];
+        option_3.title.subtext=123;
+        option_3.series[0].data=[
+          {value:this.chart_num_3_1},
+          {value:this.chart_num_3_2},
+          {value:this.chart_num_3_3},
+          {value:this.chart_num_3_4}
+
+        ];
+
+        option_4.series[0].data[0].value=this.chart_num_4;
+        option_4.series[0].max=3000;
+
+        option_5.series[0].data=[
+          {value:this.chart_num_5_1, name:'病种数'},
+          {value:this.chart_num_5_2, name:'路径数'},
+        ];
+        option_6.title.subtext=123;
+        option_6.series[0].data=[
+          {value:this.chart_num_6_1},
+          {value:this.chart_num_6_2},
+          {value:this.chart_num_6_3},
+          {value:this.chart_num_6_4},
+          {value:this.chart_num_6_5},
+        ]
+
+        option_7.series[0].data=[random(4500,10000),random(4500,10000),random(4500,10000),random(4500,10000),random(4500,10000),random(4500,10000),random(4500,10000),random(4500,10000),random(4500,10000),random(4500,10000),random(4500,10000),random(4500,10000)];
+        option_7.series[1].data=[random(4500,10000),random(4500,10000),random(4500,10000),random(4500,10000),random(4500,10000),random(4500,10000),random(4500,10000),random(4500,10000),random(4500,10000),random(4500,10000),random(4500,10000),random(4500,10000)];
+        option_7.series[2].data=[];
+        option_7.series[3].data=[random(2000,5000),random(2000,5000),random(2000,5000),random(2000,5000),random(2000,5000),random(2000,5000)];
+        option_7.series[4].data=[random(2000,5000),random(2000,5000),random(2000,5000),random(2000,5000),random(2000,5000),random(2000,5000),random(2000,5000),random(2000,5000),random(2000,5000),random(2000,5000),random(2000,5000),random(2000,5000)];
+        option_7.series[5].data=[random(2000,5000),random(2000,5000),random(2000,5000),random(2000,5000),random(2000,5000),random(2000,5000)];
+
+        chart_1.setOption(option_1,true);
+        chart_2.setOption(option_2,true);
+        chart_3.setOption(option_3,true);
+        chart_4.setOption(option_4,true);
+        chart_5.setOption(option_5,true);
+        chart_6.setOption(option_6,true);
+        chart_7.setOption(option_7,true);
+      },2000)
     }
   }
 </script>
