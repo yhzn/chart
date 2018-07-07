@@ -322,54 +322,54 @@
           <div class="left">
             <div class="content1 border-buttom">
               <div class="content">
-                <div class="content-left">
+                <div class="content-left" ref="chart_1">
                 </div>
                 <div class="content-right">
                   <div class="title">出院人数</div>
                   <p>指标<span>1,276</span></p>
-                  <p>完成<span>556</span></p>
+                  <p>完成<span>{{chart_num_1}}</span></p>
                 </div>
               </div>
               <div class="content">
-                <div class="content-left">
+                <div class="content-left" ref='chart_2'>
 
                 </div>
                 <div class="content-right">
                   <div class="title">出院收入</div>
                   <p>指标<span>1,276</span></p>
-                  <p>完成<span>556</span></p>
+                  <p>完成<span>{{chart_num_2}}</span></p>
                 </div>
               </div>
               <div class="content">
-              <div class="content-left">
+              <div class="content-left" ref="chart_3">
 
               </div>
               <div class="content-right">
                 <div class="title">均次费用</div>
                 <p>指标<span>1,276</span></p>
-                <p>完成<span>556</span></p>
+                <p>完成<span>{{chart_num_3}}</span></p>
               </div>
             </div>
             </div>
             <div class="content2 border-buttom">
               <div class="content2-left border-right">
                 <div class="block">
-                  <div class="title">出院人数</div>
-                  <div class="chart"></div>
+                  <div class="title">平均住院天数</div>
+                  <div class="chart" ref="chart_4"></div>
                   <p>指标<span>1,276</span></p>
-                  <p>完成<span>556</span></p>
+                  <p>完成<span>{{chart_num_4}}</span></p>
                 </div>
                 <div class="block">
-                  <div class="title">出院人数</div>
-                  <div class="chart"></div>
+                  <div class="title">平均床日费用</div>
+                  <div class="chart" ref="chart_5"></div>
                   <p>指标<span>1,276</span></p>
-                  <p>完成<span>556</span></p>
+                  <p>完成<span>{{chart_num_5}}</span></p>
                 </div>
               </div>
               <div class="content2-right">
-                <div class="block-left"></div>
+                <div class="block-left" ref="chart_6"></div>
                 <div class="block-right">
-                  <div class="title">出院人数</div>
+                  <div class="title">手术人次</div>
                   <div class="table"></div>
                 </div>
               </div>
@@ -380,40 +380,40 @@
                   <p class="font_style_1">药品分析</p>
                 </div>
                 <div class="block">
-                  <div class="content-left">
+                  <div class="content-left" ref="chart_7">
                   </div>
                   <div class="content-right">
                     <div class="title">药占比</div>
                     <p>指标<span>1,276</span></p>
-                    <p>完成<span>556</span></p>
+                    <p>完成<span>{{chart_num_7}}</span></p>
                   </div>
                 </div>
                 <div class="block">
-                  <div class="content-left">
+                  <div class="content-left" ref="chart_8">
                   </div>
                   <div class="content-right">
                     <div class="title">药品均次费用</div>
                     <p>指标<span>1,276</span></p>
-                    <p>完成<span>556</span></p>
+                    <p>完成<span>{{chart_num_8}}</span></p>
                   </div>
                 </div>
               </div>
               <div class="content3-block1">
                 <div class="title1"></div>
                 <div class="block">
-                  <div class="content-left">
+                  <div class="content-left" ref="chart_9">
                   </div>
                   <div class="content-right">
                     <div class="title">医保人次占比</div>
-                    <p><span>80%</span></p>
+                    <p><span>{{chart_num_9}}%</span></p>
                   </div>
                 </div>
                 <div class="block">
-                  <div class="content-left">
+                  <div class="content-left" ref="chart_10">
                   </div>
                   <div class="content-right">
                     <div class="title">医保收入占比</div>
-                    <p><span>79%</span></p>
+                    <p><span>{{chart_num_10}}%</span></p>
                   </div>
                 </div>
               </div>
@@ -449,7 +449,7 @@
             <div class="content-head4-title">
               2018年平均住院日月度趋势
             </div>
-            <div class="content-content4"></div>
+            <div class="content-content4" ref="chart_11"></div>
             <div class="content-footer4">
               <indicator-light :selectLight="selectLight"></indicator-light>
             </div>
@@ -458,9 +458,11 @@
       </div>
     </div>
   </div>
-  </div>
 </template>
 <script>
+  import eCharts from 'echarts'
+  import {random, clone, router} from '@/tool/tool'
+
   import headTitle from '@/components/head'
   import headSelect from '@/components/head-select'
   import indicatorLight from '@/components/indicator'
@@ -492,6 +494,226 @@
     ['慢性心绞痛介入治疗','24,199','24,199'],
     ['病态心房结综合征','82,972','82,972']
   ];
+  let meterOption={
+//    tooltip : {
+//      formatter: "{a} <br/>{b} : {c}%"
+//    },
+//        grid : {
+//          top : 0,    //距离容器上边界40像素
+//          bottom: 0,   //距离容器下边界30像素
+//          left:0,
+//          right:0,
+//          containLabel: true
+//        },
+    series: [
+      {
+        type: 'gauge',
+        min:0,
+        max:1500,
+        radius:36, // 半径
+        center:['50%','60%'],
+        axisLine: {
+          show:true,
+          // 属性lineStyle控制线条样式
+          lineStyle: {
+            // 控制表盘宽度
+            width: 15,
+            color:[[0.2,'#76e79e'],[0.5,'#ece35d'],[0.7,'#f9a701'],[1, '#f67336']],
+//                shadowColor: '#fff', //默认透明
+//                shadowBlur: 10
+
+          }
+        },
+        splitLine: { // 分隔线
+          length: 15, // 属性length控制线长
+          lineStyle: { // 属性lineStyle（详见lineStyle）控制线条样式
+            width: 1,
+            color: '#000',
+//                shadowColor: '#fff', //默认透明
+//                shadowBlur: 10
+          }
+        },
+        axisTick: { // 刻度样式。
+          show: true,
+          lineStyle: {       // 属性lineStyle（详见lineStyle）控制线条样式
+            width:1,
+            color: '#000'
+          }
+        },
+        itemStyle: {
+          normal: {  // 指针颜色渐变
+            color: '#2c98de'
+          }
+        },
+        pointer: {           // 分隔线
+          width:5,   // 指针宽度设置
+          length:28,
+        },
+        detail: { // 表盘详情
+          show: true,
+//          offsetCenter: [0, '80%'], // 数值显示位置
+          formatter: ' ',
+          textStyle: {
+            fontSize: 14,
+            color:'#fff'
+          }
+        },
+        axisLabel: { //刻度标签。
+          show:false, // false 去除刻度
+        },
+        data: [{value: 50, name: ''}]
+      }
+    ]
+  };
+  let option_1=clone(meterOption);
+  let option_2=clone(meterOption);
+  let option_3=clone(meterOption);
+  let option_4=clone(meterOption);
+  let option_5=clone(meterOption);
+  let option_6=clone(meterOption);
+  let option_7=clone(meterOption);
+  let option_8=clone(meterOption);
+  let option_9=clone(meterOption);
+  let option_10=clone(meterOption);
+  option_9.series[0].max=100;
+  option_9.series[0].detail.offsetCenter=[0,'100%'];
+  option_10.series[0].max=100;
+  option_10.series[0].detail.offsetCenter=[0,'100%'];
+  let option_11={
+    tooltip: {
+      trigger: 'axis'
+    },
+//          legend: {
+//            data:['邮件营销','联盟广告','视频广告','直接访问','搜索引擎']
+//          },
+    grid: {
+      top:'5%',
+      left: '5%',
+      right: '3%',
+      bottom: '5%',
+      containLabel: true
+    },
+    // 工具箱
+//          toolbox: {
+//            feature: {
+//              saveAsImage: {}
+//            }
+//          },
+    xAxis: {
+      type: 'category',
+      axisTick: {show: false},
+      axisLine:{
+        lineStyle:{
+          color:'#fff',
+          width:1,//  坐标轴宽度 这里是为了突出显示加上的
+        }
+      },
+
+      boundaryGap: true,
+      data: [1,2,3,4,5,6,7,8,9,10,11,12]
+    },
+    yAxis: [{
+      type: 'value',
+      max:10,
+      axisLabel: {
+        formatter: '{value}'
+      },
+      axisLine:{
+        lineStyle:{
+          color:'#fff',
+          width:1,//  坐标轴宽度 这里是为了突出显示加上的
+        }
+      }
+    },{
+      type: 'value',
+      min: 0,
+      max: 25000,
+      position: 'right',
+      axisLabel: {
+        formatter: '{value}'
+      },
+      splitLine:{  // 去掉与坐标轴平行的直线
+        show:false
+      },
+      axisTick: {
+        show: false
+      },
+      axisLine:{
+        lineStyle:{
+          color:'#fff',
+          width:1,//  坐标轴宽度 这里是为了突出显示加上的
+        }
+      }
+    }],
+    series: [
+      {
+        type:'line',
+        itemStyle : {
+          normal : {
+            lineStyle:{
+              color:'#f9ae0e'
+            }
+          }
+        },
+        data:[120, 132, 101, 134, 90, 230, 210]
+      },
+      {
+        type:'line',
+        itemStyle : {
+          normal : {
+            lineStyle:{
+              color:'#ebdf07'
+            }
+          }
+        },
+        data:[220, 182, 191, 234, 290, 330, 310]
+      },
+      {
+        type:'line',
+        itemStyle : {
+          normal : {
+            lineStyle:{
+              color:'#8bea7f'
+            }
+          }
+        },
+        data:[150, 232, 201, 154, 190, 330, 410]
+      },
+      {
+        type:'bar',
+        barWidth: '30%',
+        barGap: '0',
+        color:'#1286ed',
+        data:[10, 52, 200, 334, 390, 330, 220]
+      },
+      {
+        type:'bar',
+        barWidth:'30%',
+        color:'#e9615c',
+        itemStyle : {
+          normal : {
+            lineStyle:{
+
+            }
+          }
+        },
+        data:[320, 332, 301, 334, 390, 330, 320]
+      },
+      {
+        type:'line',
+        barWidth:'30%',
+        color:'#6017fc',
+        itemStyle : {
+          normal : {
+            lineStyle:{
+
+            }
+          }
+        },
+        data:[320, 332, 301, 334, 390, 330, 320]
+      }
+    ]
+  };
   export default{
     data () {
       return {
@@ -513,6 +735,15 @@
           selectSix:false,
           six:''
         },
+        chart_num_1:0,
+        chart_num_2:0,
+        chart_num_3:0,
+        chart_num_4:0,
+        chart_num_5:0,
+        chart_num_7:0,
+        chart_num_8:0,
+        chart_num_9:0,
+        chart_num_10:0,
       }
     },
     components:{
@@ -522,7 +753,58 @@
       indicatorLight
     },
     mounted () {
+      let chart_1=eCharts.init(this.$refs.chart_1);
+      let chart_2=eCharts.init(this.$refs.chart_2);
+      let chart_3=eCharts.init(this.$refs.chart_3);
+      let chart_4=eCharts.init(this.$refs.chart_4);
+      let chart_5=eCharts.init(this.$refs.chart_5);
+      let chart_6=eCharts.init(this.$refs.chart_6);
+      let chart_7=eCharts.init(this.$refs.chart_7);
+      let chart_8=eCharts.init(this.$refs.chart_8);
+      let chart_9=eCharts.init(this.$refs.chart_9);
+      let chart_10=eCharts.init(this.$refs.chart_10);
+      let chart_11=eCharts.init(this.$refs.chart_11);
+      setInterval(()=>{
+        this.chart_num_1=random(500,900);
+        this.chart_num_2=random(500,900);
+        this.chart_num_3=random(1000,1500);
+        this.chart_num_4=random(500,900);
+        this.chart_num_5=random(500,900);
+        this.chart_num_7=random(500,900);
+        this.chart_num_8=random(500,900);
+        this.chart_num_9=random(70,90);
+        this.chart_num_10=random(70,90);
+        option_1.series[0].data[0].value=this.chart_num_1;
+        option_2.series[0].data[0].value=this.chart_num_2;
+        option_3.series[0].data[0].value=this.chart_num_3;
+        option_4.series[0].data[0].value=this.chart_num_4;
+        option_5.series[0].data[0].value=this.chart_num_5;
+        option_6.series[0].data[0].value=random(600,1500);
+        option_7.series[0].data[0].value=this.chart_num_7;
+        option_8.series[0].data[0].value=this.chart_num_8;
+        option_9.series[0].data[0].value=this.chart_num_9;
+        option_10.series[0].data[0].value=this.chart_num_10;
+        chart_1.setOption(option_1,true);
 
+        option_11.series[0].data=[random(5,8),random(5,8),random(5,8),random(5,8),random(5,8),random(5,8)];
+        option_11.series[1].data=[random(5,8),random(5,8),random(5,8),random(5,8),random(5,8),random(5,8),random(5,8),random(5,8),random(5,8),random(5,8),random(5,8),random(5,8)];
+        option_11.series[2].data=[7,7,7,7,7,7,7,7,7,7,7,7];
+        option_11.series[3].data=[random(5,9),random(5,9),random(5,9),random(5,9),random(5,9)];
+        option_11.series[4].data=[random(5,9),random(5,9),random(5,9),random(5,9),random(5,9)];
+        option_11.series[5].data=[];
+
+        chart_2.setOption(option_2,true);
+        chart_3.setOption(option_3,true);
+        chart_4.setOption(option_4,true);
+        chart_5.setOption(option_5,true);
+        chart_6.setOption(option_6,true);
+        chart_7.setOption(option_7,true);
+        chart_8.setOption(option_8,true);
+        chart_9.setOption(option_9,true);
+        chart_10.setOption(option_10,true);
+        chart_11.setOption(option_11,true);
+
+      },2000)
     }
   }
 </script>

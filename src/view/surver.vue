@@ -27,6 +27,13 @@
     .left-1{
       height:420px;
       margin:10px;
+      div{
+        padding:5px;
+        img{
+          width:calc( 100% - 10px );
+          height:calc( 100% - 10px );
+        }
+      }
     }
     .left-2 {
       border-top: 1px solid #e0e3ed;
@@ -208,7 +215,7 @@
     <div class="surver main clearfix">
       <div class="left-con border-img">
           <div class="left-1">
-            <div>标题<img src="" alt=""></div>
+            <div><img src="../assets/image/10_03.png" alt=""></div>
           </div>
           <div class="left-2 clearfix">
             <div class="left-2-l">
