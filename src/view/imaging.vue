@@ -185,7 +185,7 @@
             <div class="content1"></div>
             <div class="content2 top-line">
               <div class="content-head">
-                <p class="title-third-2-p font_style_1">住院科室综合得分排名(城保)</p>
+                <p class="title-third-2-p font_style_1">检查项目工作量统计Top30</p>
                 <div class="title-button2">
                   <p>设备检查项目统计明细</p>
                 </div>

@@ -1,5 +1,4 @@
 <style lang="less">
-
   .main-head{
     position: absolute;
     left: 160px;

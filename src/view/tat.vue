@@ -1,5 +1,14 @@
 <style lang="less">
-  .operation{
+  .main-head .head_content_3{
+    display: none;
+  }
+  .main-head .head_content_4{
+    display: none;
+  }
+  .main-head .head_content_2{
+    display: none;
+  }
+  .tat{
   .title-third-1{
     position: relative;
     float: left;
@@ -29,14 +38,14 @@
   .contents{
     margin:0 10px 10px;
   }
-  .left{
+  /*.left{
     float: left;
     width: calc(50% - 10px);
     margin-right: 10px;
     height: 650px;
     background: url("../assets/image/border_1.png");
     background-size: 100% 100%;
-  }
+  }*/
   .right1{
     float: left;
     width: calc(50% - 5px);
@@ -60,10 +69,9 @@
   }
   .content-head4-title{
     position: relative;
-    float: left;
-    margin: 0 0 0 30px;
-    width: 280px;
+    width: 100%;
     height: 60px;
+    text-align: center;
     line-height: 60px;
     vertical-align: middle;
   }
@@ -74,7 +82,7 @@
     height: 220px;
   }
   .content-footer4{
-    margin-left:30px;
+    margin-left:100px;
     overflow:hidden;
     height: 40px;
   }
@@ -82,7 +90,7 @@
     position: relative;
     float: right;
     margin-top: 7px;
-    width: 75px;
+    width: 93px;
     height: 25px;
   }
   .radio1 p{
@@ -90,7 +98,7 @@
     margin-top: -3px;
     margin-left: 3px;
     margin-right: 20px;
-    width: 28px;
+    width: 56px;
     line-height: 20px;
     font-size: 14px;
     color: #ffffff;
@@ -135,6 +143,124 @@
     background-color: #0049a7;
     border-radius: 50%;
   }
+  .left{
+    float: left;
+    width: calc(50% - 10px);
+    margin-right: 10px;
+    height: 650px;
+    background: url("../assets/image/border_1.png");
+    background-size: 100% 100%;
+    .content1{
+      width: calc(100%);
+      height: 272px;
+      .left-title{
+        margin: 10px 10px 0;
+        width: 70px;
+        height: 20px;
+        line-height: 20px;
+        vertical-align: middle;
+        text-align: center;
+        background: url("../assets/image/button.png");
+      }
+      .left1{
+        float: left;
+        width: 50%;
+        height: 110px;
+        .left1-img{
+          width: calc(100% - 40px);
+          height: 50px;
+          margin: 15px auto 0;
+        }
+      }
+      .left2{
+        float: left;
+        width: 50%;
+        height: 162px;
+        .left2-img{
+          width:calc(100% - 40px);
+          height: 112px;
+          margin: 10px auto 0;
+        }
+      }
+    }
+    .content2{
+      width: 100%;
+      height: 348px;
+      .content-head{
+        position: relative;
+        float: left;
+        padding: 10px 0 0 5px;
+        width: 100%;
+        height: 38px;
+        overflow:hidden;
+        .title-button2{
+          float: right;
+          margin: 3px 15px 0 5px;
+          width: 140px;
+          height: 20px;
+          line-height: 20px;
+          vertical-align: middle;
+          text-align: center;
+          background-color: white;
+          border-radius: 3px;
+          font-size: 12px;
+        }
+      }
+      .content{
+        float: left;
+        width: 100%;
+        height: 340px;
+      }
+    }
+  }
+  .top-line{
+    border-top: 1px solid #ffffff;
+  }
+  .title-third-2-p{
+    float: left;
+    width: 250px;
+    height: 25px;
+  }
+  .title-button1{
+    float: right;
+    margin-top: 6px;
+    margin-bottom: 2px;
+    margin-right: 15px;
+    width: 130px;
+    height: 17px;
+    line-height: 17px;
+    vertical-align: middle;
+    text-align: center;
+    background-color: white;
+    border-radius: 3px;
+    font-size: 12px;
+  }
+  .select1{
+    float: right;
+    margin: 3px 2px 0;
+    width: 80px;
+  }
+  .p1{
+    float: right;
+    margin:5px 5px 0 0;
+    color: #ffffff;
+  }
+  .bg1{
+    background: url("../assets/image/tat-1.png");
+    background-size: 100% 100%;
+  }
+  .bg2{
+    background: url("../assets/image/tat-2.png");
+    background-size: 100% 100%;
+  }
+  .bg3{
+    background: url("../assets/image/tat-3.png");
+    background-size: 100% 100%;
+  }
+  .bg4{
+    background: url("../assets/image/tat-4.png");
+    background-size: 100% 100%;
+  }
 
   }
 </style>
@@ -144,13 +270,13 @@
       <head-title :headTip="headTip">
         <head-select slot="headSelect"></head-select>
       </head-title>
-      <div class="operation main">
+      <div class="tat main">
         <div class="nav-1">
           <div class="title-third-1"></div>
           <div class="title-third-1">
             <p class="title-third-1-p font_style_1">住院采集排名(前50)</p>
             <div class="title-button1">
-              <p>手术例数排名</p>
+              <p>病区采集护士统计报表</p>
             </div>
             <div class="radio1">
               <div class="radio_behind_1">
@@ -171,31 +297,52 @@
               <p>住院</p>
             </div>
           </div>
-
-
         </div>
         <div class="contents">
           <div class="left">
+            <div class="content1">
+              <div class="left1">
+                <div class="left-title">门诊</div>
+                <div class="left1-img bg1"></div>
+              </div>
+              <div class="left1">
+                <div class="left-title">急诊</div>
+                <div class="left1-img bg2"></div>
+              </div>
+              <div class="left2">
+                <div class="left-title">住院</div>
+                <div class="left2-img bg3"></div>
+              </div>
+              <div class="left2">
+                <div class="left-title">住院急诊</div>
+                <div class="left2-img bg4"></div>
+              </div>
 
+
+
+            </div>
+            <div class="content2 top-line">
+              <div class="content-head">
+                <p class="title-third-2-p font_style_1">门诊报告医生排名</p>
+                <div class="title-button2">
+                  <p>报告医生统计报表</p>
+                </div>
+                <select class="select1">
+                  <option value="门诊">门诊</option>
+                </select>
+                <p class="p1">统计方式</p>
+              </div>
+              <div class="content">
+                <table-list :tableData="tableData1"></table-list>
+              </div>
+            </div>
           </div>
           <div class="right1">
-            <table-list :tableData="tableData"></table-list>
+            <table-list :tableData="tableData2"></table-list>
           </div>
           <div class="right2">
             <div class="content-head4">
-              <p class="content-head4-title font-size-18 text_color_1">住院手术收入例数趋势</p>
-              <div class="radio2">
-                <div class="radio_behind_1">
-                  <div class="radio_front_1"></div>
-                </div>
-                <p>住院</p>
-              </div>
-              <div class="radio2">
-                <div class="radio_behind_1">
-                  <div class="radio_front_2"></div>
-                </div>
-                <p>门诊</p>
-              </div>
+              <p class="content-head4-title font-size-18 text_color_1">检验样本数&检验金额趋势</p>
             </div>
             <div class="content-content4"></div>
             <div class="content-footer4">
@@ -213,35 +360,47 @@
   import headSelect from '@/components/head-select'
   import indicatorLight from '@/components/indicator'
   import tableList from '@/components/table-list'
-  let tableData=[
-    ['排名','手术科室','当期例数','同期例数','当期收入','同期收入','当期手术费','同期手术费'],
-    ['1','44胆石病专科','265','265','3,236,017','3,236,017','3,236,017','24,199'],
-    ['2','04泌尿外科','233','233','1,916,445','1,916,445','1,916,445','20,849'],
-    ['3','43胃肠外科本部','126','126','2,814,390','2,814,390','2,814,390','17,903'],
-    ['4','45疝与腹壁疾病科','122','122','1,058,786','1,058,786','1,058,786','24,199'],
-    ['5','07妇科','121','121','1,584,396','1,584,396','1,584,396','82,972'],
-    ['6','08眼科医院','104','104','580,728','580,728','580,728','15,135'],
-    ['7','49肝胆胰外科南院','101','101','1,170,994','1,170,994','1,170,994','24,199'],
-    ['8','05骨关节与运动专科','91','91','2,201,385','2,201,385','2,201,385','21%']
+  let tableData1=[
+    ['序号','检查项目名称','总工作量','门诊工作量','急诊工作量','住院工作量','体检工作量'],
+    ['合计','心房颤动介入治疗','5,321','1,779','1,014','5,321','1,120'],
+    ['1','心力衰竭','3,226','1,055','1,621','3,226','83'],
+    ['2','急性ST段抬高心肌梗塞','2,239','668','605','2,239','4'],
+    ['3','慢性心绞痛介入治疗','1,221','740','4','1,221','0'],
+    ['4','病态心房结综合征','864','478','95','864','0'],
+    ['5','高血压','765','142','529','88','4'],
+    ['6','心房颤动介入治疗','704','704','414','704','10'],
+    ['7','慢性心绞痛介入治疗','667','667','98','667','76']
+  ];
+  let tableData2=[
+    ['排名','采集护士','样本数','采集平均时长','采集中位数','最短时长','最长时长','总时长'],
+    ['1','王佳文','1,384','1.84','236','236','6.7','24,199'],
+    ['2','史静玮','821','2.90','17','17','7.6','20,849'],
+    ['3','苏娴静','579','1.67','14','14','1.9','17,903'],
+    ['4','胡丽','512','2.10','10','10','5.2','24,199'],
+    ['5','蒋薇薇','493','3.04','6','6','10.3','82,972'],
+    ['6','徐佳','448','1.13','1','1','4.3','15,135'],
+    ['7','钱经纬','400','2.17','1','1','3.9','24,199'],
+    ['8','潘晓雯','457','99%','0','0','10.9','24,199']
   ];
   export default{
     data () {
       return {
         headTip:'检验科>>TAT概况',
-        tableData,
+        tableData1,
+        tableData2,
         selectLight:{
           selectOne:true,
-          one:'同期例数',
+          one:'检验金额-当期',
           selectTwo:true,
-          two:'当期指标',
-          selectThree:true,
-          three:'当期指标',
+          two:'检验金额-同期',
+          selectThree:false,
+          three:'',
           selectFour:true,
-          four:'当期收入',
+          four:'样本数-当期',
           selectFive:true,
-          five:'同期收入',
-          selectSix:true,
-          six:'当期例数'
+          five:'样本数-同期',
+          selectSix:false,
+          six:''
         },
       }
     },
