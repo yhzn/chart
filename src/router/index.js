@@ -17,7 +17,7 @@ import pharmacy from '@/view/pharmacy'
 import roomDynamic from '@/view/roomDynamic'
 import hr from '@/view/hr'
 import tat from '@/view/tat'
-
+import dynamic from '@/view/dynamic'
 Vue.use(Router)
 export default new Router({
   routes: [
@@ -25,6 +25,13 @@ export default new Router({
       path: '/',
       name: 'home',
       component: home,
+      meta: { keepAlive: true }
+
+    },
+    {
+      path: '/dynamic',
+      name: 'dynamic',
+      component: dynamic,
       meta: { keepAlive: true }
 
     },
