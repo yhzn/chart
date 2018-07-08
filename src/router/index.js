@@ -17,6 +17,14 @@ import pharmacy from '@/view/pharmacy'
 import roomDynamic from '@/view/roomDynamic'
 import hr from '@/view/hr'
 import tat from '@/view/tat'
+import laboratory from '@/view/laboratory'
+import sum from '@/view/sum'
+import mutation from '@/view/mutation'
+import day from '@/view/day'
+import wastage from '@/view/wastage'
+import operation1 from '@/view/operation1'
+import chartCenter from '@/view/chartCenter'
+import structure from '@/view/structure'
 
 Vue.use(Router)
 export default new Router({
@@ -40,7 +48,30 @@ export default new Router({
       name: 'ins',
       component: ins,
       meta: { keepAlive: true }
-
+    },
+    {
+      path: '/day',
+      name: 'day',
+      component: day,
+      meta: { keepAlive: true }
+    },
+    {
+      path: '/structure',
+      name: 'structure',
+      component: structure,
+      meta: { keepAlive: true }
+    },
+    {
+      path: '/wastage',
+      name: 'wastage',
+      component: wastage,
+      meta: { keepAlive: true }
+    },
+    {
+      path: '/chartCenter',
+      name: 'chartCenter',
+      component: chartCenter,
+      meta: { keepAlive: true }
     },
     {
       path: '/query',
@@ -55,11 +86,32 @@ export default new Router({
       component: hr
     },
     {
+      path: '/sum',
+      name: 'sum',
+      component: sum
+    },
+    {
+      path: '/laboratory',
+      name: 'laboratory',
+      component: laboratory
+    },
+    {
       path: '/hospitalization',
       name: 'hospitalization',
       component: hospitalization,
       meta: { keepAlive: true }
-
+    },
+    {
+      path: '/mutation',
+      name: 'mutation',
+      component: mutation,
+      meta: { keepAlive: true }
+    },
+    {
+      path: '/operation1',
+      name: 'operation1',
+      component: operation1,
+      meta: { keepAlive: true }
     },
     {
       path: '/roomDynamic',
