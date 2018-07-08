@@ -25,7 +25,7 @@ import wastage from '@/view/wastage'
 import operation1 from '@/view/operation1'
 import chartCenter from '@/view/chartCenter'
 import structure from '@/view/structure'
-
+import dynamic from '@/view/dynamic'
 Vue.use(Router)
 export default new Router({
   routes: [
@@ -33,6 +33,13 @@ export default new Router({
       path: '/',
       name: 'home',
       component: home,
+      meta: { keepAlive: true }
+
+    },
+    {
+      path: '/dynamic',
+      name: 'dynamic',
+      component: dynamic,
       meta: { keepAlive: true }
 
     },
