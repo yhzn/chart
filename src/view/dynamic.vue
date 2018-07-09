@@ -138,10 +138,12 @@
 
 
   }
+
 </style>
 <template>
-  <div class="con">
+  <div class="head-tip con">
     <head-title :headTip="headTip">
+      <head-select slot="headSelect"></head-select>
     </head-title>
     <div class="dynamic main">
       <div class="dynamic-head clearfix">
@@ -720,6 +722,7 @@
   import {random, clone, router} from '@/tool/tool'
 
   import headTitle from '@/components/head'
+  import headSelect from '@/components/head-select'
   import indicatorLight from '@/components/indicator'
   let meterOption={
 //    tooltip : {
@@ -1046,6 +1049,7 @@
     },
     components:{
       headTitle,
+      headSelect,
       indicatorLight
     },
     mounted () {
