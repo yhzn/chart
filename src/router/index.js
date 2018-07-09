@@ -25,6 +25,8 @@ import wastage from '@/view/wastage'
 import operation1 from '@/view/operation1'
 import chartCenter from '@/view/chartCenter'
 import structure from '@/view/structure'
+import operationAnalysis from '@/view/operationAnalysis'
+
 import dynamic from '@/view/dynamic'
 Vue.use(Router)
 export default new Router({
@@ -96,6 +98,11 @@ export default new Router({
       path: '/sum',
       name: 'sum',
       component: sum
+    },
+    {
+      path: '/operationAnalysis',
+      name: 'operationAnalysis',
+      component: operationAnalysis
     },
     {
       path: '/laboratory',
