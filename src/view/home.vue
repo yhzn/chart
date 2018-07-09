@@ -412,7 +412,7 @@
 
     },
     activated () {
-      router('/report',this);
+      router('/query',this);
     },
     mounted () {
       let eChartFooter=eCharts.init(this.$refs.footer);

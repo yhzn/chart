@@ -145,9 +145,9 @@
   </div>
 </template>
 <script>
-  /*import {random, clone, router} from '@/tool/tool'*/
   import headTitle from '@/components/head'
   import headSelect from '@/components/head-select'
+  import {router} from '@/tool/tool'
 
   export default{
     data () {
@@ -158,6 +158,9 @@
     components:{
       headTitle,
       headSelect,
+    },
+    activated () {
+      router('/home',this);
     },
     mounted () {
     }

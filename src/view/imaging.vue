@@ -365,6 +365,9 @@
       headSelect,
       indicatorLight
     },
+    activated () {
+      router('/surver',this);
+    },
     mounted () {
       let chart=eCharts.init(this.$refs.chart_1);
       setInterval(()=>{

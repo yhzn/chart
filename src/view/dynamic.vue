@@ -1048,6 +1048,9 @@
       headTitle,
       indicatorLight
     },
+    activated () {
+      router('/roomDynamic',this);
+    },
     mounted () {
       let chart_0 = eCharts.init(this.$refs.chart_0);
       let chart_1 = eCharts.init(this.$refs.chart_1);

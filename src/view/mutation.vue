@@ -22,12 +22,11 @@
 <template>
   <div class="con title-hide">
     <head-title :headTip="headTip">
-      <head-select slot="headSelect"></head-select>
     </head-title>
     <div class="mutation main">
 
       <div class="title">
-        <p class="font_style_1">2016年10月01日至2016年11月30日全院临床路径卫生经济学指标统计图</p>
+        <p class="font_style_1">2016年10月01日至2016年11月30日全院临床路径卫生经济学指标统计表(按科室)</p>
       </div>
       <div class="contents"></div>
     </div>
@@ -35,14 +34,18 @@
 </template>
 <script>
   import headTitle from '@/components/head'
-  import headSelect from '@/components/head-select'
+  import {router} from '@/tool/tool'
   export default{
     data () {
       return {
+        headTip:""
       }
     },
     components:{
       headTitle,
+    },
+    activated () {
+      router('/ins',this);
     },
     mounted () {
 

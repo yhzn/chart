@@ -360,6 +360,7 @@
   import headSelect from '@/components/head-select'
   import indicatorLight from '@/components/indicator'
   import tableList from '@/components/table-list'
+  import {router} from '@/tool/tool'
   let tableData1=[
     ['序号','检查项目名称','总工作量','门诊工作量','急诊工作量','住院工作量','体检工作量'],
     ['合计','心房颤动介入治疗','5,321','1,779','1,014','5,321','1,120'],
@@ -409,6 +410,9 @@
       tableList,
       headSelect,
       indicatorLight
+    },
+    activated () {
+      router('/imgAnalysis',this);
     },
     mounted () {
 

@@ -28,7 +28,6 @@
 <template>
   <div class="con title-hide">
     <head-title :headTip="headTip">
-      <head-select slot="headSelect"></head-select>
     </head-title>
     <div class="achievements main">
       <div class="contents">
@@ -41,14 +40,18 @@
 </template>
 <script>
   import headTitle from '@/components/head'
-  import headSelect from '@/components/head-select'
+  import {router} from '@/tool/tool'
   export default{
     data () {
       return {
+        headTip:""
       }
     },
     components:{
       headTitle,
+    },
+    activated () {
+      router('/operationAnalysis',this);
     },
     mounted () {
 
