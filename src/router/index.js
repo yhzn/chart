@@ -32,11 +32,17 @@ Vue.use(Router)
 export default new Router({
   routes: [
     {
-      path: '/',
+      path: '/home',
       name: 'home',
       component: home,
       meta: { keepAlive: true }
 
+    },
+    {
+      path: '/',
+      name: 'structure',
+      component: structure,
+      meta: { keepAlive: true }
     },
     {
       path: '/dynamic',
@@ -65,12 +71,6 @@ export default new Router({
       meta: { keepAlive: true }
     },
     {
-      path: '/structure',
-      name: 'structure',
-      component: structure,
-      meta: { keepAlive: true }
-    },
-    {
       path: '/wastage',
       name: 'wastage',
       component: wastage,
@@ -92,22 +92,26 @@ export default new Router({
     {
       path: '/hr',
       name: 'hr',
-      component: hr
+      component: hr,
+      meta: { keepAlive: true }
     },
     {
       path: '/sum',
       name: 'sum',
-      component: sum
+      component: sum,
+      meta: { keepAlive: true }
     },
     {
       path: '/operationAnalysis',
       name: 'operationAnalysis',
-      component: operationAnalysis
+      component: operationAnalysis,
+      meta: { keepAlive: true }
     },
     {
       path: '/laboratory',
       name: 'laboratory',
-      component: laboratory
+      component: laboratory,
+      meta: { keepAlive: true }
     },
     {
       path: '/hospitalization',
@@ -130,7 +134,8 @@ export default new Router({
     {
       path: '/roomDynamic',
       name: 'roomDynamic',
-      component: roomDynamic
+      component: roomDynamic,
+      meta: { keepAlive: true }
     },
     {
       path: '/overview',
@@ -163,22 +168,26 @@ export default new Router({
     {
       path: '/achievements',
       name: 'achievements',
-      component: achievements
+      component: achievements,
+      meta: { keepAlive: true }
     },
     {
       path: '/imgAnalysis',
       name: 'imgAnalysis',
-      component: imgAnalysis
+      component: imgAnalysis,
+      meta: { keepAlive: true }
     },
     {
       path: '/pharmacy',
       name: 'pharmacy',
-      component: pharmacy
+      component: pharmacy,
+      meta: { keepAlive: true }
     },
     {
       path: '/tat',
       name: 'tat',
-      component: tat
+      component: tat,
+      meta: { keepAlive: true }
     },
     {
       path: '/hello',

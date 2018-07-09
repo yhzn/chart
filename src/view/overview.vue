@@ -574,7 +574,7 @@
       }
     },
     activated () {
-      router('/report',this,this.timer);
+      router('/mutation',this,this.timer);
 
     },
     components:{

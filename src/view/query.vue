@@ -722,7 +722,7 @@
 </template>
 <script>
   import eCharts from 'echarts'
-  import {random, clone} from '@/tool/tool'
+  import {random, clone, router} from '@/tool/tool'
 
   import headTitle from '@/components/head'
   import headSelect from '@/components/head-select'
@@ -986,6 +986,9 @@
     components:{
       headTitle,
       headSelect,
+    },
+    activated () {
+      router('/overview',this);
     },
     mounted () {
        let chart_1=eCharts.init(this.$refs.chart_1);

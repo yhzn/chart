@@ -501,6 +501,9 @@
       headSelect,
       indicatorLight
     },
+    activated () {
+      router('/imgAnalysis',this);
+    },
     mounted () {
       let chart=eCharts.init(this.$refs.chart);
       setInterval(()=>{

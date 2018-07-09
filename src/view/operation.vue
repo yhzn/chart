@@ -1017,7 +1017,7 @@
       indicatorLight
     },
     activated () {
-
+      router('/operation1',this);
     },
     mounted () {
       let chart_1=eCharts.init(this.$refs.chart_1);

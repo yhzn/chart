@@ -28,7 +28,6 @@
 <template>
   <div class="con title-hide">
     <head-title :headTip="headTip">
-      <head-select slot="headSelect"></head-select>
     </head-title>
     <div class="laboratory main">
       <div class="contents">
@@ -40,11 +39,15 @@
 </template>
 <script>
   import headTitle from '@/components/head'
-  import headSelect from '@/components/head-select'
+  import {router} from '@/tool/tool'
   export default{
     data () {
       return {
+        headTip:""
       }
+    },
+    activated () {
+      router('/tat',this);
     },
     components:{
       headTitle,

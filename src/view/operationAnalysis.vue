@@ -230,6 +230,9 @@
       headTitle,
       headSelect,
     },
+    activated () {
+      router('/home',this);
+    },
     mounted () {
       let chart=eCharts.init(this.$refs.chart);
       setInterval(()=>{

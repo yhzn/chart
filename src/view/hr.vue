@@ -870,6 +870,9 @@
       tableList,
       headSelect
     },
+    activated () {
+      router('/wastage',this);
+    },
     mounted () {
         let chart_1=eCharts.init(this.$refs.chart_1);
         let chart_2=eCharts.init(this.$refs.chart_2);

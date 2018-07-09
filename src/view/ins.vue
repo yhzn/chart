@@ -893,7 +893,7 @@
         tableList
       },
     activated () {
-      router('/overview',this,this.timer);
+      router('/operation',this,this.timer);
 
     },
       methods:{},
