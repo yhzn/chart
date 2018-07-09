@@ -960,7 +960,6 @@
           chart_6.setOption(option_6,true);
           chart_7.setOption(option_7,true);
           chart_8.setOption(option_8,true);
-
         },2000)
     }
   }
