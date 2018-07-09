@@ -117,6 +117,8 @@
       background-color: #0049a7;
       border-radius: 50%;
     }
+    .p1{}
+    .hidden1{}
   }
 
 </style>
@@ -151,13 +153,13 @@
     </div>
     <!-- 右边 -->
     <div class="head_content_5 clearfix">
-      <select class="select_1">
+      <select class="select_1 hidden1">
         <option value ="year">2018</option>
       </select>
-      <select class="select_1">
+      <select class="select_1 hidden1">
         <option value ="month">6</option>
       </select>
-      至
+      <span class="p1">至</span>
       <select class="select_1">
         <option value ="year">2018</option>
       </select>
