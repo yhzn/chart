@@ -35,7 +35,7 @@ html,body,.con{
   margin-right:10px;
 }
 .border-bg{
-  background: url('../image/table-border.png') no-repeat;
+  background: url('../image/border_1.png') no-repeat;
   background-size:100% 100%;
 }
 
@@ -153,6 +153,6 @@ html,body,.con{
   vertical-align: middle;
 }
 .border-img{
-  background:url('../image/border_1.png') no-repeat;
+  background:url('../image/a_08.png') no-repeat;
   background-size: 100% 100%;
 }
