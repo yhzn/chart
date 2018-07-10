@@ -22,7 +22,6 @@
 <template>
   <div class="con title-hide">
     <head-title :headTip="headTip">
-      <head-select slot="headSelect"></head-select>
     </head-title>
     <div class="chartCenter main">
 
@@ -35,10 +34,10 @@
 </template>
 <script>
   import headTitle from '@/components/head'
-  import headSelect from '@/components/head-select'
   export default{
     data () {
       return {
+          headTip: ""
       }
     },
     components:{
