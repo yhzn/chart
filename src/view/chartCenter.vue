@@ -33,20 +33,19 @@
   </div>
 </template>
 <script>
-  import {router} from '@/tool/tool'
-
   import headTitle from '@/components/head'
+  import {router} from '@/tool/tool'
   export default{
     data () {
       return {
-          headTip:""
+          headTip: ""
       }
     },
     components:{
       headTitle,
     },
     activated () {
-      router('/',this);
+      router('/ibms1',this);
     },
     mounted () {
 
