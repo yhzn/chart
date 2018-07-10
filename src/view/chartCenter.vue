@@ -33,6 +33,8 @@
   </div>
 </template>
 <script>
+  import {router} from '@/tool/tool'
+
   import headTitle from '@/components/head'
   export default{
     data () {
@@ -42,6 +44,9 @@
     },
     components:{
       headTitle,
+    },
+    activated () {
+      router('/',this);
     },
     mounted () {
 

@@ -449,6 +449,28 @@
     }],
     series: [
       {
+        name:'同期',
+        type:'line',
+        itemStyle : {
+          normal : {
+            lineStyle:{
+              color:'#f9ae0e'
+            }
+          }
+        },
+      },
+      {
+        name:'当期',
+        type:'line',
+        itemStyle : {
+          normal : {
+            lineStyle:{
+              color:'#ebdf07'
+            }
+          }
+        },
+      },
+      {
         name:'当期例数',
         type:'bar',
         barWidth: '30%',
@@ -507,8 +529,10 @@
     mounted () {
       let chart=eCharts.init(this.$refs.chart);
       setInterval(()=>{
-        option.series[0].data=[random(15000,23000),random(15000,23000),random(15000,23000),random(15000,23000),random(15000,23000),random(15000,23000)];
-        option.series[1].data=[random(15000,23000),random(15000,23000),random(15000,23000),random(15000,23000),random(15000,23000),random(15000,23000),random(15000,23000),random(15000,23000),random(15000,23000),random(15000,23000),random(15000,23000),random(15000,23000)];
+        option.series[0].data=[random(12000,23000),random(12000,23000),random(12000,23000),random(12000,23000),random(12000,23000),random(12000,23000)];
+        option.series[1].data=[random(12000,23000),random(12000,23000),random(12000,23000),random(12000,23000),random(12000,23000),random(12000,23000),random(12000,23000),random(12000,23000),random(12000,23000),random(12000,23000),random(12000,23000),random(12000,23000)];
+        option.series[2].data=[random(15000,23000),random(15000,23000),random(15000,23000),random(15000,23000),random(15000,23000),random(15000,23000)];
+        option.series[3].data=[random(15000,23000),random(15000,23000),random(15000,23000),random(15000,23000),random(15000,23000),random(15000,23000),random(15000,23000),random(15000,23000),random(15000,23000),random(15000,23000),random(15000,23000),random(15000,23000)];
         chart.setOption(option,true);
 
       },2000);
