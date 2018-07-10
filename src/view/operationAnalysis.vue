@@ -54,44 +54,53 @@
       height: 660px;
       width: 60%;
       .chart2{
+        position: relative;
         width: 400px;
         height: 400px;
         margin: 130px auto 0;
         .chart2-1{
-          position: relative;
+          position: absolute;
           top: -100px;
+          left:50%;
           width: 100px;
           height: 100px;
-          margin: 0 auto 0;
+          margin-left: -50px;
           background: url("../assets/image/operate_1.png");
           background-size: 100% 100%;
         }
         .chart2-2{
-          position: relative;
-          top: 50px;
-          left: 400px;
+          position: absolute;
+          left:50%;
+          bottom:-100px;
           width: 100px;
           height: 100px;
+          margin-left:-50px;
           background: url("../assets/image/operate_2.png");
           background-size: 100% 100%;
         }
         .chart2-3{
-          position: relative;
-          top: 200px;
+          position: absolute;
+          top: 50%;
+          right:-100px;
           width: 100px;
           height: 100px;
-          margin: 0 auto 0;
+          margin-top:-50px;
           background: url("../assets/image/operate_3.png");
           background-size: 100% 100%;
         }
         .chart2-4{
-          position: relative;
-          top: -150px;
+          position: absolute;
+          top: 50%;
           left: -100px;
           width: 100px;
           height: 100px;
+          margin-top:-50px;
           background: url("../assets/image/operate_4.png");
           background-size: 100% 100%;
+        }
+        .chart2-5{
+          width:100%;
+          height:100%;
         }
       }
     }
@@ -138,6 +147,7 @@
             <div class="chart2-2"></div>
             <div class="chart2-3"></div>
             <div class="chart2-4"></div>
+            <div class="chart2-5"  ref="chart"></div>
           </div>
         </div>
       </div>
@@ -145,9 +155,70 @@
   </div>
 </template>
 <script>
-  /*import {random, clone, router} from '@/tool/tool'*/
+  import eCharts from 'echarts'
+  import {random, clone, router} from '@/tool/tool'
   import headTitle from '@/components/head'
   import headSelect from '@/components/head-select'
+  let option = {
+//    title: {
+//      text: '基础雷达图'
+//    },
+//    tooltip: {},
+    center:['50%','50%'],
+    legend: {
+      show:false,
+//      data: ['预算分配（Allocated Budget）', '实际开销（Actual Spending）']
+    },
+    radar: {
+      // shape: 'circle',
+      name: {
+        textStyle: {
+          color: '#fff',
+          backgroundColor: 'rgba(0,0,0,0)',
+          borderRadius: 3,
+          padding: [3, 5]
+        }
+      },
+      indicator: [
+        {max: 200},
+        {max: 200},
+        {max: 200},
+        {max: 200}
+      ],
+      shape: 'circle',
+      axisLine: {
+        lineStyle: {
+          color: '#3877d1'
+        }
+      },
+      splitLine: {
+        lineStyle: {
+          color: '#3877d1'
+        }
+      },
+      splitArea: {
+        areaStyle: {
+          color: ['rgba(54, 65, 129, 0.3)'],
+          shadowColor: 'rgba(0, 0, 0, 0.3)',
+          shadowBlur: 10
+        }
+      },
+    },
+    series: [{
+      type: 'radar',
+      // areaStyle: {normal: {}},
+      data : [
+        {
+          lineStyle: {
+            normal: {
+              type: 'solid',
+              color:'#d9ed3b'
+            }
+          }
+        }
+      ]
+    }]
+  };
 
   export default{
     data () {
@@ -159,7 +230,16 @@
       headTitle,
       headSelect,
     },
+    activated () {
+      router('/home',this);
+    },
     mounted () {
+      let chart=eCharts.init(this.$refs.chart);
+      setInterval(()=>{
+        option.series[0].data[0].value=[random(50,100),random(50,100),random(50,100),random(50,100)];
+        chart.setOption(option,true)
+
+      },2000);
     }
   }
 </script>

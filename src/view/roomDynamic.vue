@@ -1,4 +1,5 @@
 <style lang="less">
+  .roomDynamic-head{
   .head2{
     position: absolute;
     top: 50px;
@@ -6,9 +7,9 @@
     height: 30px;
     width: 350px;
     color: #000;
-    p{
-      padding-top: 8px;
-    }
+  p{
+    padding-top: 8px;
+  }
   }
   .title1{
     float: right;
@@ -24,6 +25,8 @@
     -webkit-box-shadow: #000 0px 0px 10px;
     -moz-box-shadow: #000 0px 0px 10px;
     box-shadow: #000 0px 0px 10px;
+  }
+
   }
   .roomDynamic{
 
@@ -82,7 +85,7 @@
   }
 </style>
 <template>
-  <div class="con">
+  <div class="roomDynamic-head con">
     <head-title :headTip="headTip">
       <div slot="headSelect" class="head2">
         <div class="title1">获取数据</div>
@@ -109,6 +112,7 @@
   import headTitle from '@/components/head'
   import headSelect from '@/components/head-select'
   import indicatorLight from '@/components/indicator'
+  import {router} from '@/tool/tool'
   export default{
     data () {
       return {
@@ -131,6 +135,9 @@
       headTitle,
       headSelect,
       indicatorLight
+    },
+    activated () {
+      router('/hospitalization',this);
     },
     mounted () {
 

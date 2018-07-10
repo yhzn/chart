@@ -1192,7 +1192,7 @@
           headSelect,
       },
     activated () {
-      router('/',this,this.timer);
+      router('/sum',this,this.timer);
 
     },
       mounted () {

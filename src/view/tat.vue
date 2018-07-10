@@ -344,7 +344,7 @@
             <div class="content-head4">
               <p class="content-head4-title font-size-18 text_color_1">检验样本数&检验金额趋势</p>
             </div>
-            <div class="content-content4"></div>
+            <div class="content-content4" ref="chart"></div>
             <div class="content-footer4">
               <indicator-light :selectLight="selectLight"></indicator-light>
             </div>
@@ -353,9 +353,11 @@
       </div>
     </div>
   </div>
-  </div>
 </template>
 <script>
+  import eCharts from 'echarts'
+  import {random, clone, router} from '@/tool/tool'
+
   import headTitle from '@/components/head'
   import headSelect from '@/components/head-select'
   import indicatorLight from '@/components/indicator'
@@ -382,6 +384,95 @@
     ['7','钱经纬','400','2.17','1','1','3.9','24,199'],
     ['8','潘晓雯','457','99%','0','0','10.9','24,199']
   ];
+  let option={
+    tooltip: {
+      trigger: 'axis'
+    },
+//          legend: {
+//            data:['邮件营销','联盟广告','视频广告','直接访问','搜索引擎']
+//          },
+    grid: {
+      top:'5%',
+      left: '5%',
+      right: '3%',
+      bottom: '5%',
+      containLabel: true
+    },
+    // 工具箱
+//          toolbox: {
+//            feature: {
+//              saveAsImage: {}
+//            }
+//          },
+    xAxis: {
+      type: 'category',
+      axisTick: {show: false},
+      axisLine:{
+        lineStyle:{
+          color:'#fff',
+          width:1,//  坐标轴宽度 这里是为了突出显示加上的
+        }
+      },
+
+      boundaryGap: true,
+      data: [1,2,3,4,5,6,7,8,9,10,11,12]
+    },
+    yAxis: [{
+      type: 'value',
+      name:' ',
+      max:25000,
+      axisLine:{
+        lineStyle:{
+          color:'#fff',
+          width:1,//  坐标轴宽度 这里是为了突出显示加上的
+        }
+      }
+    },{
+      type: 'value',
+      name: ' ',
+      position: 'right',
+      axisLabel: {
+        formatter: '{value}'
+      },
+      splitLine:{  // 去掉与坐标轴平行的直线
+        show:false
+      },
+      axisTick: {
+        show: false
+      },
+      axisLine:{
+        lineStyle:{
+          color:'#fff',
+          width:1,//  坐标轴宽度 这里是为了突出显示加上的
+        }
+      }
+    }],
+    series: [
+      {
+        name:'当期例数',
+        type:'bar',
+        barWidth: '30%',
+        barGap: '0',
+        color:'#1286ed',
+        data:[10, 52, 200, 334, 390, 330, 220]
+      },
+      {
+        name:'同期例数',
+        type:'bar',
+        barWidth:'30%',
+        color:'#e9615c',
+        itemStyle : {
+          normal : {
+            lineStyle:{
+
+            }
+          }
+        },
+        data:[320, 332, 301, 334, 390, 330, 320]
+      }
+    ]
+  };
+
   export default{
     data () {
       return {
@@ -410,7 +501,17 @@
       headSelect,
       indicatorLight
     },
+    activated () {
+      router('/imgAnalysis',this);
+    },
     mounted () {
+      let chart=eCharts.init(this.$refs.chart);
+      setInterval(()=>{
+        option.series[0].data=[random(15000,23000),random(15000,23000),random(15000,23000),random(15000,23000),random(15000,23000),random(15000,23000)];
+        option.series[1].data=[random(15000,23000),random(15000,23000),random(15000,23000),random(15000,23000),random(15000,23000),random(15000,23000),random(15000,23000),random(15000,23000),random(15000,23000),random(15000,23000),random(15000,23000),random(15000,23000)];
+        chart.setOption(option,true);
+
+      },2000);
 
     }
   }

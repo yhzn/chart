@@ -114,12 +114,12 @@
               }
               .content1-left{
                 float: left;
-                width: 130px;
-                height: 170px;
+                width: 90px;
+                height: 130px;
               }
               .content1-right{
                 float: right;
-                width: calc(100% - 130px);
+                width: calc(100% - 90px);
                 height: 170px;
                 padding-top: 20px;
               }
@@ -386,29 +386,29 @@
                 <div class="content1-title">
                   <p>员工性质</p>
                 </div>
-                <div class="content1-left">
+                <div class="content1-left" ref="chart_1">
 
                 </div>
                 <div class="content1-right">
                   <div class="elements">
                     <div class="element1 color_8"></div>
-                    <p>在编:1</p>
+                    <p>在编:{{chart_num_1_1}}</p>
                   </div>
                   <div class="elements">
                     <div class="element1 color_2"></div>
-                    <p>派遣:11</p>
+                    <p>派遣:{{chart_num_1_2}}</p>
                   </div>
                   <div class="elements">
                     <div class="element1 color_5"></div>
-                    <p>聘用人员:3</p>
+                    <p>聘用人员:{{chart_num_1_3}}</p>
                   </div>
                   <div class="elements">
                     <div class="element1 color_3"></div>
-                    <p>其他:1</p>
+                    <p>其他:{{chart_num_1_4}}</p>
                   </div>
                   <div class="elements">
                     <div class="element1 color_4"></div>
-                    <p>聘用人员:77</p>
+                    <p>聘用人员:{{chart_num_1_5}}</p>
                   </div>
                 </div>
               </div>
@@ -416,26 +416,28 @@
                 <div class="content1-title">
                   <p>科室类别</p>
                 </div>
-                <div class="content1-left">
+                <div class="content1-left" ref="chart_2">
 
                 </div>
                 <div class="content1-right">
                   <div class="elements">
+                    <div class="elements">
+                      <div class="element1 color_4"></div>
+                      <p>科研:{{chart_num_2_1}}</p>
+                    </div>
+                    <div class="elements">
+                      <div class="element1 color_5"></div>
+                      <p>临床:{{chart_num_2_2}}</p>
+                    </div>
                     <div class="element1 color_8"></div>
-                    <p>护理:3</p>
+                    <p>护理:{{chart_num_2_3}}</p>
                   </div>
-                  <div class="elements">
-                    <div class="element1 color_5"></div>
-                    <p>临床:11</p>
-                  </div>
+
                   <div class="elements">
                     <div class="element1 color_3"></div>
-                    <p>其他:76</p>
+                    <p>其他:{{chart_num_2_4}}</p>
                   </div>
-                  <div class="elements">
-                    <div class="element1 color_4"></div>
-                    <p>科研:3</p>
-                  </div>
+
                 </div>
               </div>
             </div>
@@ -444,29 +446,29 @@
                 <div class="content1-title">
                   <p>学历分布</p>
                 </div>
-                <div class="content1-left">
+                <div class="content1-left" ref="chart_3">
 
                 </div>
                 <div class="content1-right">
                   <div class="elements">
                     <div class="element1 color_5"></div>
-                    <p>博士毕业:4</p>
+                    <p>博士毕业:{{chart_num_3_1}}</p>
                   </div>
                   <div class="elements">
                     <div class="element1 color_3"></div>
-                    <p>硕士毕业:2</p>
+                    <p>硕士毕业:{{chart_num_3_2}}</p>
                   </div>
                   <div class="elements">
                     <div class="element1 color_8"></div>
-                    <p>大学本科:28</p>
+                    <p>大学本科:{{chart_num_3_3}}</p>
                   </div>
                   <div class="elements">
                     <div class="element1 color_2"></div>
-                    <p>专科毕业:43</p>
+                    <p>专科毕业:{{chart_num_3_4}}</p>
                   </div>
                   <div class="elements">
                     <div class="element1 color_4"></div>
-                    <p>中专及以下:16</p>
+                    <p>中专及以下:{{chart_num_3_5}}</p>
                   </div>
                 </div>
               </div>
@@ -474,25 +476,25 @@
                 <div class="content1-title">
                   <p>学位分布</p>
                 </div>
-                <div class="content1-left">
+                <div class="content1-left" ref="chart_4">
 
                 </div>
                 <div class="content1-right">
                   <div class="elements">
                     <div class="element1 color_8"></div>
-                    <p>博士:11</p>
+                    <p>博士:{{chart_num_4_1}}</p>
                   </div>
                   <div class="elements">
                     <div class="element1 color_4"></div>
-                    <p>硕士:3</p>
+                    <p>硕士:{{chart_num_4_2}}</p>
                   </div>
                   <div class="elements">
                     <div class="element1 color_3"></div>
-                    <p>学士:3</p>
+                    <p>学士:{{chart_num_4_3}}</p>
                   </div>
                   <div class="elements">
                     <div class="element1 color_5"></div>
-                    <p>其他:76</p>
+                    <p>其他:{{chart_num_4_4}}</p>
                   </div>
                 </div>
               </div>
@@ -502,25 +504,25 @@
                 <div class="content1-title">
                   <p>职称分布</p>
                 </div>
-                <div class="content1-left">
+                <div class="content1-left" ref="chart_5">
 
                 </div>
                 <div class="content1-right">
                   <div class="elements">
                     <div class="element1 color_2"></div>
-                    <p>正高:1</p>
+                    <p>正高:{{chart_num_5_1}}</p>
                   </div>
                   <div class="elements">
                     <div class="element1 color_4"></div>
-                    <p>中级:2</p>
+                    <p>中级:{{chart_num_5_2}}</p>
                   </div>
                   <div class="elements">
                     <div class="element1 color_3"></div>
-                    <p>初级:5</p>
+                    <p>初级:{{chart_num_5_3}}</p>
                   </div>
                   <div class="elements">
                     <div class="element1 color_8"></div>
-                    <p>其他:85</p>
+                    <p>其他:{{chart_num_5_4}}</p>
                   </div>
                 </div>
               </div>
@@ -528,13 +530,13 @@
                 <div class="content1-title">
                   <p>教学职称</p>
                 </div>
-                <div class="content1-left">
+                <div class="content1-left" ref="chart_6">
 
                 </div>
                 <div class="content1-right">
                   <div class="elements">
                     <div class="element1 color_4"></div>
-                    <p>其他:93</p>
+                    <p>其他:{{chart_num_6_1}}</p>
                   </div>
                 </div>
               </div>
@@ -563,7 +565,7 @@
               <p>离职类型分布</p>
             </div>
             <div class="elements1">
-              <div class="chart"></div>
+              <div class="chart" ref="chart_7"></div>
               <div class="footer">
                 <p>已选所有离职类型</p>
               </div>
@@ -572,11 +574,11 @@
               <div class="title-1">所有类型</div>
               <div class="elements">
                 <div class="element1 color_4"></div>
-                <p>主动离职:12</p>
+                <p>主动离职:{{chart_num_7_1}}</p>
               </div>
               <div class="elements">
                 <div class="element1 color_3"></div>
-                <p>(离)退休:1</p>
+                <p>(离)退休:{{chart_num_7_2}}</p>
               </div>
             </div>
           </div>
@@ -656,7 +658,7 @@
           <div class="right2-content">
             <div class="right2-title1">
               <p class="font_style_1">2018年年退休员工年度分布情况</p>
-              <div class="right2-chart1"></div>
+              <div class="right2-chart1" ref="chart_8"></div>
             </div>
           </div>
         </div>
@@ -667,6 +669,9 @@
 
 </template>
 <script>
+  import eCharts from 'echarts'
+  import {random, clone, router} from '@/tool/tool'
+
   import headTitle from '@/components/head'
   import headSelect from '@/components/head-select'
   import tableList from '@/components/table-list'
@@ -710,6 +715,120 @@
     ['医务部(外联办公室)','1'],
     ['医务部(外联办公室)','1'],
   ];
+  let pieOption = {
+//    title : {
+//      text: '某站点用户访问来源',
+//      subtext: '纯属虚构',
+//      x:'center'
+//    },
+//    tooltip : {
+//      trigger: 'item',
+//      formatter: "{a} <br/>{b} : {c} ({d}%)"
+//    },
+    legend: {
+      show:false,
+      orient: 'vertical',
+      left: 'left',
+      data: ['A（优）','B（良）','C（中）','D（差）']
+    },
+    series : [
+      {
+        name: '',
+        type: 'pie',
+        radius : 40,
+        center: ['50%', '50%'],
+        itemStyle: {
+          emphasis: {
+            shadowBlur: 10,
+            shadowOffsetX: 0,
+            shadowColor: 'rgba(0, 0, 0, 0.5)'
+          }
+        },
+        label:{
+          show:false,
+          color:'red'
+        }
+      }
+    ]
+  };
+  let option_1=clone(pieOption);
+  let option_2=clone(pieOption);
+  let option_3=clone(pieOption);
+  let option_4=clone(pieOption);
+  let option_5=clone(pieOption);
+  let option_6=clone(pieOption);
+  let option_7=clone(pieOption);
+  option_7.series[0].radius=60;
+  let option_8 = {
+    tooltip : {
+      trigger: 'axis',
+      axisPointer : {            // 坐标轴指示器，坐标轴触发有效
+        type : 'shadow'        // 默认为直线，可选为：'line' | 'shadow'
+      }
+    },
+    grid: {
+      left: '3%',
+      right: '4%',
+      bottom: '3%',
+      containLabel: true
+    },
+    xAxis : [
+      {
+        splitLine:{
+          show:false
+        },
+        type : 'category',
+        data : ['2018'],
+        axisTick: {
+          alignWithLabel: true
+        },
+        axisLine:{
+          lineStyle:{
+            color:'#fff',
+            width:1,//  坐标轴宽度 这里是为了突出显示加上的
+          }
+        }
+      }
+    ],
+    yAxis : [
+      {
+        type : 'value',
+        name:'单位：人次',
+        splitLine:{  // 坐标轴平行的直线
+          show:true
+        },
+        min: 0,
+        max: 40,
+        axisLine:{
+          lineStyle:{
+            color:'#fff',
+            width:1,//  坐标轴宽度 这里是为了突出显示加上的
+          }
+        }
+
+      }
+    ],
+    series : [
+      {
+        type:'bar',
+        barWidth: '50',
+        color:'#046cc2',
+        itemStyle:{
+          normal:{
+            label:{
+              show:true,
+              position:'top',
+              textStyle:{
+                color:'#fff'
+              }
+            }
+          }
+
+        }
+      }
+    ]
+  };
+
   export default{
     data () {
       return {
@@ -717,7 +836,33 @@
         tableData1,
         tableData2,
         tableData3,
-        tableData4
+        tableData4,
+        chart_num_1_1:0,
+        chart_num_1_2:0,
+        chart_num_1_3:0,
+        chart_num_1_4:0,
+        chart_num_1_5:0,
+        chart_num_2_1:0,
+        chart_num_2_2:0,
+        chart_num_2_3:0,
+        chart_num_2_4:0,
+        chart_num_3_1:0,
+        chart_num_3_2:0,
+        chart_num_3_3:0,
+        chart_num_3_4:0,
+        chart_num_3_5:0,
+        chart_num_4_1:0,
+        chart_num_4_2:0,
+        chart_num_4_3:0,
+        chart_num_4_4:0,
+        chart_num_5_1:0,
+        chart_num_5_2:0,
+        chart_num_5_3:0,
+        chart_num_5_4:0,
+        chart_num_6_1:0,
+        chart_num_7_1:0,
+        chart_num_7_2:0,
+        chart_num_8_1:0,
       }
     },
     components:{
@@ -725,8 +870,100 @@
       tableList,
       headSelect
     },
+    activated () {
+      router('/wastage',this);
+    },
     mounted () {
+        let chart_1=eCharts.init(this.$refs.chart_1);
+        let chart_2=eCharts.init(this.$refs.chart_2);
+        let chart_3=eCharts.init(this.$refs.chart_3);
+        let chart_4=eCharts.init(this.$refs.chart_4);
+        let chart_5=eCharts.init(this.$refs.chart_5);
+        let chart_6=eCharts.init(this.$refs.chart_6);
+        let chart_7=eCharts.init(this.$refs.chart_7);
+        let chart_8=eCharts.init(this.$refs.chart_8);
 
+        setInterval(()=>{
+          this.chart_num_1_1=random(1,4);
+          this.chart_num_1_2=random(8,13);
+          this.chart_num_1_3=random(1,4);
+          this.chart_num_1_4=random(1,4);
+          this.chart_num_1_5=random(50,80);
+          this.chart_num_2_1=random(8,13);
+          this.chart_num_2_2=random(1,4);
+          this.chart_num_2_3=random(1,4);
+          this.chart_num_2_4=random(50,80);
+          this.chart_num_3_1=random(1,5);
+          this.chart_num_3_2=random(1,4);
+          this.chart_num_3_3=random(20,30);
+          this.chart_num_3_4=random(30,50);
+          this.chart_num_3_5=random(10,20);
+          this.chart_num_4_1=random(8,13);
+          this.chart_num_4_2=random(1,4);
+          this.chart_num_4_3=random(1,4);
+          this.chart_num_4_4=random(60,80);
+          this.chart_num_5_1=random(1,4);
+          this.chart_num_5_2=random(1,4);
+          this.chart_num_5_3=random(1,6);
+          this.chart_num_5_4=random(70,90);
+          this.chart_num_6_1=random(80,100);
+          this.chart_num_7_1=random(5,15);
+          this.chart_num_7_2=random(1,5);
+          this.chart_num_8_1=random(30,50);
+          option_1.color=['#9368dc','#edde05','#eb615f','#8be87e','#1286ed'];
+          option_1.series[0].data=[
+            {value:this.chart_num_1_1},
+            {value:this.chart_num_1_2},
+            {value:this.chart_num_1_3},
+            {value:this.chart_num_1_4},
+            {value:this.chart_num_1_5}
+          ];
+          option_2.color=['#1286ed','#8be87e'];
+          option_2.series[0].data=[
+            {value:this.chart_num_2_1},
+            {value:this.chart_num_2_2}
+          ];
+          option_3.color=['#eb615f','#8be87e','#9368dc','#edde05','#067bdb'];
+          option_3.series[0].data=[
+            {value:this.chart_num_3_1},
+            {value:this.chart_num_3_2},
+            {value:this.chart_num_3_3},
+            {value:this.chart_num_3_4},
+            {value:this.chart_num_3_5}
+          ];
+          option_4.color=['#9368dc','#067bdb','#8be87e','#eb615f'];
+          option_4.series[0].data=[
+            {value:this.chart_num_4_1},
+            {value:this.chart_num_4_2},
+            {value:this.chart_num_4_3},
+            {value:this.chart_num_4_4},
+          ];
+          option_5.color=['#edde05','#1286ed','#8be87e','#9368dc'];
+          option_5.series[0].data=[
+            {value:this.chart_num_5_1},
+            {value:this.chart_num_5_2},
+            {value:this.chart_num_5_3},
+            {value:this.chart_num_5_4},
+          ];
+          option_6.color=['#2a71ff'];
+          option_6.series[0].data=[
+            {value:this.chart_num_6_1}
+          ];
+          option_7.color=['#1286ed','#8be87e'];
+          option_7.series[0].data=[
+            {value:this.chart_num_7_1},
+            {value:this.chart_num_7_2}
+          ];
+          option_8.series[0].data=[random(25,38)];
+          chart_1.setOption(option_1,true);
+          chart_2.setOption(option_2,true);
+          chart_3.setOption(option_3,true);
+          chart_4.setOption(option_4,true);
+          chart_5.setOption(option_5,true);
+          chart_6.setOption(option_6,true);
+          chart_7.setOption(option_7,true);
+          chart_8.setOption(option_8,true);
+        },2000)
     }
   }
 </script>

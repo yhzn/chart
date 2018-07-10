@@ -29,6 +29,7 @@
       margin:10px;
       div{
         padding:5px;
+        height: calc(100% - 10px);
         img{
           width:calc( 100% - 10px );
           height:calc( 100% - 10px );
@@ -651,6 +652,9 @@
     components:{
       headTitle,
       indicatorLight
+    },
+    activated () {
+      router('/hr',this);
     },
     mounted () {
       let chart_1 = eCharts.init(this.$refs.chart_1);

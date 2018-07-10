@@ -34,6 +34,7 @@
 </template>
 <script>
   import headTitle from '@/components/head'
+  import {router} from '@/tool/tool'
   export default{
     data () {
       return {
@@ -42,6 +43,9 @@
     },
     components:{
       headTitle,
+    },
+    activated () {
+      router('/ibms1',this);
     },
     mounted () {
 
