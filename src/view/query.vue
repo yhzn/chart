@@ -724,7 +724,7 @@
   import eCharts from 'echarts'
   import {random, clone, router} from '@/tool/tool'
 
-  import headTitle from '@/components/head'
+  import hecdTitle from '@/components/head'
   import headSelect from '@/components/head-select'
   import indicatorLight from '@/components/indicator'
   import tableList from '@/components/table-list'
