@@ -392,7 +392,7 @@
 </template>
 <script>
   import eCharts from 'echarts'
-  import {random, clone, router} from '@/tool/tool'
+  import {random, clone, start, pause, run} from '@/tool/tool'
 
   import headTitle from '@/components/head'
   import promptBox from '@/components/prompt'
@@ -419,54 +419,23 @@
         headTitle,
         promptBox
     },
-    activated () {
-      router('/query',this);
-    },
+//    activated () {
+//      router('/query',this);
+//    },
     methods:{
       pause () {
-        clearInterval(this.timer);
-        if(this.show){
-          return false
-        }
-        this.flag=!this.flag;
-        this.show=true;
-        this.showTimer=setTimeout(()=>{
-          clearTimeout(this.showTimer);
-          this.show=false;
-        },1500);
+        pause(this)
       },
       start () {
-        if(this.show){
-          return false
-        }
-        this.flag=!this.flag;
-        this.show=true;
-        this.showTimer=setTimeout(()=>{
-          clearTimeout(this.showTimer);
-          this.show=false;
+         start(this,'/query')
 
-        },1500);
-        this.timer=setInterval(()=>{
-          this.timeCount++;
-          console.log(this.timeCount)
-          if(this.timeCount>=10){
-            clearInterval(this.timer)
-            this.$router.push('/query')
-          }
-        },1000)
       }
 
 
     },
 
     mounted () {
-      this.timer=setInterval(()=>{
-        this.timeCount++;
-        if(this.timeCount>=10){
-          clearInterval(this.timer)
-          this.$router.push('/query')
-        }
-      },1000)
+      run(this,'/query')
       let eChartFooter=eCharts.init(this.$refs.footer);
       let eChartMeterOne=eCharts.init(this.$refs.meterOne);
       let eChartMeterTwo=eCharts.init(this.$refs.meterTwo);

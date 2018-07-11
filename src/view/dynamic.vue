@@ -713,7 +713,7 @@
 </template>
 <script>
   import eCharts from 'echarts'
-  import {random, clone, router} from '@/tool/tool'
+  import {random, clone, start, pause, run} from '@/tool/tool'
 
   import headTitle from '@/components/head'
   import headSelect from '@/components/head-select'
@@ -1061,50 +1061,17 @@
 //    },
     methods:{
       pause () {
-        clearInterval(this.timer);
-        if(this.show){
-          return false
-        }
-        this.flag=!this.flag;
-        this.show=true;
-        this.showTimer=setTimeout(()=>{
-          clearTimeout(this.showTimer);
-          this.show=false;
-        },1500);
+        pause(this)
       },
       start () {
-        if(this.show){
-          return false
-        }
-        this.flag=!this.flag;
-        this.show=true;
-        this.showTimer=setTimeout(()=>{
-          clearTimeout(this.showTimer);
-          this.show=false;
-
-        },1500);
-        this.timer=setInterval(()=>{
-          this.timeCount++;
-          console.log(this.timeCount)
-          if(this.timeCount>=10){
-            clearInterval(this.timer)
-            this.$router.push('/roomDynamic')
-          }
-        },1000)
+        start(this,'/roomDynamic')
       }
 
 
     },
 
     mounted () {
-      this.timer=setInterval(()=>{
-        this.timeCount++;
-        console.log(this.timeCount)
-        if(this.timeCount>=10){
-          clearInterval(this.timer)
-          this.$router.push('/roomDynamic')
-        }
-      },1000)
+      run(this,'/roomDynamic')
 
       let chart_0 = eCharts.init(this.$refs.chart_0);
       let chart_1 = eCharts.init(this.$refs.chart_1);

@@ -157,7 +157,7 @@
 </template>
 <script>
   import eCharts from 'echarts'
-  import {random, clone, router} from '@/tool/tool'
+  import {random, clone, start, pause, run} from '@/tool/tool'
   import headTitle from '@/components/head'
   import headSelect from '@/components/head-select'
   import promptBox from '@/components/prompt'
@@ -246,55 +246,26 @@
 //    },
     methods:{
       pause () {
-        clearInterval(this.timer);
-        if(this.show){
-          return false
-        }
-        this.flag=!this.flag;
-        this.show=true;
-        this.showTimer=setTimeout(()=>{
-          clearTimeout(this.showTimer);
-          this.show=false;
-        },1500);
+        pause(this)
       },
       start () {
-        if(this.show){
-          return false
-        }
-        this.flag=!this.flag;
-        this.show=true;
-        this.showTimer=setTimeout(()=>{
-          clearTimeout(this.showTimer);
-          this.show=false;
-
-        },1500);
-        this.timer=setInterval(()=>{
-          this.timeCount++;
-          console.log(this.timeCount)
-          if(this.timeCount>=10){
-            clearInterval(this.timer)
-            this.$router.push('/home')
-          }
-        },1000)
+        start(this,'/home')
       }
 
 
     },
 
     mounted () {
+      run(this,'/home')
+
       let chart=eCharts.init(this.$refs.chart);
       this.chartTimer=setInterval(()=>{
         option.series[0].data[0].value=[random(50,100),random(50,100),random(50,100),random(50,100)];
         chart.setOption(option,true)
 
       },2000);
-      this.timer=setInterval(()=>{
-        this.timeCount++;
-        if(this.timeCount>=10){
-          clearInterval(this.timer)
-          this.$router.push('/home')
-        }
-      },1000)
+
+
 
     },
     beforeDestroy(){

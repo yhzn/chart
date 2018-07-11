@@ -266,7 +266,7 @@
 </template>
 <script>
   import eCharts from 'echarts'
-  import {random, clone, router} from '@/tool/tool'
+  import {random, clone, start, pause, run} from '@/tool/tool'
   import rj from '@/assets/image/rj.jpg'
   import pj from '@/assets/image/pj.jpg'
   import headTitle from '@/components/head'
@@ -593,50 +593,21 @@
     },
     methods:{
       pause () {
-        clearInterval(this.timer);
-        if(this.show){
-          return false
-        }
-        this.flag=!this.flag;
-        this.show=true;
-        this.showTimer=setTimeout(()=>{
-          clearTimeout(this.showTimer);
-          this.show=false;
-        },1500);
+        pause(this)
       },
       start () {
-        if(this.show){
-          return false
-        }
-        this.flag=!this.flag;
-        this.show=true;
-        this.showTimer=setTimeout(()=>{
-          clearTimeout(this.showTimer);
-          this.show=false;
 
-        },1500);
-        this.timer=setInterval(()=>{
-          this.timeCount++;
-          console.log(this.timeCount)
-          if(this.timeCount>=10){
-            clearInterval(this.timer)
-            this.$router.push('/mutation')
-          }
-        },1000)
+        start(this,'/mutation')
+
       }
 
 
     },
 
     mounted () {
-      this.timer=setInterval(()=>{
-        this.timeCount++;
-        console.log(this.timeCount)
-        if(this.timeCount>=10){
-          clearInterval(this.timer)
-          this.$router.push('/mutation')
-        }
-      },1000)
+
+      run(this,'/mutation')
+
       let chart_1=eCharts.init(this.$refs.chart_meter_1);
       let chart_2=eCharts.init(this.$refs.chart_meter_2);
       let chart_3=eCharts.init(this.$refs.chart_meter_3);
