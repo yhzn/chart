@@ -220,7 +220,7 @@
 </template>
 <script>
   import eCharts from 'echarts'
-  import {random, clone, router} from '@/tool/tool'
+  import {random, clone, start, pause, run} from '@/tool/tool'
 
   import headTitle from '@/components/head'
   import headSelect from '@/components/head-select'
@@ -378,50 +378,17 @@
 //    },
     methods:{
       pause () {
-        clearInterval(this.timer);
-        if(this.show){
-          return false
-        }
-        this.flag=!this.flag;
-        this.show=true;
-        this.showTimer=setTimeout(()=>{
-          clearTimeout(this.showTimer);
-          this.show=false;
-        },1500);
+        pause(this)
       },
       start () {
-        if(this.show){
-          return false
-        }
-        this.flag=!this.flag;
-        this.show=true;
-        this.showTimer=setTimeout(()=>{
-          clearTimeout(this.showTimer);
-          this.show=false;
-
-        },1500);
-        this.timer=setInterval(()=>{
-          this.timeCount++;
-          console.log(this.timeCount)
-          if(this.timeCount>=10){
-            clearInterval(this.timer)
-            this.$router.push('/surver')
-          }
-        },1000)
+        start(this,'/surver')
       }
 
 
     },
 
     mounted () {
-      this.timer=setInterval(()=>{
-        this.timeCount++;
-        console.log(this.timeCount)
-        if(this.timeCount>=10){
-          clearInterval(this.timer)
-          this.$router.push('/surver')
-        }
-      },1000)
+      run(this,'/surver')
       let chart=eCharts.init(this.$refs.chart_1);
       this.chartTimer=setInterval(()=>{
         option.series[0].data=[random(15000,21000),random(15000,21000),random(15000,21000),random(15000,21000),random(15000,21000),random(15000,21000)];

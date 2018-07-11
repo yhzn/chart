@@ -36,7 +36,7 @@
   import headTitle from '@/components/head'
   import promptBox from '@/components/prompt'
 
-  import {router} from '@/tool/tool'
+  import {start,pause,run} from '@/tool/tool'
   export default{
     data () {
       return {
@@ -59,48 +59,15 @@
     },
     methods:{
       pause () {
-        clearInterval(this.timer);
-        if(this.show){
-          return false
-        }
-        this.flag=!this.flag;
-        this.show=true;
-        this.showTimer=setTimeout(()=>{
-          clearTimeout(this.showTimer);
-          this.show=false;
-        },1500);
+         pause(this)
       },
       start () {
-        if(this.show){
-          return false
-        }
-        this.flag=!this.flag;
-        this.show=true;
-        this.showTimer=setTimeout(()=>{
-          clearTimeout(this.showTimer);
-          this.show=false;
-
-        },1500);
-        this.timer=setInterval(()=>{
-          this.timeCount++;
-          console.log(this.timeCount)
-          if(this.timeCount>=10){
-            clearInterval(this.timer)
-            this.$router.push('/achievements')
-          }
-        },1000)
+        start(this,'/achievements')
       }
 
     },
     mounted () {
-      this.timer=setInterval(()=>{
-        this.timeCount++;
-        if(this.timeCount>=10){
-          clearInterval(this.timer)
-          this.$router.push('/achievements')
-        }
-      },1000)
-
+        run(this,'/achievements')
     },
     beforeDestroy(){
       clearInterval(this.timer)
