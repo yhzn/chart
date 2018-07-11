@@ -163,13 +163,13 @@
   }
 </style>
 <template>
-  <div class="con">
-    <div class="con">
+    <div class="con"  @click="flag===true ? start() : pause()">
+      <prompt-box :flag="flag" v-if="show"></prompt-box>
       <head-title :headTip="headTip">
         <head-select slot="headSelect"></head-select>
       </head-title>
       <div class="operation main">
-        <div class="nav-1">
+        <div class="nav-1 clearfix">
           <div class="title-third-1">
             <p class="font_style_1">设备工作量概况</p>
           </div>
@@ -180,7 +180,7 @@
             </div>
           </div>
         </div>
-        <div class="contents">
+        <div class="contents clearfix">
           <div class="left">
             <div class="content1"></div>
             <div class="content2 top-line">
@@ -216,7 +216,7 @@
         </div>
       </div>
     </div>
-  </div>
+
 </template>
 <script>
   import eCharts from 'echarts'
@@ -225,6 +225,7 @@
   import headTitle from '@/components/head'
   import headSelect from '@/components/head-select'
   import indicatorLight from '@/components/indicator'
+  import promptBox from '@/components/prompt'
   import tableList from '@/components/table-list'
   let tableData=[
     ['排名','科室名称','入径率','完成率','入径数','收治数','平均住院日','药占比','均费差额'],
@@ -357,26 +358,83 @@
           selectSix:false,
           six:''
         },
+        flag:false,
+        timer:null,
+        show:false,
+        showTimer:null,
+        chartTimer:null,
+        timeCount:0
       }
     },
     components:{
       headTitle,
       tableList,
+      promptBox,
       headSelect,
       indicatorLight
     },
-    activated () {
-      router('/surver',this);
+//    activated () {
+//      router('/surver',this);
+//    },
+    methods:{
+      pause () {
+        clearInterval(this.timer);
+        if(this.show){
+          return false
+        }
+        this.flag=!this.flag;
+        this.show=true;
+        this.showTimer=setTimeout(()=>{
+          clearTimeout(this.showTimer);
+          this.show=false;
+        },1500);
+      },
+      start () {
+        if(this.show){
+          return false
+        }
+        this.flag=!this.flag;
+        this.show=true;
+        this.showTimer=setTimeout(()=>{
+          clearTimeout(this.showTimer);
+          this.show=false;
+
+        },1500);
+        this.timer=setInterval(()=>{
+          this.timeCount++;
+          console.log(this.timeCount)
+          if(this.timeCount>=10){
+            clearInterval(this.timer)
+            this.$router.push('/surver')
+          }
+        },1000)
+      }
+
+
     },
+
     mounted () {
+      this.timer=setInterval(()=>{
+        this.timeCount++;
+        console.log(this.timeCount)
+        if(this.timeCount>=10){
+          clearInterval(this.timer)
+          this.$router.push('/surver')
+        }
+      },1000)
       let chart=eCharts.init(this.$refs.chart_1);
-      setInterval(()=>{
+      this.chartTimer=setInterval(()=>{
         option.series[0].data=[random(15000,21000),random(15000,21000),random(15000,21000),random(15000,21000),random(15000,21000),random(15000,21000)];
         option.series[1].data=[random(15000,21000),random(15000,21000),random(15000,21000),random(15000,21000),random(15000,21000),random(15000,21000),random(15000,21000),random(15000,21000),random(15000,21000),random(15000,21000),random(15000,21000),random(15000,21000)];
         chart.setOption(option,true);
 
       },2000)
 
+    },
+    beforeDestroy(){
+      clearInterval(this.chartTimer)
+      clearInterval(this.timer)
     }
+
   }
 </script>

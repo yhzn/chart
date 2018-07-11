@@ -26,7 +26,8 @@
   }
 </style>
 <template>
-  <div class="con title-hide">
+  <div class="con title-hide" @click="flag===true ? start() : pause()">
+    <prompt-box :flag="flag" v-if="show"></prompt-box>
     <head-title :headTip="headTip">
     </head-title>
     <div class="laboratory main">
@@ -40,21 +41,81 @@
 <script>
   import headTitle from '@/components/head'
   import {router} from '@/tool/tool'
+  import promptBox from '@/components/prompt'
+
   export default{
     data () {
       return {
-        headTip:""
+        headTip:"",
+        flag:false,
+        timer:null,
+        show:false,
+        showTimer:null,
+        chartTimer:null,
+        timeCount:0
+
       }
     },
-    activated () {
-      router('/tat',this);
-    },
+//    activated () {
+//      router('/tat',this);
+//    },
     components:{
       headTitle,
-    },
-    mounted () {
+      promptBox,
 
+    },
+    methods:{
+      pause () {
+        clearInterval(this.timer);
+        if(this.show){
+          return false
+        }
+        this.flag=!this.flag;
+        this.show=true;
+        this.showTimer=setTimeout(()=>{
+          clearTimeout(this.showTimer);
+          this.show=false;
+        },1500);
+      },
+      start () {
+        if(this.show){
+          return false
+        }
+        this.flag=!this.flag;
+        this.show=true;
+        this.showTimer=setTimeout(()=>{
+          clearTimeout(this.showTimer);
+          this.show=false;
+
+        },1500);
+        this.timer=setInterval(()=>{
+          this.timeCount++;
+          console.log(this.timeCount)
+          if(this.timeCount>=10){
+            clearInterval(this.timer)
+            this.$router.push('/tat')
+          }
+        },1000)
+      }
+
+
+    },
+
+    mounted () {
+      this.timer=setInterval(()=>{
+        this.timeCount++;
+        console.log(this.timeCount)
+        if(this.timeCount>=10){
+          clearInterval(this.timer)
+          this.$router.push('/tat')
+        }
+      },1000)
+
+    },
+    beforeDestroy(){
+      clearInterval(this.timer)
     }
+
 
   }
 </script>

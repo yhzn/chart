@@ -1,5 +1,5 @@
 <style lang="less">
-  .structure{
+  #structure{
     width: 100%;
     height: 100%;
     background: url("../assets/image/bg2.png");
@@ -31,9 +31,11 @@
     }
     }
   }
+
 </style>
 <template>
-  <div class="structure main">
+  <div class="main" id="structure" @click="flag===true ? start() : pause()">
+    <prompt-box :flag="flag" v-if="show"></prompt-box>
     <div class="title">延华决策分析支持</div>
     <div class="border1">
       <div class="content1"></div>
@@ -42,18 +44,75 @@
 </template>
 <script>
   import headTitle from '@/components/head'
+  import promptBox from '@/components/prompt'
   import {router} from '@/tool/tool'
   export default{
     data () {
       return {
+        flag:false,
+        timer:null,
+        show:false,
+        showTimer:null,
+        chartTimer:null,
+        timeCount:0
       }
     },
     components:{
+      promptBox,
     },
-    activated () {
-      router('/report',this);
+//    activated () {
+//      router('/report',this);
+//    },
+    methods:{
+      pause () {
+        clearInterval(this.timer);
+        if(this.show){
+          return false
+        }
+        this.flag=!this.flag;
+        this.show=true;
+        this.showTimer=setTimeout(()=>{
+          clearTimeout(this.showTimer);
+          this.show=false;
+        },1500);
+      },
+      start () {
+        if(this.show){
+          return false
+        }
+        this.flag=!this.flag;
+        this.show=true;
+        this.showTimer=setTimeout(()=>{
+          clearTimeout(this.showTimer);
+          this.show=false;
+
+        },1500);
+        this.timer=setInterval(()=>{
+          this.timeCount++;
+          console.log(this.timeCount)
+          if(this.timeCount>=10){
+            clearInterval(this.timer)
+//            this.$router.push('/report')
+          }
+        },1000)
+      }
+
+
     },
+
     mounted () {
+      this.timer=setInterval(()=>{
+        this.timeCount++;
+        console.log(this.timeCount)
+        if(this.timeCount>=10){
+          clearInterval(this.timer)
+//          this.$router.push('/report')
+        }
+      },1000)
+
+    },
+    beforeDestroy(){
+      clearInterval(this.timer)
     }
 
   }

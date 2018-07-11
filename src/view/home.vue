@@ -220,7 +220,9 @@
   }
 </style>
 <template>
-  <div class="con">
+  <div class="con" @click="flag===true ? start() : pause()">
+    <prompt-box :flag="flag" v-if="show"></prompt-box>
+
     <head-title :headTip="headTip"></head-title>
     <div class="home main">
       <div class="nav_first clearfix">
@@ -393,6 +395,8 @@
   import {random, clone, router} from '@/tool/tool'
 
   import headTitle from '@/components/head'
+  import promptBox from '@/components/prompt'
+
   export default {
     data () {
       return {
@@ -402,19 +406,67 @@
         meterThreeNum:'',
         meterFourNum:'',
         meterFiveNum:'',
-        timer:null
+        flag:false,
+        timer:null,
+        show:false,
+        showTimer:null,
+        chartTimer:null,
+        timeCount:0
+
       }
     },
     components:{
         headTitle,
-    },
-    methods:{
-
+        promptBox
     },
     activated () {
       router('/query',this);
     },
+    methods:{
+      pause () {
+        clearInterval(this.timer);
+        if(this.show){
+          return false
+        }
+        this.flag=!this.flag;
+        this.show=true;
+        this.showTimer=setTimeout(()=>{
+          clearTimeout(this.showTimer);
+          this.show=false;
+        },1500);
+      },
+      start () {
+        if(this.show){
+          return false
+        }
+        this.flag=!this.flag;
+        this.show=true;
+        this.showTimer=setTimeout(()=>{
+          clearTimeout(this.showTimer);
+          this.show=false;
+
+        },1500);
+        this.timer=setInterval(()=>{
+          this.timeCount++;
+          console.log(this.timeCount)
+          if(this.timeCount>=10){
+            clearInterval(this.timer)
+            this.$router.push('/query')
+          }
+        },1000)
+      }
+
+
+    },
+
     mounted () {
+      this.timer=setInterval(()=>{
+        this.timeCount++;
+        if(this.timeCount>=10){
+          clearInterval(this.timer)
+          this.$router.push('/query')
+        }
+      },1000)
       let eChartFooter=eCharts.init(this.$refs.footer);
       let eChartMeterOne=eCharts.init(this.$refs.meterOne);
       let eChartMeterTwo=eCharts.init(this.$refs.meterTwo);
@@ -575,7 +627,7 @@
       let meterThree=clone(meterOption);
       let meterFour=clone(meterOption);
       let meterFive=clone(meterOption);
-      this.timer=setInterval(() => {
+      this.chartTimer=setInterval(() => {
         this.meterOneNum=random(0,30000);
         this.meterTwoNum=random(0,100);
         this.meterThreeNum=random(0,100);
@@ -617,6 +669,11 @@
       }
 
 
-    }
+    },
+    beforeDestroy(){
+      clearInterval(this.chartTimer);
+      clearInterval(this.timer);
+    },
+
   }
 </script>

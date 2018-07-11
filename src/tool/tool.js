@@ -17,10 +17,10 @@ export let clone = function (it) {
 }
 
 export let router = (url,_this,timers) => {
-  let timer=setTimeout(() => {
+   // let timer=setTimeout(() => {
+    //
+    // clearTimeout(timer);
+    // _this.$router.push(url)
 
-    clearTimeout(timer);
-    _this.$router.push(url)
-
-  },10000)
+  // },10000)
 }

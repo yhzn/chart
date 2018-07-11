@@ -141,7 +141,8 @@
 
 </style>
 <template>
-  <div class="head-tip con">
+  <div class="head-tip con" @click="flag===true ? start() : pause()">
+    <prompt-box :flag="flag" v-if="show"></prompt-box>
     <head-title :headTip="headTip">
       <head-select slot="headSelect"></head-select>
     </head-title>
@@ -717,6 +718,8 @@
   import headTitle from '@/components/head'
   import headSelect from '@/components/head-select'
   import indicatorLight from '@/components/indicator'
+  import promptBox from '@/components/prompt'
+
   let meterOption={
 //    tooltip : {
 //      formatter: "{a} <br/>{b} : {c}%"
@@ -1037,18 +1040,72 @@
         sum_17:0,
         sum_18:0,
         sum_19:0,
+        flag:false,
+        timer:null,
+        show:false,
+        showTimer:null,
+        chartTimer:null,
+        timeCount:0
+
 
       }
     },
     components:{
       headTitle,
       headSelect,
+      promptBox,
       indicatorLight
     },
-    activated () {
-      router('/roomDynamic',this);
+//    activated () {
+//      router('/roomDynamic',this);
+//    },
+    methods:{
+      pause () {
+        clearInterval(this.timer);
+        if(this.show){
+          return false
+        }
+        this.flag=!this.flag;
+        this.show=true;
+        this.showTimer=setTimeout(()=>{
+          clearTimeout(this.showTimer);
+          this.show=false;
+        },1500);
+      },
+      start () {
+        if(this.show){
+          return false
+        }
+        this.flag=!this.flag;
+        this.show=true;
+        this.showTimer=setTimeout(()=>{
+          clearTimeout(this.showTimer);
+          this.show=false;
+
+        },1500);
+        this.timer=setInterval(()=>{
+          this.timeCount++;
+          console.log(this.timeCount)
+          if(this.timeCount>=10){
+            clearInterval(this.timer)
+            this.$router.push('/roomDynamic')
+          }
+        },1000)
+      }
+
+
     },
+
     mounted () {
+      this.timer=setInterval(()=>{
+        this.timeCount++;
+        console.log(this.timeCount)
+        if(this.timeCount>=10){
+          clearInterval(this.timer)
+          this.$router.push('/roomDynamic')
+        }
+      },1000)
+
       let chart_0 = eCharts.init(this.$refs.chart_0);
       let chart_1 = eCharts.init(this.$refs.chart_1);
       let chart_2 = eCharts.init(this.$refs.chart_2);
@@ -1369,7 +1426,12 @@
 
       },2000);
 
+    },
+    beforeDestroy(){
+      clearInterval(this.chartTimer)
+      clearInterval(this.timer)
     }
+
 
   }
 </script>

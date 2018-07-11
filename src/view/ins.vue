@@ -255,8 +255,8 @@
 }
 </style>
 <template>
-  <div class="con">
-    <div class="con">
+    <div class="con" @click="flag===true ? start() : pause()">
+      <prompt-box :flag="flag" v-if="show"></prompt-box>
       <head-title :headTip="headTip">
         <head-select slot="headSelect"></head-select>
       </head-title>
@@ -577,7 +577,6 @@
         </div>
       </div>
     </div>
-  </div>
 </template>
 <script>
   import eCharts from 'echarts'
@@ -587,6 +586,7 @@
   import headSelect from '@/components/head-select'
   import indicatorLight from '@/components/indicator'
   import tableList from '@/components/table-list'
+  import promptBox from '@/components/prompt'
 
   let meterOption={
     tooltip : {
@@ -883,6 +883,13 @@
             chart_num_14:0,
             chart_num_15:0,
             chart_num_16:0,
+            flag:false,
+            timer:null,
+            show:false,
+            showTimer:null,
+            chartTimer:null,
+            timeCount:0
+
 
           }
       },
@@ -890,14 +897,58 @@
         headTitle,
         headSelect,
         indicatorLight,
+        promptBox,
         tableList
       },
     activated () {
       router('/operation',this,this.timer);
 
     },
-      methods:{},
+    methods:{
+      pause () {
+        clearInterval(this.timer);
+        if(this.show){
+          return false
+        }
+        this.flag=!this.flag;
+        this.show=true;
+        this.showTimer=setTimeout(()=>{
+          clearTimeout(this.showTimer);
+          this.show=false;
+        },1500);
+      },
+      start () {
+        if(this.show){
+          return false
+        }
+        this.flag=!this.flag;
+        this.show=true;
+        this.showTimer=setTimeout(()=>{
+          clearTimeout(this.showTimer);
+          this.show=false;
+
+        },1500);
+        this.timer=setInterval(()=>{
+          this.timeCount++;
+          console.log(this.timeCount)
+          if(this.timeCount>=10){
+            clearInterval(this.timer)
+            this.$router.push('/operation')
+          }
+        },1000)
+      }
+
+
+    },
       mounted () {
+        this.timer=setInterval(()=>{
+          this.timeCount++;
+          console.log(this.timeCount)
+          if(this.timeCount>=10){
+            clearInterval(this.timer)
+            this.$router.push('/operation')
+          }
+        },1000)
         let chart_1=eCharts.init(this.$refs.chart_1,true);
         let chart_2=eCharts.init(this.$refs.chart_2,true);
         let chart_3=eCharts.init(this.$refs.chart_3,true);
@@ -916,7 +967,7 @@
         let chart_16=eCharts.init(this.$refs.chart_16,true);
         let chart_17=eCharts.init(this.$refs.chart_17,true);
 
-        setInterval(()=>{
+        this.chartTimer=setInterval(()=>{
           this.chart_num_3=random(30000000,50000000);
           this.chart_num_4= random(150000,200000);
           this.chart_num_5= random(300,500);
@@ -975,6 +1026,11 @@
 
 
 
-      }
+      },
+    beforeDestroy(){
+      clearInterval(this.chartTimer)
+      clearInterval(this.timer)
+    }
+
   }
 </script>

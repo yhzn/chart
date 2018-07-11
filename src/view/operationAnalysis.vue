@@ -124,7 +124,8 @@
 
 </style>
 <template>
-  <div class="con">
+  <div class="con" @click="flag===true ? start() : pause()">
+    <prompt-box :flag="flag" v-if="show"></prompt-box>
     <head-title :headTip="headTip">
       <head-select slot="headSelect"></head-select>
     </head-title>
@@ -159,6 +160,8 @@
   import {random, clone, router} from '@/tool/tool'
   import headTitle from '@/components/head'
   import headSelect from '@/components/head-select'
+  import promptBox from '@/components/prompt'
+
   let option = {
 //    title: {
 //      text: '基础雷达图'
@@ -224,22 +227,79 @@
     data () {
       return {
         headTip:'院内医疗运营分析',
+        flag:false,
+        timer:null,
+        show:false,
+        showTimer:null,
+        chartTimer:null,
+        timeCount:0
+
       }
     },
     components:{
       headTitle,
       headSelect,
+      promptBox
     },
-    activated () {
-      router('/home',this);
+//    activated () {
+//      router('/home',this);
+//    },
+    methods:{
+      pause () {
+        clearInterval(this.timer);
+        if(this.show){
+          return false
+        }
+        this.flag=!this.flag;
+        this.show=true;
+        this.showTimer=setTimeout(()=>{
+          clearTimeout(this.showTimer);
+          this.show=false;
+        },1500);
+      },
+      start () {
+        if(this.show){
+          return false
+        }
+        this.flag=!this.flag;
+        this.show=true;
+        this.showTimer=setTimeout(()=>{
+          clearTimeout(this.showTimer);
+          this.show=false;
+
+        },1500);
+        this.timer=setInterval(()=>{
+          this.timeCount++;
+          console.log(this.timeCount)
+          if(this.timeCount>=10){
+            clearInterval(this.timer)
+            this.$router.push('/home')
+          }
+        },1000)
+      }
+
+
     },
+
     mounted () {
       let chart=eCharts.init(this.$refs.chart);
-      setInterval(()=>{
+      this.chartTimer=setInterval(()=>{
         option.series[0].data[0].value=[random(50,100),random(50,100),random(50,100),random(50,100)];
         chart.setOption(option,true)
 
       },2000);
+      this.timer=setInterval(()=>{
+        this.timeCount++;
+        if(this.timeCount>=10){
+          clearInterval(this.timer)
+          this.$router.push('/home')
+        }
+      },1000)
+
+    },
+    beforeDestroy(){
+      clearInterval(this.chartTimer)
+      clearInterval(this.timer)
     }
   }
 </script>

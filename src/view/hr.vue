@@ -355,7 +355,8 @@
   }
 </style>
 <template>
-  <div class="con">
+  <div class="con" @click="flag===true ? start() : pause()">
+    <prompt-box :flag="flag" v-if="show"></prompt-box>
     <head-title :headTip="headTip">
       <head-select slot="headSelect"></head-select>
       <div class="head_content_11">时长单位:小时(h)</div>
@@ -675,6 +676,8 @@
   import headTitle from '@/components/head'
   import headSelect from '@/components/head-select'
   import tableList from '@/components/table-list'
+  import promptBox from '@/components/prompt'
+
   let tableData1=[
     ['岗位','新增人数','比例'],
     ['全院','93','100%'],
@@ -863,18 +866,71 @@
         chart_num_7_1:0,
         chart_num_7_2:0,
         chart_num_8_1:0,
+        flag:false,
+        timer:null,
+        show:false,
+        showTimer:null,
+        chartTimer:null,
+        timeCount:0
       }
     },
     components:{
       headTitle,
       tableList,
+      promptBox,
       headSelect
     },
-    activated () {
-      router('/wastage',this);
+//    activated () {
+//      router('/wastage',this);
+//    },
+    methods:{
+      pause () {
+        clearInterval(this.timer);
+        if(this.show){
+          return false
+        }
+        this.flag=!this.flag;
+        this.show=true;
+        this.showTimer=setTimeout(()=>{
+          clearTimeout(this.showTimer);
+          this.show=false;
+        },1500);
+      },
+      start () {
+        if(this.show){
+          return false
+        }
+        this.flag=!this.flag;
+        this.show=true;
+        this.showTimer=setTimeout(()=>{
+          clearTimeout(this.showTimer);
+          this.show=false;
+
+        },1500);
+        this.timer=setInterval(()=>{
+          this.timeCount++;
+          console.log(this.timeCount)
+          if(this.timeCount>=10){
+            clearInterval(this.timer)
+            this.$router.push('/wastage')
+          }
+        },1000)
+      }
+
+
     },
+
     mounted () {
-        let chart_1=eCharts.init(this.$refs.chart_1);
+      this.timer=setInterval(()=>{
+        this.timeCount++;
+        console.log(this.timeCount)
+        if(this.timeCount>=10){
+          clearInterval(this.timer)
+          this.$router.push('/wastage')
+        }
+      },1000)
+
+      let chart_1=eCharts.init(this.$refs.chart_1);
         let chart_2=eCharts.init(this.$refs.chart_2);
         let chart_3=eCharts.init(this.$refs.chart_3);
         let chart_4=eCharts.init(this.$refs.chart_4);
@@ -883,7 +939,7 @@
         let chart_7=eCharts.init(this.$refs.chart_7);
         let chart_8=eCharts.init(this.$refs.chart_8);
 
-        setInterval(()=>{
+        this.chartTimer=setInterval(()=>{
           this.chart_num_1_1=random(1,4);
           this.chart_num_1_2=random(8,13);
           this.chart_num_1_3=random(1,4);
@@ -964,6 +1020,11 @@
           chart_7.setOption(option_7,true);
           chart_8.setOption(option_8,true);
         },2000)
+    },
+    beforeDestroy(){
+      clearInterval(this.chartTimer)
+      clearInterval(this.timer)
     }
+
   }
 </script>

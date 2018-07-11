@@ -242,7 +242,8 @@
 
 </style>
 <template>
-  <div class="con">
+  <div class="con" @click="flag===true ? start() : pause()">
+    <prompt-box :flag="flag" v-if="show"></prompt-box>
     <head-title :headTip="headTip">
       <head-select slot="headSelect"></head-select>
     </head-title>
@@ -1127,6 +1128,7 @@
 
   import headTitle from '@/components/head'
   import headSelect from '@/components/head-select'
+  import promptBox from '@/components/prompt'
 
   export default {
       data () {
@@ -1183,16 +1185,58 @@
             complete_9:random(30,60),
             clinic_9:random(10,20),
             hospital_9:0,
-            timer:null
+            flag:false,
+            timer:null,
+            show:false,
+            showTimer:null,
+            chartTimer:null,
+            timeCount:0
+
 
           }
       },
       components:{
           headTitle,
           headSelect,
+          promptBox,
       },
-    activated () {
-      router('/sum',this,this.timer);
+//    activated () {
+//      router('/sum',this,this.timer);
+//
+//    },
+    methods:{
+      pause () {
+        clearInterval(this.timer);
+        if(this.show){
+          return false
+        }
+        this.flag=!this.flag;
+        this.show=true;
+        this.showTimer=setTimeout(()=>{
+          clearTimeout(this.showTimer);
+          this.show=false;
+        },1500);
+      },
+      start () {
+        if(this.show){
+          return false
+        }
+        this.flag=!this.flag;
+        this.show=true;
+        this.showTimer=setTimeout(()=>{
+          clearTimeout(this.showTimer);
+          this.show=false;
+
+        },1500);
+        this.timer=setInterval(()=>{
+          this.timeCount++;
+          console.log(this.timeCount)
+          if(this.timeCount>=10){
+            clearInterval(this.timer)
+            this.$router.push('/sum')
+          }
+        },1000)
+      }
 
     },
       mounted () {
@@ -1494,7 +1538,15 @@
           }
         }
 
-        setInterval(()=>{
+        this.timer=setInterval(()=>{
+          this.timeCount++;
+          if(this.timeCount>=10){
+            clearInterval(this.timer)
+            this.$router.push('/sum')
+          }
+        },1000)
+
+        this.chartTimer=setInterval(()=>{
             this.current_1=random(10000,13000);
             this.target_1=random(10000,13000);
             this.period_1=random(10000,13000);
@@ -1675,6 +1727,11 @@
           chart_9.resize();
 
         }
-      }
+      },
+    beforeDestroy(){
+      clearInterval(this.chartTimer)
+      clearInterval(this.timer)
+    },
+
   }
 </script>

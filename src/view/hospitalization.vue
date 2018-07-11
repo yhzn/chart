@@ -297,7 +297,9 @@
   }
 </style>
 <template>
-  <div class="con">
+  <div class="con" @click="flag===true ? start() : pause()">
+    <prompt-box :flag="flag" v-if="show"></prompt-box>
+
     <div class="con">
       <head-title :headTip="headTip">
         <head-select slot="headSelect"></head-select>
@@ -466,6 +468,8 @@
   import headTitle from '@/components/head'
   import headSelect from '@/components/head-select'
   import indicatorLight from '@/components/indicator'
+  import promptBox from '@/components/prompt'
+
   import tableList from '@/components/table-list'
   let tableData=[
     ['排名','科室名称','入径率','完成率','入径数','收治数','平均住院日','药占比','均费差额'],
@@ -744,18 +748,72 @@
         chart_num_8:0,
         chart_num_9:0,
         chart_num_10:0,
+        flag:false,
+        timer:null,
+        show:false,
+        showTimer:null,
+        chartTimer:null,
+        timeCount:0
+
       }
     },
     components:{
       headTitle,
       tableList,
       headSelect,
+      promptBox,
       indicatorLight
     },
-    activated () {
-      router('/day',this);
+//    activated () {
+//      router('/day',this);
+//    },
+    methods:{
+      pause () {
+        clearInterval(this.timer);
+        if(this.show){
+          return false
+        }
+        this.flag=!this.flag;
+        this.show=true;
+        this.showTimer=setTimeout(()=>{
+          clearTimeout(this.showTimer);
+          this.show=false;
+        },1500);
+      },
+      start () {
+        if(this.show){
+          return false
+        }
+        this.flag=!this.flag;
+        this.show=true;
+        this.showTimer=setTimeout(()=>{
+          clearTimeout(this.showTimer);
+          this.show=false;
+
+        },1500);
+        this.timer=setInterval(()=>{
+          this.timeCount++;
+          console.log(this.timeCount)
+          if(this.timeCount>=10){
+            clearInterval(this.timer)
+            this.$router.push('/day')
+          }
+        },1000)
+      }
+
+
     },
+
     mounted () {
+      this.timer=setInterval(()=>{
+        this.timeCount++;
+        console.log(this.timeCount)
+        if(this.timeCount>=10){
+          clearInterval(this.timer)
+          this.$router.push('/day')
+        }
+      },1000)
+
       let chart_1=eCharts.init(this.$refs.chart_1);
       let chart_2=eCharts.init(this.$refs.chart_2);
       let chart_3=eCharts.init(this.$refs.chart_3);
@@ -767,7 +825,7 @@
       let chart_9=eCharts.init(this.$refs.chart_9);
       let chart_10=eCharts.init(this.$refs.chart_10);
       let chart_11=eCharts.init(this.$refs.chart_11);
-      setInterval(()=>{
+      this.chartTimer=setInterval(()=>{
         this.chart_num_1=random(500,900);
         this.chart_num_2=random(500,900);
         this.chart_num_3=random(1000,1500);
@@ -808,6 +866,11 @@
         chart_11.setOption(option_11,true);
 
       },2000)
+    },
+    beforeDestroy(){
+      clearInterval(this.chartTimer)
+      clearInterval(this.timer)
     }
+
   }
 </script>

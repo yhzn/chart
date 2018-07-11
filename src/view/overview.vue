@@ -137,7 +137,8 @@
 
 </style>
 <template>
-    <div class="con">
+    <div class="con" @click="flag===true ? start() : pause()">
+      <prompt-box :flag="flag" v-if="show"></prompt-box>
       <head-title :headTip="headTip">
         <head-select slot="headSelect"></head-select>
       </head-title>
@@ -268,11 +269,11 @@
   import {random, clone, router} from '@/tool/tool'
   import rj from '@/assets/image/rj.jpg'
   import pj from '@/assets/image/pj.jpg'
-
   import headTitle from '@/components/head'
   import headSelect from '@/components/head-select'
   import tableList from '@/components/table-list'
   import indicatorLight from '@/components/indicator'
+  import promptBox from '@/components/prompt'
 
   let tableData=[
     ['排名','科室名称','入径率','完成率','入径数','收治数','平均住院日','药占比','均费差额'],
@@ -570,20 +571,72 @@
         chart_num_8:0,
         chart_num_9:0,
         chart_num_10:0,
-        timer:null
+        flag:false,
+        timer:null,
+        show:false,
+        showTimer:null,
+        chartTimer:null,
+        timeCount:0
+
       }
     },
-    activated () {
-      router('/mutation',this,this.timer);
-
-    },
+//    activated () {
+//      router('/mutation',this,this.timer);
+//
+//    },
     components:{
       headTitle,
       headSelect,
       tableList,
+      promptBox,
       indicatorLight
     },
+    methods:{
+      pause () {
+        clearInterval(this.timer);
+        if(this.show){
+          return false
+        }
+        this.flag=!this.flag;
+        this.show=true;
+        this.showTimer=setTimeout(()=>{
+          clearTimeout(this.showTimer);
+          this.show=false;
+        },1500);
+      },
+      start () {
+        if(this.show){
+          return false
+        }
+        this.flag=!this.flag;
+        this.show=true;
+        this.showTimer=setTimeout(()=>{
+          clearTimeout(this.showTimer);
+          this.show=false;
+
+        },1500);
+        this.timer=setInterval(()=>{
+          this.timeCount++;
+          console.log(this.timeCount)
+          if(this.timeCount>=10){
+            clearInterval(this.timer)
+            this.$router.push('/mutation')
+          }
+        },1000)
+      }
+
+
+    },
+
     mounted () {
+      this.timer=setInterval(()=>{
+        this.timeCount++;
+        console.log(this.timeCount)
+        if(this.timeCount>=10){
+          clearInterval(this.timer)
+          this.$router.push('/mutation')
+        }
+      },1000)
       let chart_1=eCharts.init(this.$refs.chart_meter_1);
       let chart_2=eCharts.init(this.$refs.chart_meter_2);
       let chart_3=eCharts.init(this.$refs.chart_meter_3);
@@ -597,7 +650,7 @@
       let chart_11=eCharts.init(this.$refs.chart_bar_1);
       let chart_12=eCharts.init(this.$refs.chart_bar_2);
 
-      this.timer=setInterval(()=>{
+      this.chartTimer=setInterval(()=>{
         this.chart_num_1=random(85,90);
         this.chart_num_2=random(85,90);
         this.chart_num_3=random(17000,18000);
@@ -663,6 +716,10 @@
 
       },2000)
 
+    },
+    beforeDestroy(){
+      clearInterval(this.chartTimer)
+      clearInterval(this.timer)
     }
   }
 

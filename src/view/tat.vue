@@ -265,7 +265,8 @@
   }
 </style>
 <template>
-  <div class="con">
+  <div class="con" @click="flag===true ? start() : pause()">
+    <prompt-box :flag="flag" v-if="show"></prompt-box>
     <div class="con">
       <head-title :headTip="headTip">
         <head-select slot="headSelect"></head-select>
@@ -362,6 +363,8 @@
   import headSelect from '@/components/head-select'
   import indicatorLight from '@/components/indicator'
   import tableList from '@/components/table-list'
+  import promptBox from '@/components/prompt'
+
   let tableData1=[
     ['序号','检查项目名称','总工作量','门诊工作量','急诊工作量','住院工作量','体检工作量'],
     ['合计','心房颤动介入治疗','5,321','1,779','1,014','5,321','1,120'],
@@ -513,22 +516,76 @@
           selectFive:true,
           five:'样本数-同期',
           selectSix:false,
-          six:''
+          six:'',
         },
+        flag:false,
+        timer:null,
+        show:false,
+        showTimer:null,
+        chartTimer:null,
+        timeCount:0
+
       }
     },
     components:{
       headTitle,
       tableList,
       headSelect,
+      promptBox,
       indicatorLight
     },
-    activated () {
-      router('/imgAnalysis',this);
+//    activated () {
+//      router('/imgAnalysis',this);
+//    },
+    methods:{
+      pause () {
+        clearInterval(this.timer);
+        if(this.show){
+          return false
+        }
+        this.flag=!this.flag;
+        this.show=true;
+        this.showTimer=setTimeout(()=>{
+          clearTimeout(this.showTimer);
+          this.show=false;
+        },1500);
+      },
+      start () {
+        if(this.show){
+          return false
+        }
+        this.flag=!this.flag;
+        this.show=true;
+        this.showTimer=setTimeout(()=>{
+          clearTimeout(this.showTimer);
+          this.show=false;
+
+        },1500);
+        this.timer=setInterval(()=>{
+          this.timeCount++;
+          console.log(this.timeCount)
+          if(this.timeCount>=10){
+            clearInterval(this.timer)
+            this.$router.push('/imgAnalysis')
+          }
+        },1000)
+      }
+
+
     },
+
     mounted () {
+      this.timer=setInterval(()=>{
+        this.timeCount++;
+        console.log(this.timeCount)
+        if(this.timeCount>=10){
+          clearInterval(this.timer)
+          this.$router.push('/imgAnalysis')
+        }
+      },1000)
+
       let chart=eCharts.init(this.$refs.chart);
-      setInterval(()=>{
+      this.chartTimer=setInterval(()=>{
         option.series[0].data=[random(12000,23000),random(12000,23000),random(12000,23000),random(12000,23000),random(12000,23000),random(12000,23000)];
         option.series[1].data=[random(12000,23000),random(12000,23000),random(12000,23000),random(12000,23000),random(12000,23000),random(12000,23000),random(12000,23000),random(12000,23000),random(12000,23000),random(12000,23000),random(12000,23000),random(12000,23000)];
         option.series[2].data=[random(15000,23000),random(15000,23000),random(15000,23000),random(15000,23000),random(15000,23000),random(15000,23000)];
@@ -537,6 +594,11 @@
 
       },2000);
 
+    },
+    beforeDestroy(){
+      clearInterval(this.chartTimer)
+      clearInterval(this.timer)
     }
+
   }
 </script>

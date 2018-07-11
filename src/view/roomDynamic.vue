@@ -85,7 +85,8 @@
   }
 </style>
 <template>
-  <div class="roomDynamic-head con">
+  <div class="roomDynamic-head con" @click="flag===true ? start() : pause()">
+    <prompt-box :flag="flag" v-if="show"></prompt-box>
     <head-title :headTip="headTip">
       <div slot="headSelect" class="head2">
         <div class="title1">获取数据</div>
@@ -111,6 +112,8 @@
 <script>
   import headTitle from '@/components/head'
   import headSelect from '@/components/head-select'
+  import promptBox from '@/components/prompt'
+
   import indicatorLight from '@/components/indicator'
   import {router} from '@/tool/tool'
   export default{
@@ -129,19 +132,76 @@
           selectSeven:true,
           seven:'未开放',
         },
+        flag:false,
+        timer:null,
+        show:false,
+        showTimer:null,
+        chartTimer:null,
+        timeCount:0
+
       }
     },
     components:{
       headTitle,
       headSelect,
+      promptBox,
       indicatorLight
     },
-    activated () {
-      router('/hospitalization',this);
-    },
-    mounted () {
+//    activated () {
+//      router('/hospitalization',this);
+//    },
+    methods:{
+      pause () {
+        clearInterval(this.timer);
+        if(this.show){
+          return false
+        }
+        this.flag=!this.flag;
+        this.show=true;
+        this.showTimer=setTimeout(()=>{
+          clearTimeout(this.showTimer);
+          this.show=false;
+        },1500);
+      },
+      start () {
+        if(this.show){
+          return false
+        }
+        this.flag=!this.flag;
+        this.show=true;
+        this.showTimer=setTimeout(()=>{
+          clearTimeout(this.showTimer);
+          this.show=false;
 
+        },1500);
+        this.timer=setInterval(()=>{
+          this.timeCount++;
+          console.log(this.timeCount)
+          if(this.timeCount>=10){
+            clearInterval(this.timer)
+            this.$router.push('/hospitalization')
+          }
+        },1000)
+      }
+
+
+    },
+
+    mounted () {
+      this.timer=setInterval(()=>{
+        this.timeCount++;
+        console.log(this.timeCount)
+        if(this.timeCount>=10){
+          clearInterval(this.timer)
+          this.$router.push('/hospitalization')
+        }
+      },1000)
+
+    },
+    beforeDestroy(){
+      clearInterval(this.timer)
     }
+
 
   }
 </script>

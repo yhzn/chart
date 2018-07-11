@@ -387,7 +387,8 @@
   }
 </style>
 <template>
-  <div class="con">
+  <div class="con" @click="flag===true ? start() : pause()">
+    <prompt-box :flag="flag" v-if="show"></prompt-box>
     <head-title :headTip="headTip">
       <head-select slot="headSelect"></head-select>
     </head-title>
@@ -728,6 +729,8 @@
   import headSelect from '@/components/head-select'
   import indicatorLight from '@/components/indicator'
   import tableList from '@/components/table-list'
+  import promptBox from '@/components/prompt'
+
   let tableData=[
     ['排名','科室名称','入径率','完成率','入径数','收治数','平均住院日','药占比','均费差额'],
     ['合计','心房颤动介入治疗','88%','88%','236','236','6.7','19%','24,199'],
@@ -979,19 +982,72 @@
         chart_num_11:0,
         chart_num_13_1:0,
         chart_num_13_2:0,
-        chart_num_13_3:0
+        chart_num_13_3:0,
+        flag:false,
+        timer:null,
+        show:false,
+        showTimer:null,
+        chartTimer:null,
+        timeCount:0
+
 
       }
     },
     components:{
       headTitle,
       headSelect,
+      promptBox
     },
-    activated () {
-      router('/overview',this);
+//    activated () {
+//      router('/overview',this);
+//    },
+    methods:{
+      pause () {
+        clearInterval(this.timer);
+        if(this.show){
+          return false
+        }
+        this.flag=!this.flag;
+        this.show=true;
+        this.showTimer=setTimeout(()=>{
+          clearTimeout(this.showTimer);
+          this.show=false;
+        },1500);
+      },
+      start () {
+        if(this.show){
+          return false
+        }
+        this.flag=!this.flag;
+        this.show=true;
+        this.showTimer=setTimeout(()=>{
+          clearTimeout(this.showTimer);
+          this.show=false;
+
+        },1500);
+        this.timer=setInterval(()=>{
+          this.timeCount++;
+          console.log(this.timeCount)
+          if(this.timeCount>=10){
+            clearInterval(this.timer)
+            this.$router.push('/overview')
+          }
+        },1000)
+      }
+
+
     },
+
     mounted () {
-       let chart_1=eCharts.init(this.$refs.chart_1);
+      this.timer=setInterval(()=>{
+        this.timeCount++;
+        if(this.timeCount>=10){
+          clearInterval(this.timer)
+          this.$router.push('/overview')
+        }
+      },1000)
+
+      let chart_1=eCharts.init(this.$refs.chart_1);
        let chart_2=eCharts.init(this.$refs.chart_2);
        let chart_3=eCharts.init(this.$refs.chart_3);
        let chart_4=eCharts.init(this.$refs.chart_4);
@@ -1004,7 +1060,7 @@
        let chart_11=eCharts.init(this.$refs.chart_11);
        let chart_12=eCharts.init(this.$refs.chart_12);
        let chart_13=eCharts.init(this.$refs.chart_13);
-       setInterval(()=>{
+       this.chartTimer=setInterval(()=>{
          this.chart_num_1_1=random(100,280);
          this.chart_num_1_2=random(300,500);
          this.chart_num_2=random(60,80);
@@ -1058,6 +1114,11 @@
 
        },2000)
 
-    }
+    },
+    beforeDestroy(){
+      clearInterval(this.chartTimer)
+      clearInterval(this.timer)
+    },
+
   }
 </script>

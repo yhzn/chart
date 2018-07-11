@@ -209,7 +209,8 @@
 }
 </style>
 <template>
-  <div class="con surver-head">
+  <div class="con surver-head" @click="flag===true ? start() : pause()">
+    <prompt-box :flag="flag" v-if="show"></prompt-box>
     <head-title :headTip="headTip">
       <div slot="headSelect"></div>
     </head-title>
@@ -334,6 +335,8 @@
 
   import headTitle from '@/components/head'
   import indicatorLight from '@/components/indicator'
+  import promptBox from '@/components/prompt'
+
   let pieOption = {
     title:{
 //      text: '总数',
@@ -647,16 +650,69 @@
         chart_num_2_7:0,
         r_1:100,
         r_2:100,
+        flag:false,
+        timer:null,
+        show:false,
+        showTimer:null,
+        chartTimer:null,
+        timeCount:0
+
       }
     },
     components:{
       headTitle,
+      promptBox,
       indicatorLight
     },
-    activated () {
-      router('/hr',this);
+//    activated () {
+//      router('/hr',this);
+//    },
+    methods:{
+      pause () {
+        clearInterval(this.timer);
+        if(this.show){
+          return false
+        }
+        this.flag=!this.flag;
+        this.show=true;
+        this.showTimer=setTimeout(()=>{
+          clearTimeout(this.showTimer);
+          this.show=false;
+        },1500);
+      },
+      start () {
+        if(this.show){
+          return false
+        }
+        this.flag=!this.flag;
+        this.show=true;
+        this.showTimer=setTimeout(()=>{
+          clearTimeout(this.showTimer);
+          this.show=false;
+
+        },1500);
+        this.timer=setInterval(()=>{
+          this.timeCount++;
+          console.log(this.timeCount)
+          if(this.timeCount>=10){
+            clearInterval(this.timer)
+            this.$router.push('/hr')
+          }
+        },1000)
+      }
+
+
     },
+
     mounted () {
+      this.timer=setInterval(()=>{
+        this.timeCount++;
+        console.log(this.timeCount)
+        if(this.timeCount>=10){
+          clearInterval(this.timer)
+          this.$router.push('/hr')
+        }
+      },1000)
       let chart_1 = eCharts.init(this.$refs.chart_1);
       let chart_2 = eCharts.init(this.$refs.chart_2);
       let chart_3 = eCharts.init(this.$refs.chart_3);
@@ -668,7 +724,7 @@
       let chart_9 = eCharts.init(this.$refs.chart_9);
 
 
-      setInterval(() => {
+      this.chartTimer=setInterval(() => {
         this.chart_num_1_1=random(300,500);
         this.chart_num_1_2=random(400,600);
         this.chart_num_1_3=random(1500,1800);
@@ -739,6 +795,10 @@
 
 
       }, 2000);
+    },
+    beforeDestroy(){
+      clearInterval(this.chartTimer)
+      clearInterval(this.timer)
     }
   }
 
