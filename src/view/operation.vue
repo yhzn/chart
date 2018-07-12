@@ -197,9 +197,9 @@
       height: 60px;
     }
     .content-head4-title{
-      position: relative;
-      float: left;
-      margin: 0 0 0 30px;
+      position: absolute;
+      left:50%;
+      transform: translateX(-50%);
       width: 280px;
       height: 60px;
       line-height: 60px;
@@ -234,11 +234,14 @@
       color: #ffffff;
     }
     .radio2{
-      position: relative;
-      float: right;
-      margin: 25px 0 0;
+      position: absolute;
+      top:25px;
+      right:10px;
       width: 75px;
       height: 60px;
+      &:nth-child(2){
+        right:80px;
+      }
     }
     .radio2 p{
       float: left;

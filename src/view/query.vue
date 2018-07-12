@@ -1014,10 +1014,9 @@
 
     mounted () {
 
-      run(this,'/overview')
+       run(this,'/overview')
 
-
-      let chart_1=eCharts.init(this.$refs.chart_1);
+       let chart_1=eCharts.init(this.$refs.chart_1);
        let chart_2=eCharts.init(this.$refs.chart_2);
        let chart_3=eCharts.init(this.$refs.chart_3);
        let chart_4=eCharts.init(this.$refs.chart_4);
