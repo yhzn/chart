@@ -78,6 +78,5 @@
       clearInterval(this.timer)
     },
 
-
   }
 </script>

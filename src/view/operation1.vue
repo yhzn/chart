@@ -1,22 +1,22 @@
 <style lang="less">
   .title-hide{
-  .head .title_second{
-    display: none;
-  }
+    .head .title_second{
+      display: none;
+    }
   }
   .operation1{
-  .title{
-    width: calc(100% - 40px);
-    height: 30px;
-    margin: 5px 0 0 20px;
-  }
-  .contents{
-    width: calc(100% - 40px);
-    height: 660px;
-    margin: 0 0 0 20px;
-    background: url("../assets/image/operation1.png");
-    background-size: 100% 100%;
-  }
+      .title{
+        width: calc(100% - 40px);
+        height: 30px;
+        margin: 5px 0 0 20px;
+      }
+      .contents{
+        width: calc(100% - 40px);
+        height: 660px;
+        margin: 0 0 0 20px;
+        background: url("../assets/image/operation1.png");
+        background-size: 100% 100%;
+      }
   }
 </style>
 <template>
@@ -64,7 +64,6 @@
         pause(this)
       },
       start () {
-
         start(this,'/dynamic')
 
       }
@@ -73,14 +72,12 @@
     },
 
     mounted () {
-
        run(this,'/dynamic')
 
     },
     beforeDestroy(){
       clearInterval(this.timer)
     }
-
 
   }
 </script>

@@ -1,4 +1,4 @@
-export let random = (max , min) =>{
+export let random = (min , max) =>{
   return Math.floor(Math.random()*(max-min+1))+min
 }
 
@@ -48,6 +48,7 @@ export let run = (_this,url) =>{
   }
   _this.timer=setInterval(()=>{
     _this.timeCount++;
+    console.log(_this.timeCount)
     if(_this.timeCount>=10){
       clearInterval(_this.timer);
       _this.$router.push(url)
